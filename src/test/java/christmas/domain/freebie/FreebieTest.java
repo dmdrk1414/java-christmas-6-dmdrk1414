@@ -65,6 +65,7 @@ class FreebieTest {
     }
 
     @DisplayName("증정품의 정보를 얻는 기능")
+    @Test
     void getInformations() {
         // given
         Map<String, Integer> target = new HashMap<>();
