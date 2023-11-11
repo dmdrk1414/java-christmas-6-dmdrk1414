@@ -22,17 +22,17 @@
 
 - [x] **평일 할인** 하는 기능 구현 (일요일~목요일)
 
-  - [x] 평일에는 **디저트 메뉴**를 메뉴 1개당 2,023원 할인
+  - [ ] 평일에는 **디저트 메뉴**를 메뉴 1개당 2,023원 할인
   - [x]  2023.12.1 ~ 2023.12.31 동안 적용
 
 - [x] **주말 할인** 하는 기능 구현 (금요일, 토요일)
 
-  - [x] 주말에는 **메인 메뉴**를 메뉴 1개당 2,023원 할인
+  - [ ] 주말에는 **메인 메뉴**를 메뉴 1개당 2,023원 할인
   - [x]  2023.12.1 ~ 2023.12.31 동안 적용
 
 - [x] **특별 할인**하는 기능 구현 (이벤트 달력에 별)
 
-  - [x] 이벤트 달력에 별이 있으면 총주문 금액에서 1,000원 할인
+  - [ ] 이벤트 달력에 별이 있으면 총주문 금액에서 1,000원 할인
   - [x]  2023.12.1 ~ 2023.12.31 동안 적용
 
 - [ ] **증정 이벤트**하는 기능 구현 
@@ -91,16 +91,6 @@
   - [ ] 총혜택 금액에 따라 이벤트 배지의 이름을 다르게 보여 주세요.
   - [ ] 이벤트 배지가 부여되지 않는 경우, "없음"으로 보여 주세요.
 - [ ] 적용된 이벤트가 하나도 없는 경우는 아래 예시를 참고해 주세요.
-
-# 이번 과제의 목표
-
-- 커밋의 내용을 적고 구현을 해보자.
-
-- 기능구현당 커밋을 해보자, 너무 잘잘하게하니... 문제파악이 어려워서 실험적으로 적용해보자.
-
-- enum을 할용해보자.
-- 객체지향적 관점
-  - Discount의 abstruct의 추상클래스가 과연 맞는지 모르겠다. 하지만 만족스러운 결과를 가져온 것같다.
 
 
 
@@ -233,3 +223,40 @@ enum <할인>{
 - [라이브러리]camp.nextstep.edu.missionutils 에서 제공하는 Console API를 사용하여 구현해야 한다.
 
 - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
+
+
+
+# 이번 과제의 목표
+
+- 커밋의 내용을 적고 구현을 해보자.
+
+- 기능구현당 커밋을 해보자, 너무 잘잘하게하니... 문제파악이 어려워서 실험적으로 적용해보자.
+
+- enum을 할용해보자.
+- 객체지향적 관점
+  - Discount의 abstruct의 추상클래스가 과연 맞는지 모르겠다. 하지만 만족스러운 결과를 가져온 것같다.
+
+# 회고
+
+- 상속 클래스의 구현
+
+- Stream reduce 사용
+
+```java
+        // 이전
+				Integer totalDiscount = 0;
+        List<Integer> list = discountManagement.stream()
+                .map(discount -> discount.giveAmount())
+                .collect(Collectors.toList());
+
+        for (Integer integer : list) {
+            totalDiscount = totalDiscount + integer;
+        }
+
+				// 이후
+        Integer totalDiscount = discountManagement.stream()
+                .map(Discount::giveAmount)
+                .reduce(0, Integer::sum);
+        return totalDiscount;
+```
+
