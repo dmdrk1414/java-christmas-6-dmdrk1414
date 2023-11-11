@@ -1,6 +1,5 @@
 package christmas.domain;
 
-import christmas.constant.menu.Menu;
 import christmas.constant.menu.MenuGroup;
 
 import java.util.HashMap;
@@ -36,7 +35,7 @@ public class Orders {
             String item = order.getKey();
             Integer quantity = order.getValue();
 
-            Boolean isAppetizer = MenuGroup.APPETIZER.isAppetizer(item);
+            Boolean isAppetizer = MenuGroup.APPETIZER.isMenu(item);
             if (isAppetizer) {
                 appetizerCount = appetizerCount + quantity;
             }
