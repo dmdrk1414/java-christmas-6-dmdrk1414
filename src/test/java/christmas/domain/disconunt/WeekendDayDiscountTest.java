@@ -28,7 +28,10 @@ class WeekendDayDiscountTest {
             "30, 2023",
     })
     void giveAmount(Integer orderDay, Integer amount) {
-        WeekendDayDiscount weekendDayDiscount = new WeekendDayDiscount(orderDay);
+        // given
+        Integer mainCount = 1;
+        amount = amount * mainCount;
+        WeekendDayDiscount weekendDayDiscount = new WeekendDayDiscount(orderDay, mainCount);
         // when
         Integer result = weekendDayDiscount.giveAmount();
 
@@ -84,7 +87,8 @@ class WeekendDayDiscountTest {
     })
     void checkPeriod(Integer orderDay, Boolean confirm) {
         // given
-        WeekendDayDiscount weekendDayDiscount = new WeekendDayDiscount(orderDay);
+        Integer mainCount = 1;
+        WeekendDayDiscount weekendDayDiscount = new WeekendDayDiscount(orderDay, mainCount);
 
         // when
         Boolean result = weekendDayDiscount.checkPeriod();

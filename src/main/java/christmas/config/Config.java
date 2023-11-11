@@ -14,8 +14,8 @@ public class Config {
         return new WeekDayDiscount(orderDay, dessertCount);
     }
 
-    public static WeekendDayDiscount weekendDayDiscount(Integer orderDay) {
-        return new WeekendDayDiscount(orderDay);
+    public static WeekendDayDiscount weekendDayDiscount(Integer orderDay, Integer mainCount) {
+        return new WeekendDayDiscount(orderDay, mainCount);
     }
 
     public static SpecialDayDiscount specialDayDiscount(Integer orderDay) {

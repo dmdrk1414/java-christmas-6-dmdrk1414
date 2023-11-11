@@ -3,13 +3,16 @@ package christmas.domain.discount;
 import christmas.constant.discount.DiscountGroup;
 
 public class WeekendDayDiscount extends Discount {
-    public WeekendDayDiscount(Integer orderDay) {
+    private Integer mainCount;
+
+    public WeekendDayDiscount(Integer orderDay, Integer mainCount) {
         super(orderDay);
+        this.mainCount = mainCount;
     }
 
     @Override
     public Integer giveAmount() {
-        Integer amount = super.getAmount(DiscountGroup.WEEKEND_DAY_DISCOUNT);
+        Integer amount = super.getAmount(DiscountGroup.WEEKEND_DAY_DISCOUNT) * mainCount;
 
         return amount;
     }
