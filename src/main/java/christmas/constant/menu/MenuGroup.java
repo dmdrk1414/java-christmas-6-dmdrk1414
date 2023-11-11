@@ -1,5 +1,6 @@
 package christmas.constant.menu;
 
+import java.util.Arrays;
 import java.util.List;
 
 public enum MenuGroup {
@@ -16,8 +17,20 @@ public enum MenuGroup {
         this.menuList = menuList;
     }
 
+    public static List<MenuGroup> getAllMenuGroups() {
+        return Arrays.asList(values());
+    }
+
     public Boolean isMenu(String orderMenu) {
         return menuList.stream()
                 .anyMatch(menu -> menu.is(orderMenu));
+    }
+
+    public Integer getMenuPrice(String orderMenu) {
+        return menuList.stream()
+                .filter(menu -> menu.is(orderMenu))
+                .findFirst()
+                .map(Menu::getPrice)
+                .orElse(0);
     }
 }
