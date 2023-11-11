@@ -3,8 +3,12 @@ package christmas.domain.discount;
 import christmas.domain.Orders;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -108,5 +112,50 @@ class DiscountManagementTest {
 
         // then
         assertThat(result).isEqualTo(totalDiscount);
+    }
+
+    @DisplayName("할인 내역을 Map구조로 만드는 기능 테스트")
+    @Test
+    void getInformations() {
+        // given
+        String inputString = "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1";
+        Orders orders = new Orders(inputString);
+        DiscountManagement discountManagement = new DiscountManagement(3, orders);
+
+        Map<String, Integer> target = new HashMap<>();
+        target.put("크리스마스 디데이 할인", 1200);
+        target.put("주말 할인", 0);
+        target.put("평일 할인", 4046);
+        target.put("특별 할인", 1000);
+
+        // when
+        Map<String, Integer> result = discountManagement.getInformations();
+        System.out.println("result = " + result);
+
+        // then
+        assertThat(result).isEqualTo(target);
+    }
+
+    @DisplayName("할인 내역을 Map구조로 만드는 기능 테스트_2")
+    @Test
+    void getInformations_2() {
+//        result = {크리스마스 디데이 할인=1000, 주말 할인=4046, 평일 할인=0, 특별 할인=0}
+        // given
+        String inputString = "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1";
+        Orders orders = new Orders(inputString);
+        DiscountManagement discountManagement = new DiscountManagement(1, orders);
+
+        Map<String, Integer> target = new HashMap<>();
+        target.put("크리스마스 디데이 할인", 1000);
+        target.put("주말 할인", 4046);
+        target.put("평일 할인", 0);
+        target.put("특별 할인", 0);
+
+        // when
+        Map<String, Integer> result = discountManagement.getInformations();
+        System.out.println("result = " + result);
+
+        // then
+        assertThat(result).isEqualTo(target);
     }
 }
