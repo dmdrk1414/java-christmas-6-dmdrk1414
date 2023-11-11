@@ -40,8 +40,6 @@ class WeekDayDiscountTest {
             "31, 2023"
     })
     void giveAmount(Integer orderDay, Integer amount) {
-        System.out.println("orderDay = " + orderDay);
-        System.out.println("amount = " + amount);
         WeekDayDiscount weekDayDiscount = new WeekDayDiscount(orderDay);
         // when
         Integer result = weekDayDiscount.giveAmount();
@@ -50,7 +48,54 @@ class WeekDayDiscountTest {
         assertThat(result).isEqualTo(amount);
     }
 
-    @Test
-    void checkPeriod() {
+    @DisplayName("해당 주문 날짜기 디데이 할인 행사인지 확인하는 기능 ")
+    @ParameterizedTest
+    @CsvSource({
+            "3, true",
+            "4, true",
+            "5, true",
+            "6, true",
+            "7, true",
+
+            "10, true",
+            "11, true",
+            "12, true",
+            "13, true",
+            "14, true",
+
+            "17, true",
+            "18, true",
+            "19, true",
+            "20, true",
+            "21, true",
+
+            "24, true",
+            "25, true",
+            "26, true",
+            "27, true",
+            "28, true",
+
+            "31, true",
+
+            "1, false",
+            "2, false",
+            "8, false",
+            "9, false",
+            "15, false",
+            "16, false",
+            "22, false",
+            "23, false",
+            "29, false",
+            "30, false",
+    })
+    void checkPeriod(Integer orderDay, Boolean confirm) {
+        // given
+        WeekDayDiscount weekDayDiscount = new WeekDayDiscount(orderDay);
+
+        // when
+        Boolean result = weekDayDiscount.checkPeriod();
+
+        // than
+        assertThat(result).isEqualTo(confirm);
     }
 }
