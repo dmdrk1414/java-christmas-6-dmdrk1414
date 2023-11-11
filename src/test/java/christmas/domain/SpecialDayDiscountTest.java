@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SpecialDayDiscountTest {
 
-    @DisplayName("주문 날짜에 따른 평일 할인 해택 금액을 알려주는 기능")
+    @DisplayName("주문 날짜에 따른 특별 할인 해택 금액을 알려주는 기능 테스트")
     @ParameterizedTest
     @CsvSource({
             "3, 2023",
@@ -28,5 +28,54 @@ class SpecialDayDiscountTest {
 
         // then
         assertThat(result).isEqualTo(amount);
+    }
+
+    @DisplayName("주문 날짜에 따른 특별 할인 해택 가능 날짜 확인 기능 추가")
+    @ParameterizedTest
+    @CsvSource({
+            // 가능
+            "3, true",
+            "10, true",
+            "17, true",
+            "24, true",
+            "25, true",
+            "31, true",
+
+            // 불가능
+            "1, false",
+            "2, false",
+            "4, false",
+            "5, false",
+            "6, false",
+            "7, false",
+            "8, false",
+            "9, false",
+            "11, false",
+            "12, false",
+            "13, false",
+            "14, false",
+            "15, false",
+            "16, false",
+            "18, false",
+            "19, false",
+            "20, false",
+            "21, false",
+            "22, false",
+            "23, false",
+            "26, false",
+            "27, false",
+            "28, false",
+            "29, false",
+            "30, false",
+    })
+    void checkPeriod(Integer orderDay, Boolean confirm) {
+        // given
+        SpecialDayDiscount specialDayDiscount = new SpecialDayDiscount(orderDay);
+
+        // when
+        Boolean result = specialDayDiscount.checkPeriod();
+
+        // than
+        assertThat(result).isEqualTo(confirm);
     }
 }
