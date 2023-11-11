@@ -16,6 +16,8 @@ public class WeekendDayDiscount extends Discount {
 
     @Override
     public Boolean checkPeriod() {
-        return null;
+        Boolean confirm = super.getConfirm(DiscountGroup.WEEKEND_DAY_DISCOUNT);
+
+        return confirm;
     }
 }
