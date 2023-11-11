@@ -24,4 +24,12 @@ public class Freebie {
         return orders.getOrderMoney() >= CONDITION_SHAMPAGNE_ORDER_MONEY;
     }
 
+    public Map<String, Integer> getInformations() {
+        Map<String, Integer> informations = new HashMap<>();
+        Integer shampagnePrice = MenuGroup.BEVERAGE.getMenuPrice(champagne);
+
+        informations.put(champagne, shampagnePrice);
+
+        return informations;
+    }
 }
