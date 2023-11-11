@@ -260,3 +260,21 @@ enum <할인>{
         return totalDiscount;
 ```
 
+- Order
+
+```java
+    private Integer getMenuCount(MenuGroup appetizer) {
+        Integer menuCount = 0;
+        for (Map.Entry<String, Integer> order : orders.entrySet()) {
+            String item = order.getKey();
+            Integer quantity = order.getValue();
+
+            Boolean isCondition = appetizer.isMenu(item);
+            if (isCondition) {
+                menuCount = menuCount + quantity;
+            }
+        }
+        return menuCount;
+    }
+```
+
