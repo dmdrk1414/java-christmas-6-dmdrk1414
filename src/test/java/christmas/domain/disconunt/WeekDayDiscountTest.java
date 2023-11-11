@@ -39,7 +39,9 @@ class WeekDayDiscountTest {
             "31, 2023"
     })
     void giveAmount(Integer orderDay, Integer amount) {
-        WeekDayDiscount weekDayDiscount = new WeekDayDiscount(orderDay);
+        Integer desserdCount = 3;
+        amount = amount * desserdCount;
+        WeekDayDiscount weekDayDiscount = new WeekDayDiscount(orderDay, desserdCount);
         // when
         Integer result = weekDayDiscount.giveAmount();
 
@@ -91,7 +93,8 @@ class WeekDayDiscountTest {
     })
     void checkPeriod(Integer orderDay, Boolean confirm) {
         // given
-        WeekDayDiscount weekDayDiscount = new WeekDayDiscount(orderDay);
+        Integer desserdOrderCount = 3;
+        WeekDayDiscount weekDayDiscount = new WeekDayDiscount(orderDay, desserdOrderCount);
 
         // when
         Boolean result = weekDayDiscount.checkPeriod();
