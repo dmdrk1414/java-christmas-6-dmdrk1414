@@ -16,6 +16,8 @@ public class SpecialDayDiscount extends Discount {
 
     @Override
     public Boolean checkPeriod() {
-        return null;
+        Boolean confirm = super.getConfirm(DiscountGroup.SPECIAL_DAY_DISCOUNT);
+
+        return confirm;
     }
 }
