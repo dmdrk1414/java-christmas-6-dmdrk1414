@@ -35,7 +35,9 @@ public class Orders {
     }
 
     public Integer getMainCount() {
-        return null;
+        Integer mainCount = getMenuCount(MenuGroup.MAIN_DISH);
+
+        return mainCount;
     }
 
     public Integer getDessertCount() {
