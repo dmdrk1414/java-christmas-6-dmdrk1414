@@ -1,4 +1,4 @@
-package christmas.domain;
+package christmas.domain.discount;
 
 import christmas.constant.discount.DiscountGroup;
 
@@ -17,7 +17,7 @@ public class SpecialDayDiscount extends Discount {
     @Override
     public Boolean checkPeriod() {
         Boolean confirm = super.getConfirm(DiscountGroup.SPECIAL_DAY_DISCOUNT);
-  
+
         return confirm;
     }
 }
