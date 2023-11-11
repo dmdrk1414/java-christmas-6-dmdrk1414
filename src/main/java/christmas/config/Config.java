@@ -1,9 +1,8 @@
 package christmas.config;
 
-import christmas.domain.discount.DDayDiscount;
-import christmas.domain.discount.SpecialDayDiscount;
-import christmas.domain.discount.WeekDayDiscount;
-import christmas.domain.discount.WeekendDayDiscount;
+import christmas.domain.Orders;
+import christmas.domain.discount.*;
+import christmas.domain.freebie.Freebie;
 
 public class Config {
     public static DDayDiscount dDayDiscount(Integer orderDay) {
@@ -20,5 +19,13 @@ public class Config {
 
     public static SpecialDayDiscount specialDayDiscount(Integer orderDay) {
         return new SpecialDayDiscount(orderDay);
+    }
+
+    public static DiscountManagement discountManagement(Integer orderDay, Orders orders) {
+        return new DiscountManagement(orderDay, orders);
+    }
+
+    public static Freebie freebie() {
+        return new Freebie();
     }
 }
