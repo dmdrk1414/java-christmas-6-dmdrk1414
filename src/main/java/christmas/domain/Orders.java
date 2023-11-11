@@ -29,17 +29,8 @@ public class Orders {
     }
 
     public Integer getAppetizerCount() {
-        Integer appetizerCount = 0;
+        Integer appetizerCount = getMenuCount(MenuGroup.APPETIZER);
 
-        for (Map.Entry<String, Integer> order : orders.entrySet()) {
-            String item = order.getKey();
-            Integer quantity = order.getValue();
-
-            Boolean isAppetizer = MenuGroup.APPETIZER.isMenu(item);
-            if (isAppetizer) {
-                appetizerCount = appetizerCount + quantity;
-            }
-        }
         return appetizerCount;
     }
 
@@ -55,7 +46,8 @@ public class Orders {
         return null;
     }
 
-//    // TODO: 11/11/23 주문을 할때 준문의 총금액 구현
+
+    //    // TODO: 11/11/23 주문을 할때 준문의 총금액 구현
 //    public Integer getOrderMoney() {
 //        Integer orderMoney = 0;
 //
@@ -63,4 +55,17 @@ public class Orders {
 //
 //        return orderMoney;
 //    }
+    private Integer getMenuCount(MenuGroup appetizer) {
+        Integer menuCount = 0;
+        for (Map.Entry<String, Integer> order : orders.entrySet()) {
+            String item = order.getKey();
+            Integer quantity = order.getValue();
+
+            Boolean isCondition = appetizer.isMenu(item);
+            if (isCondition) {
+                menuCount = menuCount + quantity;
+            }
+        }
+        return menuCount;
+    }
 }
