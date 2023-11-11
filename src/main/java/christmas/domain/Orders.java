@@ -47,7 +47,9 @@ public class Orders {
     }
 
     public Integer getBeverageCount() {
-        return null;
+        Integer beveragetCount = getMenuCount(MenuGroup.BEVERAGE);
+
+        return beveragetCount;
     }
 
 
