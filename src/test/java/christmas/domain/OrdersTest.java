@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import christmas.domain.testutill.TestUtill;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -115,7 +116,7 @@ class OrdersTest {
             "시저샐러드-2크리스마스파스타-1아이스크림-2샴페인-1, 76000"
     })
     void getOrderMoney(String ordersString, Integer total) {
-        ordersString = insertComma(ordersString);
+        ordersString = TestUtill.insertComma(ordersString);
         Orders orders = new Orders(ordersString);
 
         // when
@@ -125,7 +126,4 @@ class OrdersTest {
         assertThat(result).isEqualTo(total);
     }
 
-    private String insertComma(String input) {
-        return input.replaceAll("-(\\d)", "-$1,");
-    }
 }
