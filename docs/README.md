@@ -282,7 +282,7 @@ enum <할인>{
 
 - 이넘을의 모든 상수가 리스트로 반환
 
-```
+```java
         List<MenuGroup> menuGroups = List.of(MenuGroup.MAIN_DISH, MenuGroup.APPETIZER, MenuGroup.DESSERT, MenuGroup.BEVERAGE);
 
 
@@ -294,5 +294,37 @@ enum <할인>{
 
 List<MenuGroup> menuGroups = MenuGroup.getAllMenuGroups();
 
+```
+
+- 이넘을 이용한 총 주문 액수 계산
+
+```java
+    public Integer getOrderMoney() {
+        Integer orderMoney = 0;
+        Integer menuPrice = 0;
+
+        for (Map.Entry<String, Integer> entry : orders.entrySet()) {
+            String menuName = entry.getKey();
+            Integer menuQuantity = entry.getValue();
+
+            menuPrice = getMenuPrice(menuName);
+            orderMoney = orderMoney + (menuPrice * menuQuantity);
+        }
+        return orderMoney;
+    }
+
+    private Integer getMenuPrice(String menuName) {
+        Integer menuPrice = 0;
+        List<MenuGroup> menuGroups = MenuGroup.getAllMenuGroups();
+
+        for (MenuGroup menuGroup : menuGroups) {
+            if (menuGroup.isMenu(menuName)) {
+                menuPrice = menuGroup.getMenuPrice(menuName);
+                break;
+            }
+        }
+
+        return menuPrice;
+    }
 ```
 
