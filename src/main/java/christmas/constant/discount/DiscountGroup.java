@@ -53,4 +53,8 @@ public enum DiscountGroup {
                 .map(Discount::getDiscountAmount)
                 .orElse(0);
     }
+
+    public String getTitle() {
+        return title;
+    }
 }

@@ -20,4 +20,9 @@ public class SpecialDayDiscount extends Discount {
 
         return confirm;
     }
+
+    @Override
+    public String giveTitle() {
+        return DiscountGroup.SPECIAL_DAY_DISCOUNT.getTitle();
+    }
 }

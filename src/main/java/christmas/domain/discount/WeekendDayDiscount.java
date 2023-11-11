@@ -23,4 +23,9 @@ public class WeekendDayDiscount extends Discount {
 
         return confirm;
     }
+
+    @Override
+    public String giveTitle() {
+        return DiscountGroup.WEEKEND_DAY_DISCOUNT.getTitle();
+    }
 }

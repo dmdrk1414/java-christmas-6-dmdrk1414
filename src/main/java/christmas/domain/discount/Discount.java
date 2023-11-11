@@ -13,6 +13,8 @@ public abstract class Discount {
 
     abstract public Boolean checkPeriod();
 
+    abstract public String giveTitle();
+
     protected Integer getAmount(DiscountGroup discount) {
         return discount.getAmount(orderDay);
     }
