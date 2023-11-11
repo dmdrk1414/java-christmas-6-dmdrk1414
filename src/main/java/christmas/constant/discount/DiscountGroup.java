@@ -40,4 +40,12 @@ public enum DiscountGroup {
         this.title = title;
         this.discountList = discountList;
     }
+
+    public Integer getAmount(Integer orderDay) {
+        return discountList.stream()
+                .filter(discount -> discount.is(orderDay))
+                .findFirst()
+                .map(Discount::getDiscountAmount)
+                .orElse(0);
+    }
 }

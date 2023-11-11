@@ -86,4 +86,9 @@ public enum Discount {
     public int getDiscountAmount() {
         return discountAmount;
     }
+
+    public Boolean is(Integer order) {
+        return getDay() == order;
+    }
+
 }
