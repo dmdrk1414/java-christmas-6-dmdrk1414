@@ -25,13 +25,6 @@ public class DiscountManagement {
                 .map(Discount::giveAmount)
                 .reduce(0, Integer::sum);
 
-        // TODO: 11/11/23 삭제
-        discountManagement.stream()
-                .forEach(discount -> System.out.println(discount.giveAmount()));
-
-        discountManagement.stream()
-                .peek(discount -> System.out.println(discount.giveAmount()));
-
         return totalDiscount;
     }
 }
