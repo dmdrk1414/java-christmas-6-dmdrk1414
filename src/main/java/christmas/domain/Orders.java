@@ -41,7 +41,9 @@ public class Orders {
     }
 
     public Integer getDessertCount() {
-        return null;
+        Integer dessertCount = getMenuCount(MenuGroup.DESSERT);
+
+        return dessertCount;
     }
 
     public Integer getBeverageCount() {
