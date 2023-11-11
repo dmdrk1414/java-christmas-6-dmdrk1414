@@ -43,7 +43,6 @@ class DiscountManagementTest {
 
         // when
         Integer result = discountManagement.getTotalDiscount();
-        System.out.println("result = " + result);
 
         // then
         assertThat(result).isEqualTo(totalDiscount);
@@ -85,7 +84,6 @@ class DiscountManagementTest {
 
         // when
         Integer result = discountManagement.getTotalDiscount();
-        System.out.println("result = " + result);
 
         // then
         assertThat(result).isEqualTo(totalDiscount);
@@ -108,7 +106,6 @@ class DiscountManagementTest {
 
         // when
         Integer result = discountManagement.getTotalDiscount();
-        System.out.println("result = " + result);
 
         // then
         assertThat(result).isEqualTo(totalDiscount);
