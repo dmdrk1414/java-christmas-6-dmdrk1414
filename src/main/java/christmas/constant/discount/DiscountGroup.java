@@ -41,6 +41,11 @@ public enum DiscountGroup {
         this.discountList = discountList;
     }
 
+    public Boolean hasDiscount(Integer orderDay) {
+        return discountList.stream()
+                .anyMatch(dDays -> dDays.is(orderDay));
+    }
+
     public Integer getAmount(Integer orderDay) {
         return discountList.stream()
                 .filter(discount -> discount.is(orderDay))

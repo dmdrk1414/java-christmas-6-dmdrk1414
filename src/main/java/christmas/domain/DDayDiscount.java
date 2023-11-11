@@ -14,4 +14,10 @@ public class DDayDiscount {
 
         return amount;
     }
+
+    public Boolean checkPeriod() {
+        Boolean confirm = DiscountGroup.D_DAY_DISCOUNT.hasDiscount(orderDay);
+
+        return confirm;
+    }
 }
