@@ -56,5 +56,49 @@ class DDayDiscountTest {
         assertThat(result).isEqualTo(amount);
     }
 
+    @DisplayName("해당 주문 날짜기 디데이 할인 행사인지 확인하는 기능 ")
+    @ParameterizedTest
+    @CsvSource({
+            "1, true",
+            "2, true",
+            "3, true",
+            "4, true",
+            "5, true",
+            "6, true",
+            "7, true",
+            "8, true",
+            "9, true",
+            "10, true",
+            "11, true",
+            "12, true",
+            "13, true",
+            "14, true",
+            "15, true",
+            "16, true",
+            "17, true",
+            "18, true",
+            "19, true",
+            "20, true",
+            "21, true",
+            "22, true",
+            "23, true",
+            "24, true",
+            "25, true",
+            "26, false",
+            "27, false",
+            "28, false",
+            "29, false",
+            "30, false",
+            "31, false",
+    })
+    void checkPeriod(Integer orderDay, Boolean confirm) {
+        // given
+        dDayDiscount = new DDayDiscount(orderDay);
 
+        // when
+        Boolean result = dDayDiscount.checkPeriod();
+
+        // than
+        assertThat(result).isEqualTo(confirm);
+    }
 }
