@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
 public class DiscountManagement {
     private List<Discount> discountManagement;
 
-    // TODO: 11/11/23 매개변수 생각 dessert와 메인 메뉴관리
     public DiscountManagement(Integer orderDay, Order order) {
         discountManagement = List.of(
                 Config.dDayDiscount(orderDay),
