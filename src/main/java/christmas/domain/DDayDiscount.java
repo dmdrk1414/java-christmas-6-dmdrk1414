@@ -2,21 +2,21 @@ package christmas.domain;
 
 import christmas.constant.discount.DiscountGroup;
 
-public class DDayDiscount {
-    private Integer orderDay;
-
+public class DDayDiscount extends Discount {
     public DDayDiscount(Integer orderDay) {
-        this.orderDay = orderDay;
+        super(orderDay);
     }
 
+    @Override
     public Integer giveAmount() {
-        Integer amount = DiscountGroup.D_DAY_DISCOUNT.getAmount(orderDay);
+        Integer amount = super.getAmount(DiscountGroup.D_DAY_DISCOUNT);
 
         return amount;
     }
 
+    @Override
     public Boolean checkPeriod() {
-        Boolean confirm = DiscountGroup.D_DAY_DISCOUNT.hasDiscount(orderDay);
+        Boolean confirm = super.getConfirm(DiscountGroup.D_DAY_DISCOUNT);
 
         return confirm;
     }
