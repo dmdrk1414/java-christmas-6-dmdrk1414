@@ -15,4 +15,9 @@ public enum MenuGroup {
         this.type = type;
         this.menuList = menuList;
     }
+
+    public Boolean isMenu(String orderMenu) {
+        return menuList.stream()
+                .anyMatch(menu -> menu.is(orderMenu));
+    }
 }

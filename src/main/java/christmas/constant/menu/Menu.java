@@ -32,4 +32,8 @@ public enum Menu {
     public String getName() {
         return name;
     }
+
+    public boolean is(String menu) {
+        return getName().equals(menu);
+    }
 }
