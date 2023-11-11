@@ -94,6 +94,8 @@
 
 
 
+- 입력 주문 겹치기 불가능
+
 # enum
 
 - enum으로 관리
@@ -276,5 +278,21 @@ enum <할인>{
         }
         return menuCount;
     }
+```
+
+- 이넘을의 모든 상수가 리스트로 반환
+
+```
+        List<MenuGroup> menuGroups = List.of(MenuGroup.MAIN_DISH, MenuGroup.APPETIZER, MenuGroup.DESSERT, MenuGroup.BEVERAGE);
+
+
+=======
+    public static List<MenuGroup> getAllMenuGroups() {
+        return Arrays.asList(values());
+    }
+
+
+List<MenuGroup> menuGroups = MenuGroup.getAllMenuGroups();
+
 ```
 
