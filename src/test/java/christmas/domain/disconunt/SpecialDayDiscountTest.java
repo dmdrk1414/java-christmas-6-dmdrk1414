@@ -12,12 +12,12 @@ class SpecialDayDiscountTest {
     @DisplayName("주문 날짜에 따른 특별 할인 해택 금액을 알려주는 기능 테스트")
     @ParameterizedTest
     @CsvSource({
-            "3, 2023",
-            "10, 2023",
-            "17, 2023",
-            "24, 2023",
-            "25, 2023",
-            "31, 2023"
+            "3, 1000",
+            "10, 1000",
+            "17, 1000",
+            "24, 1000",
+            "25, 1000",
+            "31, 1000"
     })
     void giveAmount(Integer orderDay, Integer amount) {
         // given
