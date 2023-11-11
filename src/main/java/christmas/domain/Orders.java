@@ -1,6 +1,7 @@
 package christmas.domain;
 
 import christmas.constant.menu.Menu;
+import christmas.constant.menu.MenuGroup;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +16,7 @@ public class Orders {
     private Map<String, Integer> parseOrders(String input) {
         Map<String, Integer> menuMap = new HashMap<>();
 
-        String[] orders = input.split(", ");
+        String[] orders = input.split(",");
 
         for (String order : orders) {
             String[] orderParts = order.split("-");
@@ -29,18 +30,38 @@ public class Orders {
     }
 
     public Integer getAppetizerCount() {
+        Integer appetizerCount = 0;
+
+        for (Map.Entry<String, Integer> order : orders.entrySet()) {
+            String item = order.getKey();
+            Integer quantity = order.getValue();
+
+            Boolean isAppetizer = MenuGroup.APPETIZER.isAppetizer(item);
+            if (isAppetizer) {
+                appetizerCount = appetizerCount + quantity;
+            }
+        }
         return appetizerCount;
     }
 
     public Integer getMainCount() {
-        return mainCount;
+        return null;
     }
 
     public Integer getDessertCount() {
-        return dessertCount;
+        return null;
     }
 
     public Integer getBeverageCount() {
-        return beverageCount;
+        return null;
     }
+
+//    // TODO: 11/11/23 주문을 할때 준문의 총금액 구현
+//    public Integer getOrderMoney() {
+//        Integer orderMoney = 0;
+//
+//        orderMoney = Menu.
+//
+//        return orderMoney;
+//    }
 }
