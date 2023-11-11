@@ -59,7 +59,7 @@ class DDayDiscountTest {
     @DisplayName("해당 주문 날짜기 디데이 할인 행사인지 확인하는 기능 ")
     @ParameterizedTest
     @CsvSource({
-            // 주말
+            // 디데이 가능
             "1, true",
             "2, true",
             "3, true",
@@ -86,7 +86,7 @@ class DDayDiscountTest {
             "24, true",
             "25, true",
 
-            // 평일
+            // 불가능
             "26, false",
             "27, false",
             "28, false",

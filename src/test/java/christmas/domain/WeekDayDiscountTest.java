@@ -48,7 +48,7 @@ class WeekDayDiscountTest {
         assertThat(result).isEqualTo(amount);
     }
 
-    @DisplayName("해당 주문 날짜기 디데이 할인 행사인지 확인하는 기능 ")
+    @DisplayName("해당 주문 날짜기 평일 할인 행사인지 확인하는 기능 ")
     @ParameterizedTest
     @CsvSource({
             //평일
