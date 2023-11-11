@@ -77,10 +77,21 @@ class OrdersTest {
     @DisplayName("주문의 음료 갯수를 반환하는 기능 수정")
     @ParameterizedTest
     @ValueSource(strings = {
-            "티본스테이크-1,바비큐립-1,양송이수프-2,초코케이크-2,제로콜라-1",
-            "티본스테이크-1,바비큐립-1,양송이수프-2,아이스크림-2,제로콜라-1",
-            "티본스테이크-1,바비큐립-1,양송이수프-2,초코케이크-1,아이스크림-1,제로콜라-1",
+            "티본스테이크-1,바비큐립-1,양송이수프-2,초코케이크-2,제로콜라-1,레드와인-1",
+            "티본스테이크-1,바비큐립-1,양송이수프-2,초코케이크-2,레드와인-1,샴페인-1",
+            "티본스테이크-1,바비큐립-1,양송이수프-2,초코케이크-2,샴페인-1,제로콜라-1",
     })
-    void getBeverageCount() {
+    void getBeverageCount(String ordersString) {
+        Orders orders = new Orders(ordersString);
+
+        // when
+        Integer result = orders.getDessertCount();
+
+        // then
+        assertThat(result).isEqualTo(2);
+    }
+
+    @Test
+    void getOrderMoney() {
     }
 }
