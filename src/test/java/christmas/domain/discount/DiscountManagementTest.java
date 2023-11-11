@@ -1,16 +1,12 @@
 package christmas.domain.discount;
 
-import christmas.domain.Order;
+import christmas.domain.Orders;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
-import org.mockito.internal.matchers.Or;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class DiscountManagementTest {
 
@@ -38,8 +34,9 @@ class DiscountManagementTest {
     })
     void getTotalDiscount_주말(Integer orderDay, Integer mainCount, Integer dessertCount, Integer totalDiscount) {
         // given
-        Order order = new Order(0, mainCount, dessertCount, 0);
-        DiscountManagement discountManagement = new DiscountManagement(orderDay, order);
+        String inputString = "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1";
+        Orders orders = new Orders(inputString);
+        DiscountManagement discountManagement = new DiscountManagement(orderDay, orders);
 
         // when
         Integer result = discountManagement.getTotalDiscount();
@@ -79,8 +76,9 @@ class DiscountManagementTest {
     })
     void getTotalDiscount_평일(Integer orderDay, Integer mainCount, Integer dessertCount, Integer totalDiscount) {
         // given
-        Order order = new Order(0, mainCount, dessertCount, 0);
-        DiscountManagement discountManagement = new DiscountManagement(orderDay, order);
+        String inputString = "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1";
+        Orders orders = new Orders(inputString);
+        DiscountManagement discountManagement = new DiscountManagement(orderDay, orders);
 
         // when
         Integer result = discountManagement.getTotalDiscount();
@@ -101,8 +99,9 @@ class DiscountManagementTest {
     })
     void getTotalDiscount_특별(Integer orderDay, Integer mainCount, Integer dessertCount, Integer totalDiscount) {
         // given
-        Order order = new Order(0, mainCount, dessertCount, 0);
-        DiscountManagement discountManagement = new DiscountManagement(orderDay, order);
+        String inputString = "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1";
+        Orders orders = new Orders(inputString);
+        DiscountManagement discountManagement = new DiscountManagement(orderDay, orders);
 
         // when
         Integer result = discountManagement.getTotalDiscount();

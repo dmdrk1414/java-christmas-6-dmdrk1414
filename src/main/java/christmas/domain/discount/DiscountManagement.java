@@ -1,20 +1,18 @@
 package christmas.domain.discount;
 
 import christmas.config.Config;
-import christmas.domain.Order;
+import christmas.domain.Orders;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class DiscountManagement {
     private List<Discount> discountManagement;
 
-    public DiscountManagement(Integer orderDay, Order order) {
+    public DiscountManagement(Integer orderDay, Orders orders) {
         discountManagement = List.of(
                 Config.dDayDiscount(orderDay),
-                Config.weekDayDiscount(orderDay, order.getDessertCount()),
-                Config.weekendDayDiscount(orderDay, order.getMainCount()),
+                Config.weekDayDiscount(orderDay, orders.getDessertCount()),
+                Config.weekendDayDiscount(orderDay, orders.getMainCount()),
                 Config.specialDayDiscount(orderDay)
         );
     }
