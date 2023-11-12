@@ -68,6 +68,9 @@ public class Management {
 
     // <총혜택 금액>
     // -31,246원
+    public Integer getTotalDiscount() {
+        return benefit.getTotalAmount();
+    }
 
     // <할인 후 예상 결제 금액>
     // 135,754원
