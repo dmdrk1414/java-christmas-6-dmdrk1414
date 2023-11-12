@@ -68,11 +68,13 @@ class FreebieTest {
     @Test
     void getInformations() {
         // given
+        String orderString = TestUtill.insertComma("티본스테이크-1바비큐립-1초코케이크-2제로콜라-1");
+        Orders order = new Orders(orderString);
         Map<String, Integer> target = new HashMap<>();
         target.put(Menu.CHAMPAGNE.getName(), Menu.CHAMPAGNE.getPrice());
 
         // when
-        Map<String, Integer> result = freebie.getInformations();
+        Map<String, Integer> result = freebie.getInformations(order);
 
         // then
         assertThat(result).isEqualTo(target);
