@@ -24,12 +24,14 @@ public class Benefit {
 
     // TODO: 11/12/23 order객체의 종속 관계 확인
     public Map<String, Integer> generateInformations() {
+        Map<String, Integer> informations = new HashMap<>();
         Map<String, Integer> discountInformations = discountManagement.getInformations();
         Map<String, Integer> freebieInformations = freebie.getInformations(orders);
-        Map<String, Integer> informations = new HashMap<>();
 
-        informations.putAll(discountInformations);
-        informations.putAll(freebieInformations);
+        if (getTotalAmount() != 0) {
+            informations.putAll(discountInformations);
+            informations.putAll(freebieInformations);
+        }
 
         return informations;
     }
