@@ -1,6 +1,6 @@
 package christmas.domain.discount;
 
-import christmas.domain.Orders;
+import christmas.domain.order.Orders;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

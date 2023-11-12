@@ -2,7 +2,7 @@ package christmas.domain.freebie;
 
 import christmas.constant.menu.Menu;
 import christmas.constant.menu.MenuGroup;
-import christmas.domain.Orders;
+import christmas.domain.order.Orders;
 
 import java.util.HashMap;
 import java.util.Map;

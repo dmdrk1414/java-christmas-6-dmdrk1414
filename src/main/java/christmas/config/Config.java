@@ -1,7 +1,7 @@
 package christmas.config;
 
-import christmas.domain.BadgeManagement;
-import christmas.domain.Orders;
+import christmas.domain.badge.BadgeManagement;
+import christmas.domain.order.Orders;
 import christmas.domain.discount.*;
 import christmas.domain.freebie.Freebie;
 

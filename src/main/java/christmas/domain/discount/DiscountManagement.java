@@ -1,7 +1,7 @@
 package christmas.domain.discount;
 
 import christmas.config.Config;
-import christmas.domain.Orders;
+import christmas.domain.order.Orders;
 
 import java.util.HashMap;
 import java.util.List;

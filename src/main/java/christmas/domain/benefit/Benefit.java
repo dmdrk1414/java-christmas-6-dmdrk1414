@@ -1,8 +1,10 @@
-package christmas.domain;
+package christmas.domain.benefit;
 
 import christmas.config.Config;
+import christmas.domain.badge.BadgeManagement;
 import christmas.domain.discount.DiscountManagement;
 import christmas.domain.freebie.Freebie;
+import christmas.domain.order.Orders;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -48,7 +50,7 @@ public class Benefit {
 
     public String getBadgeName() {
         Integer totalBenefit = getTotalAmount();
-        
+
         return badgeManagement.getBadge(totalBenefit);
     }
 }
