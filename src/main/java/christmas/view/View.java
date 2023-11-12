@@ -22,7 +22,7 @@ public class View {
 
         printEventPreview(orderDate);
 
-        management.generateOrder(orderDate, orderLine);
+        makeOrder(orderDate, orderLine);
 
         outputView.printOrderMenu(management.getOrderInformation());
         outputView.printOriginalOrderTotalAcount(management.getOriginalOrderTotal());
@@ -31,6 +31,10 @@ public class View {
         outputView.printTotalDiscount(management.getTotalDiscount());
         outputView.printFinalPayment(management.getFinalPayment());
         outputView.printEventBadge(management.getBadgeName());
+    }
+
+    private void makeOrder(Integer orderDate, String orderLine) {
+        management.generateOrder(orderDate, orderLine);
     }
 
     private void printEventPreview(Integer orderDate) {
