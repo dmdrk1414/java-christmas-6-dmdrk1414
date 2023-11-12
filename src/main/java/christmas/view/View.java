@@ -25,12 +25,16 @@ public class View {
         makeOrder(orderDate, orderLine);
 
         printOrderMenu();
-        outputView.printOriginalOrderTotalAcount(management.getOriginalOrderTotal());
+        printOriginalOrderTotalAcount();
         outputView.printFreebies(management.getFreebies());
         outputView.printBenefitInformations(management.getDiscountInformation());
         outputView.printTotalDiscount(management.getTotalDiscount());
         outputView.printFinalPayment(management.getFinalPayment());
         outputView.printEventBadge(management.getBadgeName());
+    }
+
+    private void printOriginalOrderTotalAcount() {
+        outputView.printOriginalOrderTotalAcount(management.getOriginalOrderTotal());
     }
 
     private void printOrderMenu() {
