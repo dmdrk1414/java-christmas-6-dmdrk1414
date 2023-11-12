@@ -9,6 +9,7 @@ import java.util.Map;
 
 public class Freebie {
     private static final Integer CONDITION_SHAMPAGNE_ORDER_MONEY = 12_0000;
+    private static final Integer FREEBIE_COUNT = 1;
     private String champagne;
 
     public Freebie() {
@@ -43,5 +44,15 @@ public class Freebie {
             freebiePrice = Menu.CHAMPAGNE.getPrice();
         }
         return freebiePrice;
+    }
+
+    public Map<String, Integer> getFreebies(Orders orders) {
+        Map<String, Integer> freebies = new HashMap<>();
+
+        if (isEligible(orders)) {
+            freebies.put(champagne, FREEBIE_COUNT);
+        }
+
+        return freebies;
     }
 }
