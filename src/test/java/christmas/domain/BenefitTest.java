@@ -42,4 +42,44 @@ class BenefitTest {
         // then
         assertThat(result.toString()).contains(target);
     }
+
+    @DisplayName("샴페인 증정 상품을 얻을 수 있는 지 확인하는 기능 테스트")
+    @ParameterizedTest
+    @CsvSource({
+            "티본스테이크-1바비큐립-1초코케이크-2제로콜라-1, true",
+            "타파스-1제로콜라-1, false",
+            "양송이수프-1타파스-2티본스테이크-1아이스크림-3제로콜라-2, false",
+            "시저샐러드-2바비큐립-1초코케이크-1레드와인-1, true",
+            "해산물파스타-1크리스마스파스타-1아이스크림-2샴페인-1, false",
+            "양송이수프-1티본스테이크-2아이스크림-2샴페인-1, true",
+            "타파스-1크리스마스파스타-1아이스크림-3제로콜라-2, false",
+            "시저샐러드-2바비큐립-1초코케이크-2제로콜라-1, false",
+            "양송이수프-1바비큐립-1해산물파스타-2샴페인-1, true",
+            "양송이수프-1바비큐립-1초코케이크-1레드와인-1, true",
+            "시저샐러드-2크리스마스파스타-1아이스크림-2레드와인-1, false",
+            "양송이수프-1크리스마스파스타-1초코케이크-2샴페인-1, false",
+            "시저샐러드-2바비큐립-1아이스크림-3샴페인-2, true",
+            "양송이수프-1크리스마스파스타-1초코케이크-2샴페인-1, false",
+            "양송이수프-1바비큐립-1초코케이크-1레드와인-1, true",
+            "시저샐러드-2크리스마스파스타-1아이스크림-2레드와인-1, false",
+            "양송이수프-1바비큐립-1초코케이크-2샴페인-1, false",
+            "양송이수프-1바비큐립-1초코케이크-1레드와인-1, true",
+            "시저샐러드-2크리스마스파스타-1아이스크림-2샴페인-1, false"
+    })
+    void isEligibleFreebie(String orderString, Boolean target) {
+        // given
+        orderString = TestUtill.insertComma(orderString);
+        Orders order = new Orders(orderString);
+        Benefit benefit = new Benefit(1, order);
+        
+        // when
+        Boolean result = benefit.isEligibleFreebie();
+
+        // then
+        assertThat(result).isEqualTo(target);
+    }
+
+    @Test
+    void testIsEligibleFreebie() {
+    }
 }
