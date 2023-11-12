@@ -41,6 +41,7 @@ public class OutputView {
         if (freebies.isEmpty()) {
             printNotThing();
         }
+        newLine();
     }
 
     public void printBenefitInformations(Map<String, Integer> benefitInformations) {
@@ -55,6 +56,7 @@ public class OutputView {
         if (benefitInformations.isEmpty()) {
             printNotThing();
         }
+        newLine();
     }
 
     public void printTotalDiscount(Integer totalDiscount) {
@@ -62,6 +64,7 @@ public class OutputView {
 
         println("<총혜택 금액>");
         println("-" + totalDiscountString);
+        newLine();
     }
 
     public void printFinalPayment(Integer finalPaymantMoney) {
@@ -69,6 +72,7 @@ public class OutputView {
 
         println("<할인 후 예상 결제 금액>");
         println(finalPaymantMoneyString + "원");
+        newLine();
     }
 
     private String formatNumberWithCommas(int number) {
