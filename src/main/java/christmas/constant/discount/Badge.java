@@ -14,29 +14,29 @@ public enum Badge {
         this.condition = condition;
     }
 
-    public static String getBatName(Integer totalDiscount) {
-        if (isSanta(totalDiscount)) {
+    public static String getBatName(Integer totalBenefit) {
+        if (isSanta(totalBenefit)) {
             return SANTA.getName();
         }
-        if (isTree(totalDiscount)) {
+        if (isTree(totalBenefit)) {
             return TREE.getName();
         }
-        if (isStar(totalDiscount)) {
+        if (isStar(totalBenefit)) {
             return STAR.getName();
         }
         return NOTTING;
     }
 
-    private static Boolean isStar(Integer totalDiscount) {
-        return totalDiscount >= STAR.condition;
+    private static Boolean isStar(Integer totalBenefit) {
+        return totalBenefit >= STAR.condition;
     }
 
-    private static Boolean isTree(Integer totalDiscount) {
-        return totalDiscount >= TREE.condition;
+    private static Boolean isTree(Integer totalBenefit) {
+        return totalBenefit >= TREE.condition;
     }
 
-    private static Boolean isSanta(Integer totalDiscount) {
-        return totalDiscount >= SANTA.condition;
+    private static Boolean isSanta(Integer totalBenefit) {
+        return totalBenefit >= SANTA.condition;
     }
 
     public String getName() {

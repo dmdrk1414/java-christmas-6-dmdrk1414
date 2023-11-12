@@ -12,11 +12,11 @@ public class BadgeManagement {
         BadgeManagement = List.of(Badge.STAR, Badge.TREE, Badge.SANTA);
     }
 
-    public String getBadge(Integer totalDiscount) {
-        Boolean isCondition = isCondition(totalDiscount);
+    public String getBadge(Integer totalBenefit) {
+        Boolean isCondition = isCondition(totalBenefit);
         String badge = "";
 
-        badge = getBatName(totalDiscount);
+        badge = getBatName(totalBenefit);
 
         return badge;
     }
@@ -26,7 +26,7 @@ public class BadgeManagement {
                 .anyMatch(badge -> badge.isCondition(totalDiscount));
     }
 
-    private String getBatName(Integer totalDiscount) {
-        return Badge.getBatName(totalDiscount);
+    private String getBatName(Integer totalBenefit) {
+        return Badge.getBatName(totalBenefit);
     }
 }
