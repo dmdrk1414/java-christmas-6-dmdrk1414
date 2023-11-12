@@ -82,4 +82,7 @@ public class Management {
 
     // <12월 이벤트 배지>
     // 산타
+    public String getBadgeName() {
+        return benefit.getBadgeName();
+    }
 }
