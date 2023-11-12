@@ -20,15 +20,17 @@ public class Freebie {
     }
 
     public Boolean isEligible(Orders orders) {
-        System.out.println("orders.getOrderMoney() = " + orders.getOrderMoney());
         return orders.getOrderMoney() >= CONDITION_SHAMPAGNE_ORDER_MONEY;
     }
 
-    public Map<String, Integer> getInformations() {
+    public Map<String, Integer> getInformations(Orders orders) {
         Map<String, Integer> informations = new HashMap<>();
-        Integer shampagnePrice = MenuGroup.BEVERAGE.getMenuPrice(champagne);
+        
+        if (isEligible(orders)) {
+            Integer shampagnePrice = MenuGroup.BEVERAGE.getMenuPrice(champagne);
 
-        informations.put(champagne, shampagnePrice);
+            informations.put(champagne, shampagnePrice);
+        }
 
         return informations;
     }
