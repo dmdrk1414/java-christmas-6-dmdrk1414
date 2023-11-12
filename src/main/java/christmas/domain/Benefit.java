@@ -11,11 +11,13 @@ public class Benefit {
     private DiscountManagement discountManagement;
     private Freebie freebie;
     private Orders orders;
+    private BadgeManagement badgeManagement;
 
     public Benefit(Integer orderDay, Orders orders) {
         this.discountManagement = Config.discountManagement(orderDay, orders);
         this.freebie = Config.freebie();
         this.orders = orders;
+        badgeManagement = Config.badgeManagement();
     }
 
     // TODO: 11/12/23 order객체의 종속 관계 확인
@@ -44,4 +46,8 @@ public class Benefit {
         return totalAmount;
     }
 
+    public String getBadgeName() {
+        Integer totalBenefit = getTotalAmount();
+        return badgeManagement.getBadge(totalBenefit);
+    }
 }
