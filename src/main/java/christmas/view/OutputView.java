@@ -19,6 +19,7 @@ public class OutputView {
 
             println(menu + " " + quantity + "개");
         }
+        newLine();
     }
 
     private void println(String string) {
