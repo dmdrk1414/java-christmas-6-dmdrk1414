@@ -22,6 +22,12 @@ public class OutputView {
         newLine();
     }
 
+    public void printOriginalOrderTotalAcount(Integer orderTotalAcount) {
+        println("<할인 전 총주문 금액>");
+        println(orderTotalAcount + "원");
+        newLine();
+    }
+
     private void println(String string) {
         System.out.println(string);
     }
