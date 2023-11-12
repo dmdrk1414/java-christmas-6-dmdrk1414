@@ -23,9 +23,13 @@ public class DiscountManagement {
     }
 
     public Integer getTotalDiscount() {
-        Integer totalDiscount = discountManagement.stream()
-                .map(Discount::giveAmount)
-                .reduce(0, Integer::sum);
+        Integer totalDiscount = 0;
+
+        if (orders.getOrderMoney() >= CONDITION_DISCOUNT_MONEY) {
+            totalDiscount = discountManagement.stream()
+                    .map(Discount::giveAmount)
+                    .reduce(0, Integer::sum);
+        }
 
         return totalDiscount;
     }
