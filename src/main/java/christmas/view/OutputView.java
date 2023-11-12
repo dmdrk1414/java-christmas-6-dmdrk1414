@@ -64,6 +64,13 @@ public class OutputView {
         println("-" + totalDiscountString);
     }
 
+    public void printFinalPayment(Integer finalPaymantMoney) {
+        String finalPaymantMoneyString = formatNumberWithCommas(finalPaymantMoney);
+
+        println("<할인 후 예상 결제 금액>");
+        println(finalPaymantMoneyString + "원");
+    }
+
     private String formatNumberWithCommas(int number) {
         NumberFormat numberFormat = NumberFormat.getInstance();
         return numberFormat.format(number);
