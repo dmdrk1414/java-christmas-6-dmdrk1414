@@ -30,6 +30,7 @@ public class OutputView {
     }
 
     public void printFreebies(Map<String, Integer> freebies) {
+        println("<증정 메뉴>");
         for (Map.Entry<String, Integer> entry : freebies.entrySet()) {
             String freebie = entry.getKey();
             Integer quantity = entry.getValue();
@@ -43,6 +44,7 @@ public class OutputView {
     }
 
     public void printBenefitInformations(Map<String, Integer> benefitInformations) {
+        println("<혜택 내역>");
         for (Map.Entry<String, Integer> entry : benefitInformations.entrySet()) {
             String title = entry.getKey();
             String discountMoney = formatNumberWithCommas(entry.getValue());
