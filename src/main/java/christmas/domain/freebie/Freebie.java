@@ -25,7 +25,7 @@ public class Freebie {
 
     public Map<String, Integer> getInformations(Orders orders) {
         Map<String, Integer> informations = new HashMap<>();
-        
+
         if (isEligible(orders)) {
             Integer shampagnePrice = MenuGroup.BEVERAGE.getMenuPrice(champagne);
 
@@ -33,5 +33,15 @@ public class Freebie {
         }
 
         return informations;
+    }
+
+    // TODO: 11/12/23 과연 이방법이 맞는 것인가.
+    public Integer getFreebiePrice(Orders orders) {
+        Integer freebiePrice = 0;
+
+        if (isEligible(orders)) {
+            freebiePrice = Menu.CHAMPAGNE.getPrice();
+        }
+        return freebiePrice;
     }
 }
