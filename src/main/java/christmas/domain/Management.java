@@ -29,10 +29,14 @@ public class Management {
     // 초코케이크 2개
     // 제로콜라 1개
     // 주문 메뉴
+    public Map<String, Integer> giveOrderInformation() {
+        return orders.getOrderInformation();
+    }
 
 
     // <할인 전 총주문 금액>
     // 142,000원
+
 
     // <총혜택 금액
     // <증정 메뉴>
