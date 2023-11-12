@@ -8,7 +8,9 @@ import java.util.List;
 import java.util.Map;
 
 public class DiscountManagement {
+    private static final Integer CONDITION_DISCOUNT_MONEY = 10000;
     private List<Discount> discountManagement;
+    private Orders orders;
 
     public DiscountManagement(Integer orderDay, Orders orders) {
         discountManagement = List.of(
@@ -17,6 +19,7 @@ public class DiscountManagement {
                 Config.weekendDayDiscount(orderDay, orders.getMainCount()),
                 Config.specialDayDiscount(orderDay)
         );
+        this.orders = orders;
     }
 
     public Integer getTotalDiscount() {
@@ -32,11 +35,13 @@ public class DiscountManagement {
 
         for (Discount discount : discountManagement) {
             String discountTitle = discount.giveTitle();
-            Integer discountAmount = discount.giveAmount();
+            Integer discountAmount = 0;
 
+            if (orders.getOrderMoney() >= CONDITION_DISCOUNT_MONEY) {
+                discountAmount = discount.giveAmount();
+            }
             informations.put(discountTitle, discountAmount);
         }
-
         return informations;
     }
 
