@@ -9,7 +9,7 @@ public class OutputView {
 
     public void printEventPreview(Integer orderDate) {
         println("12월 " + orderDate + "일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!");
-        printNewLine();
+        NewLine();
     }
 
     public void printOrderMenu(Map<String, Integer> orders) {
@@ -25,7 +25,7 @@ public class OutputView {
         System.out.println(string);
     }
 
-    private void printNewLine() {
+    private void NewLine() {
         System.out.println();
     }
 }
