@@ -28,6 +28,25 @@ public class OutputView {
         newLine();
     }
 
+    //<증정 메뉴>
+    //샴페인 1개
+    public void printFreebies(Map<String, Integer> freebies) {
+        for (Map.Entry<String, Integer> entry : freebies.entrySet()) {
+            String freebie = entry.getKey();
+            Integer quantity = entry.getValue();
+
+            println(freebie + " " + quantity + "개");
+        }
+
+        if (freebies.size() == 0) {
+            printNotThing();
+        }
+    }
+
+    private void printNotThing() {
+        println("없음");
+    }
+
     private void println(String string) {
         System.out.println(string);
     }
