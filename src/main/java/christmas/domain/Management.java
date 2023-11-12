@@ -4,6 +4,7 @@ import christmas.config.Config;
 import christmas.domain.badge.BadgeManagement;
 import christmas.domain.benefit.Benefit;
 import christmas.domain.calculator.PaymentCalculator;
+import christmas.domain.freebie.Freebie;
 import christmas.domain.order.Orders;
 
 import java.util.Map;
@@ -13,10 +14,12 @@ public class Management {
     private Benefit benefit; // 주문 이후에
     private PaymentCalculator paymentCalculator;
     private Orders orders; // 입력받은후에
+    private Freebie freebie;
 
     public Management() {
         this.badgeManagement = Config.badgeManagement();
         this.paymentCalculator = Config.paymentCalculator();
+        this.freebie = Config.freebie();
     }
 
     public void generateOrder(String orderString) {
@@ -29,7 +32,7 @@ public class Management {
     // 초코케이크 2개
     // 제로콜라 1개
     // 주문 메뉴
-    public Map<String, Integer> giveOrderInformation() {
+    public Map<String, Integer> getOrderInformation() {
         return orders.getOrderInformation();
     }
 
@@ -43,6 +46,9 @@ public class Management {
     // <총혜택 금액
     // <증정 메뉴>
     // 샴페인 1개
+    public Map<String, Integer> getFreebieMenu() {
+        return freebie.getInformations(orders);
+    }
 
     // <혜택 내역>
     // 크리스마스 디데이 할인: -
