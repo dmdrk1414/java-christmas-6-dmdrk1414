@@ -1,5 +1,6 @@
 package christmas.config;
 
+import christmas.domain.BadgeManagement;
 import christmas.domain.Orders;
 import christmas.domain.discount.*;
 import christmas.domain.freebie.Freebie;
@@ -27,5 +28,9 @@ public class Config {
 
     public static Freebie freebie() {
         return new Freebie();
+    }
+
+    public static BadgeManagement badgeManagement() {
+        return new BadgeManagement();
     }
 }
