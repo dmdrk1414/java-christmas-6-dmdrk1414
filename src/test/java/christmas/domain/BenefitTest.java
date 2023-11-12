@@ -79,7 +79,7 @@ class BenefitTest {
         assertThat(result).isEqualTo(target);
     }
 
-    @DisplayName("샴페인 증정 상품을 얻을 수 있는 지 확인하는 기능 테스트")
+    @DisplayName("해택의 전체의 액수를 알수있는 테스트")
     @ParameterizedTest
     @CsvSource({
             "티본스테이크-1바비큐립-1초코케이크-2제로콜라-1, 31246",
@@ -98,5 +98,9 @@ class BenefitTest {
 
         // than
         assertThat(result).isEqualTo(target);
+    }
+
+    @Test
+    void getBadgeName() {
     }
 }
