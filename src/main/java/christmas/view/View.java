@@ -26,11 +26,15 @@ public class View {
 
         printOrderMenu();
         printOriginalOrderTotalAcount();
-        outputView.printFreebies(management.getFreebies());
+        printFreebies();
         outputView.printBenefitInformations(management.getDiscountInformation());
         outputView.printTotalDiscount(management.getTotalDiscount());
         outputView.printFinalPayment(management.getFinalPayment());
         outputView.printEventBadge(management.getBadgeName());
+    }
+
+    private void printFreebies() {
+        outputView.printFreebies(management.getFreebies());
     }
 
     private void printOriginalOrderTotalAcount() {
