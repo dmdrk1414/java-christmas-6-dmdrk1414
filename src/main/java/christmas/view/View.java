@@ -24,13 +24,17 @@ public class View {
 
         makeOrder(orderDate, orderLine);
 
-        outputView.printOrderMenu(management.getOrderInformation());
+        printOrderMenu();
         outputView.printOriginalOrderTotalAcount(management.getOriginalOrderTotal());
         outputView.printFreebies(management.getFreebies());
         outputView.printBenefitInformations(management.getDiscountInformation());
         outputView.printTotalDiscount(management.getTotalDiscount());
         outputView.printFinalPayment(management.getFinalPayment());
         outputView.printEventBadge(management.getBadgeName());
+    }
+
+    private void printOrderMenu() {
+        outputView.printOrderMenu(management.getOrderInformation());
     }
 
     private void makeOrder(Integer orderDate, String orderLine) {
