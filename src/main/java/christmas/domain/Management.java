@@ -22,8 +22,13 @@ public class Management {
         this.freebie = Config.freebie();
     }
 
-    public void generateOrder(String orderString) {
+    public void generateOrder(Integer orderDay, String orderString) {
         orders = Config.orders(orderString);
+        generateBenefit(orderDay, orders);
+    }
+
+    private void generateBenefit(Integer orderDay, Orders orders) {
+        benefit = Config.benefit(orderDay, orders);
     }
 
     // <주문 메뉴>
@@ -46,7 +51,7 @@ public class Management {
     // <총혜택 금액
     // <증정 메뉴>
     // 샴페인 1개
-    public Map<String, Integer> getFreebieMenu() {
+    public Map<String, Integer> getFreebieInformation() {
         return freebie.getInformations(orders);
     }
 
@@ -56,6 +61,10 @@ public class Management {
     // 평일 할인: -4,046원
     // 특별 할인: -1,000원
     // 증정 이벤트: -25,000원
+    public Map<String, Integer> getDiscountInformation() {
+        return benefit.generateInformations();
+    }
+
 
     // <총혜택 금액>
     // -31,246원
