@@ -2,6 +2,7 @@ package christmas.domain.freebie;
 
 import christmas.constant.menu.Menu;
 import christmas.constant.menu.MenuGroup;
+import christmas.domain.Benefit;
 import christmas.domain.Orders;
 import christmas.domain.testutill.TestUtill;
 import org.junit.jupiter.api.BeforeEach;
@@ -77,6 +78,26 @@ class FreebieTest {
         Map<String, Integer> result = freebie.getInformations(order);
 
         // then
+        assertThat(result).isEqualTo(target);
+    }
+
+    @DisplayName("증정품 샴페인의 가격을 알려주는 기능 추가")
+    @ParameterizedTest
+    @CsvSource({
+            "티본스테이크-1바비큐립-1초코케이크-2제로콜라-1, 25000",
+            "타파스-1제로콜라-1, 0",
+            "양송이수프-1타파스-2티본스테이크-1아이스크림-3제로콜라-2, 0",
+            "시저샐러드-2바비큐립-1초코케이크-1레드와인-1, 25000",
+    })
+    void getFreebiePriceString(String orderString, Integer target) {
+        // given
+        orderString = TestUtill.insertComma(orderString);
+        Orders order = new Orders(orderString);
+
+        // when
+        Integer result = freebie.getFreebiePrice(order);
+
+        // than
         assertThat(result).isEqualTo(target);
     }
 }
