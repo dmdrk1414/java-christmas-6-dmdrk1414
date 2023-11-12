@@ -36,7 +36,9 @@ public class Management {
 
     // <할인 전 총주문 금액>
     // 142,000원
-
+    public Integer getOriginalOrderTotal() {
+        return orders.getOrderMoney();
+    }
 
     // <총혜택 금액
     // <증정 메뉴>
