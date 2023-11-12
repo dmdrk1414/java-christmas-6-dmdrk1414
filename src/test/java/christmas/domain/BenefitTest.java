@@ -71,7 +71,7 @@ class BenefitTest {
         orderString = TestUtill.insertComma(orderString);
         Orders order = new Orders(orderString);
         Benefit benefit = new Benefit(1, order);
-        
+
         // when
         Boolean result = benefit.isEligibleFreebie();
 
@@ -79,7 +79,24 @@ class BenefitTest {
         assertThat(result).isEqualTo(target);
     }
 
-    @Test
-    void testIsEligibleFreebie() {
+    @DisplayName("샴페인 증정 상품을 얻을 수 있는 지 확인하는 기능 테스트")
+    @ParameterizedTest
+    @CsvSource({
+            "티본스테이크-1바비큐립-1초코케이크-2제로콜라-1, 31246",
+            "타파스-1제로콜라-1, 0",
+            "양송이수프-1타파스-2티본스테이크-1아이스크림-3제로콜라-2, 8269",
+            "시저샐러드-2바비큐립-1초코케이크-1레드와인-1, 29223",
+    })
+    void getTotalAmount(String orderString, Integer target) {
+        // given
+        orderString = TestUtill.insertComma(orderString);
+        Orders order = new Orders(orderString);
+        Benefit benefit = new Benefit(3, order);
+
+        // when
+        Integer result = benefit.getTotalAmount();
+
+        // than
+        assertThat(result).isEqualTo(target);
     }
 }
