@@ -1,9 +1,12 @@
 package christmas.config;
 
 import christmas.domain.badge.BadgeManagement;
+import christmas.domain.order.Calculator;
 import christmas.domain.order.Orders;
 import christmas.domain.discount.*;
 import christmas.domain.freebie.Freebie;
+
+import java.util.Map;
 
 public class Config {
     public static DDayDiscount dDayDiscount(Integer orderDay) {
@@ -32,5 +35,9 @@ public class Config {
 
     public static BadgeManagement badgeManagement() {
         return new BadgeManagement();
+    }
+
+    public static Calculator calculator(Map<String, Integer> orders) {
+        return new Calculator(orders);
     }
 }
