@@ -1,6 +1,8 @@
 package christmas.config;
 
 import christmas.domain.badge.BadgeManagement;
+import christmas.domain.benefit.Benefit;
+import christmas.domain.calculator.PaymentCalculator;
 import christmas.domain.order.OrderCalculator;
 import christmas.domain.order.Orders;
 import christmas.domain.discount.*;
@@ -39,5 +41,17 @@ public class Config {
 
     public static OrderCalculator calculator() {
         return new OrderCalculator();
+    }
+
+    public static Orders orders(String orderString) {
+        return new Orders(orderString);
+    }
+
+    public static PaymentCalculator paymentCalculator() {
+        return new PaymentCalculator();
+    }
+
+    public static Benefit benefit(Integer orderDay, Orders orders) {
+        return new Benefit(orderDay, orders);
     }
 }
