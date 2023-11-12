@@ -5,10 +5,10 @@ import christmas.constant.menu.MenuGroup;
 import java.util.List;
 import java.util.Map;
 
-public class Calculator {
+public class OrderCalculator {
     private Map<String, Integer> orders;
 
-    public Calculator(Map<String, Integer> orders) {
+    public OrderCalculator(Map<String, Integer> orders) {
         this.orders = orders;
     }
 

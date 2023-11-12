@@ -4,12 +4,11 @@ import christmas.config.Config;
 import christmas.constant.menu.MenuGroup;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Orders {
     private Map<String, Integer> orders;
-    private Calculator calculator;
+    private OrderCalculator calculator;
 
     public Orders(String orders) {
         this.orders = parseOrders(orders);

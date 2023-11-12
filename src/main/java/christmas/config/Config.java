@@ -1,7 +1,7 @@
 package christmas.config;
 
 import christmas.domain.badge.BadgeManagement;
-import christmas.domain.order.Calculator;
+import christmas.domain.order.OrderCalculator;
 import christmas.domain.order.Orders;
 import christmas.domain.discount.*;
 import christmas.domain.freebie.Freebie;
@@ -37,7 +37,7 @@ public class Config {
         return new BadgeManagement();
     }
 
-    public static Calculator calculator(Map<String, Integer> orders) {
-        return new Calculator(orders);
+    public static OrderCalculator calculator(Map<String, Integer> orders) {
+        return new OrderCalculator(orders);
     }
 }
