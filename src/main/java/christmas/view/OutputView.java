@@ -1,5 +1,6 @@
 package christmas.view;
 
+import java.text.NumberFormat;
 import java.util.Map;
 
 public class OutputView {
@@ -36,9 +37,33 @@ public class OutputView {
             println(freebie + " " + quantity + "개");
         }
 
-        if (freebies.size() == 0) {
+        if (freebies.isEmpty()) {
             printNotThing();
         }
+    }
+
+    //<혜택 내역>
+    //크리스마스 디데이 할인: -1,200원
+    //평일 할인: -4,046원
+    //특별 할인: -1,000원
+    //증정 이벤트: -25,000원
+    // 없으면 낫팅
+    public void printBenefitInformations(Map<String, Integer> benefitInformations) {
+        for (Map.Entry<String, Integer> entry : benefitInformations.entrySet()) {
+            String title = entry.getKey();
+            String discountMoney = formatNumberWithCommas(entry.getValue());
+
+            println(title + ": -" + discountMoney + "원");
+        }
+
+        if (benefitInformations.isEmpty()) {
+            printNotThing();
+        }
+    }
+
+    private String formatNumberWithCommas(int number) {
+        NumberFormat numberFormat = NumberFormat.getInstance();
+        return numberFormat.format(number);
     }
 
     private void printNotThing() {
