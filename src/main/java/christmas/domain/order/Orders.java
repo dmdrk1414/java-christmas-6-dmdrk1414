@@ -1,5 +1,6 @@
 package christmas.domain.order;
 
+import christmas.config.Config;
 import christmas.constant.menu.MenuGroup;
 
 import java.util.HashMap;
@@ -8,9 +9,11 @@ import java.util.Map;
 
 public class Orders {
     private Map<String, Integer> orders;
+    private Calculator calculator;
 
     public Orders(String orders) {
         this.orders = parseOrders(orders);
+        this.calculator = Config.calculator(this.orders);
     }
 
     private Map<String, Integer> parseOrders(String input) {
@@ -55,31 +58,8 @@ public class Orders {
 
 
     public Integer getOrderMoney() {
-        Integer orderMoney = 0;
-        Integer menuPrice = 0;
-
-        for (Map.Entry<String, Integer> entry : orders.entrySet()) {
-            String menuName = entry.getKey();
-            Integer menuQuantity = entry.getValue();
-
-            menuPrice = getMenuPrice(menuName);
-            orderMoney = orderMoney + (menuPrice * menuQuantity);
-        }
+        Integer orderMoney = calculator.getOrderMoney();
         return orderMoney;
-    }
-
-    private Integer getMenuPrice(String menuName) {
-        Integer menuPrice = 0;
-        List<MenuGroup> menuGroups = MenuGroup.getAllMenuGroups();
-
-        for (MenuGroup menuGroup : menuGroups) {
-            if (menuGroup.isMenu(menuName)) {
-                menuPrice = menuGroup.getMenuPrice(menuName);
-                break;
-            }
-        }
-
-        return menuPrice;
     }
 
     private Integer getMenuCount(MenuGroup appetizer) {
