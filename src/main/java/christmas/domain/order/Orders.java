@@ -16,22 +16,6 @@ public class Orders {
         this.calculator = Config.calculator(this.orders);
     }
 
-    private Map<String, Integer> parseOrders(String input) {
-        Map<String, Integer> menuMap = new HashMap<>();
-
-        String[] orders = input.split(",");
-
-        for (String order : orders) {
-            String[] orderParts = order.split("-");
-            String menuName = orderParts[0];
-            int orderQuantity = Integer.parseInt(orderParts[1]);
-
-            menuMap.put(menuName, orderQuantity);
-        }
-
-        return menuMap;
-    }
-
     public Integer getAppetizerCount() {
         Integer appetizerCount = getMenuCount(MenuGroup.APPETIZER);
 
@@ -74,5 +58,21 @@ public class Orders {
             }
         }
         return menuCount;
+    }
+
+    private Map<String, Integer> parseOrders(String input) {
+        Map<String, Integer> menuMap = new HashMap<>();
+
+        String[] orders = input.split(",");
+
+        for (String order : orders) {
+            String[] orderParts = order.split("-");
+            String menuName = orderParts[0];
+            int orderQuantity = Integer.parseInt(orderParts[1]);
+
+            menuMap.put(menuName, orderQuantity);
+        }
+
+        return menuMap;
     }
 }
