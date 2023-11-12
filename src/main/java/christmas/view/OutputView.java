@@ -75,6 +75,11 @@ public class OutputView {
         newLine();
     }
 
+    public void printEventBadge(String badgeName) {
+        println("<12월 이벤트 배지>");
+        println(badgeName);
+    }
+
     private String formatNumberWithCommas(int number) {
         NumberFormat numberFormat = NumberFormat.getInstance();
         return numberFormat.format(number);
