@@ -48,6 +48,7 @@ public class Benefit {
 
     public String getBadgeName() {
         Integer totalBenefit = getTotalAmount();
+        
         return badgeManagement.getBadge(totalBenefit);
     }
 }
