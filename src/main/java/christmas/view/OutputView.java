@@ -14,6 +14,7 @@ public class OutputView {
     }
 
     public void printOrderMenu(Map<String, Integer> orders) {
+        println("<주문 메뉴>");
         for (Map.Entry<String, Integer> entry : orders.entrySet()) {
             String menu = entry.getKey();
             Integer quantity = entry.getValue();
@@ -63,7 +64,12 @@ public class OutputView {
         String totalDiscountString = formatNumberWithCommas(totalDiscount);
 
         println("<총혜택 금액>");
-        println("-" + totalDiscountString);
+        if (totalDiscount == 0) {
+            println(totalDiscountString);
+        }
+        if (totalDiscount != 0) {
+            println("-" + totalDiscountString);
+        }
         newLine();
     }
 
