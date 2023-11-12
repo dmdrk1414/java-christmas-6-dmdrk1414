@@ -1,5 +1,6 @@
 package christmas.config;
 
+import christmas.domain.Management;
 import christmas.domain.badge.BadgeManagement;
 import christmas.domain.benefit.Benefit;
 import christmas.domain.calculator.PaymentCalculator;
@@ -7,6 +8,9 @@ import christmas.domain.order.OrderCalculator;
 import christmas.domain.order.Orders;
 import christmas.domain.discount.*;
 import christmas.domain.freebie.Freebie;
+import christmas.view.InputView;
+import christmas.view.OutputView;
+import christmas.view.View;
 
 import java.util.Map;
 
@@ -53,5 +57,21 @@ public class Config {
 
     public static Benefit benefit(Integer orderDay, Orders orders) {
         return new Benefit(orderDay, orders);
+    }
+
+    public static InputView inputView() {
+        return new InputView();
+    }
+
+    public static OutputView outputView() {
+        return new OutputView();
+    }
+
+    public static Management management() {
+        return new Management();
+    }
+
+    public static View view() {
+        return new View();
     }
 }
