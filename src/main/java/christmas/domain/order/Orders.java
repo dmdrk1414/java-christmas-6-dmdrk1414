@@ -12,7 +12,7 @@ public class Orders {
 
     public Orders(String orders) {
         this.orders = parseOrders(orders);
-        this.calculator = Config.calculator(this.orders);
+        this.calculator = Config.calculator();
     }
 
     public Integer getAppetizerCount() {
@@ -41,7 +41,7 @@ public class Orders {
 
 
     public Integer getOrderMoney() {
-        Integer orderMoney = calculator.getOrderMoney();
+        Integer orderMoney = calculator.getOrderMoney(orders);
         return orderMoney;
     }
 

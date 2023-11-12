@@ -6,13 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 public class OrderCalculator {
-    private Map<String, Integer> orders;
 
-    public OrderCalculator(Map<String, Integer> orders) {
-        this.orders = orders;
-    }
-
-    public Integer getOrderMoney() {
+    public Integer getOrderMoney(Map<String, Integer> orders) {
         Integer orderMoney = 0;
         Integer menuPrice = 0;
 

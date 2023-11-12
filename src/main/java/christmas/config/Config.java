@@ -37,7 +37,7 @@ public class Config {
         return new BadgeManagement();
     }
 
-    public static OrderCalculator calculator(Map<String, Integer> orders) {
-        return new OrderCalculator(orders);
+    public static OrderCalculator calculator() {
+        return new OrderCalculator();
     }
 }
