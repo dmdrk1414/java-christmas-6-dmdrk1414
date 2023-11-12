@@ -61,4 +61,8 @@ public class Management {
     public String getBadgeName() {
         return benefit.getBadgeName();
     }
+
+    public Map<String, Integer> getFreebies() {
+        return freebie.getFreebies(orders);
+    }
 }
