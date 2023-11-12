@@ -20,7 +20,7 @@ public class View {
         Integer orderDate = inputView.readDate();
         String orderLine = inputView.readOrder();
 
-        outputView.printEventPreview(orderDate);
+        printEventPreview(orderDate);
 
         management.generateOrder(orderDate, orderLine);
 
@@ -31,6 +31,10 @@ public class View {
         outputView.printTotalDiscount(management.getTotalDiscount());
         outputView.printFinalPayment(management.getFinalPayment());
         outputView.printEventBadge(management.getBadgeName());
+    }
+
+    private void printEventPreview(Integer orderDate) {
+        outputView.printEventPreview(orderDate);
     }
 
     private void printIntroduce() {
