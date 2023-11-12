@@ -45,6 +45,10 @@ public class Orders {
         return orderMoney;
     }
 
+    public Map<String, Integer> getOrderInformation() {
+        return orders;
+    }
+
     private Integer getMenuCount(MenuGroup appetizer) {
         Integer menuCount = 0;
         for (Map.Entry<String, Integer> order : orders.entrySet()) {
