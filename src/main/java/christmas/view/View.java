@@ -27,10 +27,14 @@ public class View {
         printOrderMenu();
         printOriginalOrderTotalAcount();
         printFreebies();
-        outputView.printBenefitInformations(management.getDiscountInformation());
+        printBenefitInformations();
         outputView.printTotalDiscount(management.getTotalDiscount());
         outputView.printFinalPayment(management.getFinalPayment());
         outputView.printEventBadge(management.getBadgeName());
+    }
+
+    private void printBenefitInformations() {
+        outputView.printBenefitInformations(management.getDiscountInformation());
     }
 
     private void printFreebies() {
