@@ -55,6 +55,15 @@ public class OutputView {
         }
     }
 
+    //<총혜택 금액>
+    //-31,246원
+    public void printTotalDiscount(Integer totalDiscount) {
+        String totalDiscountString = formatNumberWithCommas(totalDiscount);
+
+        println("<총혜택 금액>");
+        println("-" + totalDiscountString);
+    }
+
     private String formatNumberWithCommas(int number) {
         NumberFormat numberFormat = NumberFormat.getInstance();
         return numberFormat.format(number);
