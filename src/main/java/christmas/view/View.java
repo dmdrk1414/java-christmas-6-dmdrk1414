@@ -15,7 +15,7 @@ public class View {
     }
 
     public void run() {
-        outputView.printIntroduce();
+        printIntroduce();
 
         Integer orderDate = inputView.readDate();
         String orderLine = inputView.readOrder();
@@ -31,5 +31,9 @@ public class View {
         outputView.printTotalDiscount(management.getTotalDiscount());
         outputView.printFinalPayment(management.getFinalPayment());
         outputView.printEventBadge(management.getBadgeName());
+    }
+
+    private void printIntroduce() {
+        outputView.printIntroduce();
     }
 }
