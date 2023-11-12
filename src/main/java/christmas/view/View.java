@@ -30,6 +30,10 @@ public class View {
         printBenefitInformations();
         printTotalDiscount();
         printFinalPayment();
+        printEventBadge();
+    }
+
+    private void printEventBadge() {
         outputView.printEventBadge(management.getBadgeName());
     }
 
