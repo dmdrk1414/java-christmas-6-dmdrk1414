@@ -74,6 +74,11 @@ public class Management {
 
     // <할인 후 예상 결제 금액>
     // 135,754원
+    public Integer getFinalPayment() {
+        Integer finalPayment = paymentCalculator.estimateFinalPayment(getOriginalOrderTotal(), getTotalDiscount());
+
+        return finalPayment;
+    }
 
     // <12월 이벤트 배지>
     // 산타
