@@ -42,5 +42,13 @@ public class Benefit {
     }
 
     // TODO: 11/12/23 총해택 금액 (샴페인 추가, 할인)
+    public Integer getTotalAmount() {
+        Integer totalAmount = 0;
+
+        totalAmount = totalAmount + discountManagement.getTotalDiscount();
+        totalAmount = totalAmount + freebie.getFreebiePrice(orders);
+
+        return totalAmount;
+    }
 
 }
