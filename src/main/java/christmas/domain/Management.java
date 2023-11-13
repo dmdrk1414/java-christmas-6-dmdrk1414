@@ -43,7 +43,6 @@ public class Management {
         return benefit.generateInformations();
     }
 
-
     public Integer getTotalDiscount() {
         return benefit.getTotalAmount();
     }
