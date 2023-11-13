@@ -14,8 +14,8 @@ public class Orders {
     private final Map<String, Integer> orders;
     private final OrderCalculator calculator;
 
-    public Orders(String orders) {
-        this.orders = parseOrders(orders);
+    public Orders(String orderString) {
+        this.orders = parseOrders(orderString);
         this.calculator = Config.calculator();
     }
 
