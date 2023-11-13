@@ -11,7 +11,6 @@ public class Parser {
 
     public static Map<String, Integer> orders(String orderString) {
         Map<String, Integer> menuMap = new HashMap<>();
-
         String[] orders = orderString.split(COMMA_REGEX);
 
         for (String order : orders) {
