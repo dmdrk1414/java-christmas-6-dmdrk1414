@@ -57,7 +57,7 @@ public class ValidateOrder {
         String[] orderArr = order.split(COMMA_REGEX);
 
         for (String orderValue : orderArr) {
-            isincludDash(orderValue);
+            includDash(orderValue);
 
             String[] partsOfDash = orderValue.split(DASH_REGEX);
             hasSizeOrderAndQuantity(partsOfDash);
@@ -155,7 +155,7 @@ public class ValidateOrder {
         }
     }
 
-    private static void isincludDash(String orderItem) {
+    private static void includDash(String orderItem) {
         if (!orderItem.contains(DASH)) {
             throwNumberFormatExceptionAboutOrder();
         }
