@@ -22,6 +22,7 @@ public class View {
 
         printEventPreview(orderDate);
 
+        // TODO: 11/13/23 생각하기 
         makeOrder(orderDate, orderLine);
 
         printOrderMenu();
