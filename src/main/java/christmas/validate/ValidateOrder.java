@@ -4,7 +4,9 @@ import christmas.constant.menu.MenuGroup;
 import christmas.constant.validate.ValidateConstant;
 import christmas.utill.CommonUtils;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -102,6 +104,19 @@ public class ValidateOrder {
             String[] partsOfDash = orderValue.split(DASH_REGEX);
             String menu = partsOfDash[MENU_NAME];
             if (notExistMenu(menu)) {
+                throwNumberFormatExceptionAboutOrder();
+            }
+        }
+    }
+
+    public static void duplicateMenu(String orderString) {
+        Set<String> uniqueOrders = new HashSet<>();
+        String[] orderArr = orderString.split(COMMAR_REGEX);
+
+        for (String orderValue : orderArr) {
+            String[] partsOfDash = orderValue.split(DASH_REGEX);
+            String menu = partsOfDash[MENU_NAME];
+            if (!uniqueOrders.add(menu)) {
                 throwNumberFormatExceptionAboutOrder();
             }
         }
