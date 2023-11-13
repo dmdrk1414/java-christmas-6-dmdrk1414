@@ -74,9 +74,9 @@ class ApplicationTest extends NsTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"a", "b", "1a", "1박", "박승", "!2", "q!1", "@#$", "박&*("})
-    void 날짜_예외_테스트_문자열_테스트() {
+    void 날짜_예외_테스트_문자열_테스트(String orderDate) {
         assertSimpleTest(() -> {
-            runException("a");
+            runException(orderDate);
             assertThat(output()).contains("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
         });
     }
