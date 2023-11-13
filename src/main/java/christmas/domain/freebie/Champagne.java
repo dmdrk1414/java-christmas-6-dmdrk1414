@@ -1,6 +1,6 @@
 package christmas.domain.freebie;
 
-import christmas.constant.Freebies;
+import christmas.constant.freebie.Freebies;
 
 import java.util.HashMap;
 import java.util.Map;

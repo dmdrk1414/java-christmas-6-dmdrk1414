@@ -1,4 +1,4 @@
-package christmas.constant;
+package christmas.constant.freebie;
 
 public enum Freebies {
     CHAMPAGNE("샴페인", 25_000, 1);
