@@ -1,6 +1,6 @@
 package christmas.domain.badge;
 
-import christmas.constant.discount.Badge;
+import christmas.constant.badge.Badge;
 
 public class BadgeManagement {
     public String getBadge(Integer totalBenefit) {
