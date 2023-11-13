@@ -21,7 +21,7 @@ public class Freebie {
         Map<String, Integer> informations = new HashMap<>();
         Map<String, Integer> champagnePriceInformation = champagne.makeChampagnePriceInformation();
 
-        if (isEligibleChampagne(totalOrderMoney)) {
+        if (champagne.isEligible(totalOrderMoney)) {
             informations.putAll(champagnePriceInformation);
         }
 
@@ -33,7 +33,7 @@ public class Freebie {
     public Integer getFreebiePrice(Integer totalOrderMoney) {
         Integer freebiePrice = 0;
 
-        if (isEligibleChampagne(totalOrderMoney)) {
+        if (champagne.isEligible(totalOrderMoney)) {
             freebiePrice = Menu.CHAMPAGNE.getPrice();
         }
         return freebiePrice;
@@ -43,7 +43,7 @@ public class Freebie {
         Map<String, Integer> freebies = new HashMap<>();
         Map<String, Integer> champagneCountInformation = champagne.makeChampagneCountInformation();
 
-        if (isEligibleChampagne(totalOrderMoney)) {
+        if (champagne.isEligible(totalOrderMoney)) {
             freebies.putAll(champagneCountInformation);
         }
 
