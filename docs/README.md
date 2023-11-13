@@ -350,3 +350,19 @@ List<MenuGroup> menuGroups = MenuGroup.getAllMenuGroups();
 왜냐하면 비효휼 부를시 계산을 해야한다.
 
 - ui로직을 최대한 분리 (이제 ui라는게 무엇인지 알꺼같다.)
+
+- 검증의 순서가 중요하다
+
+  ```
+    private void validateReadDate(String orderDateString) {
+          InputValidate.includeBlank(orderDateString);
+          InputValidate.orderDateRange(orderDateString);
+      }
+      
+        private void validateReadDate(String orderDateString) {
+          InputValidate.orderDateRange(orderDateString);
+  				InputValidate.includeBlank(orderDateString);
+      }
+  ```
+
+  
