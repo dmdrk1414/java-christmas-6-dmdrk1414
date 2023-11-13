@@ -11,16 +11,24 @@ public class Parser {
 
     public static Map<String, Integer> orders(String orderString) {
         Map<String, Integer> menuMap = new HashMap<>();
-        String[] orders = orderString.split(COMMA_REGEX);
+        String[] orders = getSplitComma(orderString);
 
         for (String order : orders) {
-            String[] orderParts = order.split(DASH_REGEX);
+            String[] orderParts = getSplitDash(order);
             String menuName = orderParts[MENU_NAME];
-            int orderQuantity = Integer.parseInt(orderParts[MENU_QUANTITY]);
+            Integer orderQuantity = CommonUtils.parsInt(orderParts[MENU_QUANTITY]);
 
             menuMap.put(menuName, orderQuantity);
         }
 
         return menuMap;
+    }
+
+    private static String[] getSplitComma(String orderString) {
+        return orderString.split(COMMA_REGEX);
+    }
+
+    private static String[] getSplitDash(String order) {
+        return order.split(DASH_REGEX);
     }
 }
