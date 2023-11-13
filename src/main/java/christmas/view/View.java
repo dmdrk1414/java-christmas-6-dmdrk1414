@@ -81,8 +81,4 @@ public class View {
     private void printIntroduce() {
         outputView.printIntroduce();
     }
-
-    private void println(String string) {
-        System.out.println(string);
-    }
 }
