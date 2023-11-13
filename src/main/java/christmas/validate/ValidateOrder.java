@@ -60,7 +60,7 @@ public class ValidateOrder {
             isincludDash(orderValue);
 
             String[] partsOfDash = orderValue.split(DASH_REGEX);
-            hasOrderAndQuantitySize(partsOfDash);
+            hasSizeOrderAndQuantity(partsOfDash);
 
             String menuName = getMenuName(partsOfDash);
             String quantity = getQuantity(partsOfDash);
@@ -149,7 +149,7 @@ public class ValidateOrder {
         }
     }
 
-    private static void hasOrderAndQuantitySize(String[] parts) {
+    private static void hasSizeOrderAndQuantity(String[] parts) {
         if (parts.length != SPLIT_PART_SIZE) {
             throwNumberFormatExceptionAboutOrder();
         }
