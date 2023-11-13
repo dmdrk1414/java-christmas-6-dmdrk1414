@@ -28,14 +28,14 @@ public class Freebie {
         return informations;
     }
 
-    public Integer getFreebiePrice(Integer totalOrderMoney) {
-        Integer freebiePrice = 0;
+    public Integer getChampagnePrice(Integer totalOrderMoney) {
+        Integer champagnePrice = 0;
 
         if (isEligible(totalOrderMoney)) {
-            freebiePrice = Menu.CHAMPAGNE.getPrice();
+            champagnePrice = champagne.getPrice();
         }
 
-        return freebiePrice;
+        return champagnePrice;
     }
 
     public Map<String, Integer> getFreebieCount(Integer totalOrderMoney) {

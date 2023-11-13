@@ -48,7 +48,7 @@ public class Benefit {
         Integer totalOrderMoney = orders.getOrderMoney();
 
         totalAmount = totalAmount + discountManagement.getTotalDiscount();
-        totalAmount = totalAmount + freebie.getFreebiePrice(totalOrderMoney);
+        totalAmount = totalAmount + freebie.getChampagnePrice(totalOrderMoney);
 
         return totalAmount;
     }

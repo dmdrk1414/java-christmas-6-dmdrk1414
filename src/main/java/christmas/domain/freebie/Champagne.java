@@ -31,4 +31,8 @@ public class Champagne {
     public Boolean isEligible(Integer totalOrderMoney) {
         return totalOrderMoney >= CONDITION_SHAMPAGNE_ORDER_MONEY;
     }
+
+    public Integer getPrice() {
+        return Freebies.CHAMPAGNE.getPrice();
+    }
 }
