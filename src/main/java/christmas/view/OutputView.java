@@ -15,6 +15,7 @@ public class OutputView {
 
     public void printOrderMenu(Map<String, Integer> orders) {
         println("<주문 메뉴>");
+
         for (Map.Entry<String, Integer> entry : orders.entrySet()) {
             String menu = entry.getKey();
             Integer quantity = entry.getValue();
@@ -26,12 +27,14 @@ public class OutputView {
 
     public void printOriginalOrderTotalAcount(Integer orderTotalAcount) {
         println("<할인 전 총주문 금액>");
+
         println(orderTotalAcount + "원");
         newLine();
     }
 
     public void printFreebies(Map<String, Integer> freebies) {
         println("<증정 메뉴>");
+
         for (Map.Entry<String, Integer> entry : freebies.entrySet()) {
             String freebie = entry.getKey();
             Integer quantity = entry.getValue();
@@ -39,14 +42,19 @@ public class OutputView {
             println(freebie + " " + quantity + "개");
         }
 
+        notThingFreebies(freebies);
+        newLine();
+    }
+
+    private void notThingFreebies(Map<String, Integer> freebies) {
         if (freebies.isEmpty()) {
             printNotThing();
         }
-        newLine();
     }
 
     public void printBenefitInformations(Map<String, Integer> benefitInformations) {
         println("<혜택 내역>");
+
         for (Map.Entry<String, Integer> entry : benefitInformations.entrySet()) {
             String title = entry.getKey();
             String discountMoney = formatNumberWithCommas(entry.getValue());
@@ -54,10 +62,14 @@ public class OutputView {
             println(title + ": -" + discountMoney + "원");
         }
 
+        notTingBenefitInformation(benefitInformations);
+        newLine();
+    }
+
+    private void notTingBenefitInformation(Map<String, Integer> benefitInformations) {
         if (benefitInformations.isEmpty()) {
             printNotThing();
         }
-        newLine();
     }
 
     public void printTotalDiscount(Integer totalDiscount) {
@@ -83,11 +95,13 @@ public class OutputView {
 
     public void printEventBadge(String badgeName) {
         println("<12월 이벤트 배지>");
+
         println(badgeName);
     }
 
     private String formatNumberWithCommas(int number) {
         NumberFormat numberFormat = NumberFormat.getInstance();
+        
         return numberFormat.format(number);
     }
 
