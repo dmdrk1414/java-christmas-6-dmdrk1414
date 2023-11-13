@@ -24,6 +24,7 @@ public class ValidateOrder {
     private static final Integer SPLIT_PART_SIZE = 2;
     private static final Integer MAX_MENU_COUNT = 20;
     private static final String KOREA_REGEX = "^[가-힣]+$";
+    private static final Integer FIRST_CHAR = 0;
 
     public static void hasConsecutiveEmptyValues(String strLine) {
         if (strLine.contains(SEQUENCE_COMMA)) {
@@ -38,9 +39,10 @@ public class ValidateOrder {
     }
 
     public static void commaStartOrEnd(String strLine) {
-        int length = strLine.length();
+        Integer length = strLine.length();
+        Integer endChar = length - 1;
 
-        if (strLine.charAt(length - 1) == COMMA_CHAR || strLine.charAt(0) == COMMA_CHAR) {
+        if (strLine.charAt(endChar) == COMMA_CHAR || strLine.charAt(FIRST_CHAR) == COMMA_CHAR) {
             throwNumberFormatExceptionAboutOrder();
         }
     }
