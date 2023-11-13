@@ -30,6 +30,22 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 모든_타이틀_출력_총주문_10000원_미만() {
+        assertSimpleTest(() -> {
+            run("3", "아이스크림-1,제로콜라-1");
+            assertThat(output()).contains(
+                    "<주문 메뉴>",
+                    "<할인 전 총주문 금액>",
+                    "<증정 메뉴>",
+                    "<혜택 내역>",
+                    "<총혜택 금액>",
+                    "<할인 후 예상 결제 금액>",
+                    "<12월 이벤트 배지>"
+            );
+        });
+    }
+
+    @Test
     void 혜택_내역_없음_출력() {
         assertSimpleTest(() -> {
             run("26", "타파스-1,제로콜라-1");
