@@ -9,6 +9,8 @@ import java.util.Map;
 public class Orders {
     private static final String COMMA_REGEX = ",";
     private static final String DASH_REGEX = "-";
+    private static final Integer MENU_NAME = 0;
+    private static final Integer MENU_QUANTITY = 1;
     private Map<String, Integer> orders;
     private OrderCalculator calculator;
 
@@ -72,8 +74,8 @@ public class Orders {
 
         for (String order : orders) {
             String[] orderParts = order.split(DASH_REGEX);
-            String menuName = orderParts[0];
-            int orderQuantity = Integer.parseInt(orderParts[1]);
+            String menuName = orderParts[MENU_NAME];
+            int orderQuantity = Integer.parseInt(orderParts[MENU_QUANTITY]);
 
             menuMap.put(menuName, orderQuantity);
         }
