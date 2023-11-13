@@ -46,12 +46,6 @@ public class OutputView {
         newLine();
     }
 
-    private void notThingFreebies(Map<String, Integer> freebies) {
-        if (freebies.isEmpty()) {
-            printNotThing();
-        }
-    }
-
     public void printBenefitInformations(Map<String, Integer> benefitInformations) {
         println("<혜택 내역>");
 
@@ -64,12 +58,6 @@ public class OutputView {
 
         notTingBenefitInformation(benefitInformations);
         newLine();
-    }
-
-    private void notTingBenefitInformation(Map<String, Integer> benefitInformations) {
-        if (benefitInformations.isEmpty()) {
-            printNotThing();
-        }
     }
 
     public void printTotalDiscount(Integer totalDiscount) {
@@ -99,9 +87,15 @@ public class OutputView {
         println(badgeName);
     }
 
+    private void notTingBenefitInformation(Map<String, Integer> benefitInformations) {
+        if (benefitInformations.isEmpty()) {
+            printNotThing();
+        }
+    }
+
     private String formatNumberWithCommas(int number) {
         NumberFormat numberFormat = NumberFormat.getInstance();
-        
+
         return numberFormat.format(number);
     }
 
@@ -115,5 +109,11 @@ public class OutputView {
 
     private void newLine() {
         System.out.println();
+    }
+
+    private void notThingFreebies(Map<String, Integer> freebies) {
+        if (freebies.isEmpty()) {
+            printNotThing();
+        }
     }
 }
