@@ -24,9 +24,10 @@ public class Benefit {
 
     // TODO: 11/12/23 order객체의 종속 관계 확인
     public Map<String, Integer> generateInformations() {
+        Integer totalOrderMoney = orders.getOrderMoney();
         Map<String, Integer> informations = new HashMap<>();
         Map<String, Integer> discountInformations = discountManagement.getInformations();
-        Map<String, Integer> freebieInformations = freebie.getInformations(orders);
+        Map<String, Integer> freebieInformations = freebie.getInformations(totalOrderMoney);
 
         if (getTotalAmount() != 0) {
             informations.putAll(discountInformations);
@@ -37,14 +38,17 @@ public class Benefit {
     }
 
     public Boolean isEligibleFreebie() {
-        return freebie.isEligible(orders);
+        Integer totalOrderMoney = orders.getOrderMoney();
+
+        return freebie.isEligible(totalOrderMoney);
     }
 
     public Integer getTotalAmount() {
         Integer totalAmount = 0;
+        Integer totalOrderMoney = orders.getOrderMoney();
 
         totalAmount = totalAmount + discountManagement.getTotalDiscount();
-        totalAmount = totalAmount + freebie.getFreebiePrice(orders);
+        totalAmount = totalAmount + freebie.getFreebiePrice(totalOrderMoney);
 
         return totalAmount;
     }

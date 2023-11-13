@@ -55,7 +55,7 @@ class FreebieTest {
         Orders order = new Orders(orderString);
 
         // when
-        Boolean result = freebie.isEligible(order);
+        Boolean result = freebie.isEligible(order.getOrderMoney());
 
         // then
         assertThat(result).isEqualTo(target);
@@ -71,7 +71,7 @@ class FreebieTest {
         target.put(Menu.CHAMPAGNE.getName(), Menu.CHAMPAGNE.getPrice());
 
         // when
-        Map<String, Integer> result = freebie.getInformations(order);
+        Map<String, Integer> result = freebie.getInformations(order.getOrderMoney());
 
         // then
         assertThat(result).isEqualTo(target);
@@ -91,7 +91,7 @@ class FreebieTest {
         Orders order = new Orders(orderString);
 
         // when
-        Integer result = freebie.getFreebiePrice(order);
+        Integer result = freebie.getFreebiePrice(order.getOrderMoney());
 
         // than
         assertThat(result).isEqualTo(target);

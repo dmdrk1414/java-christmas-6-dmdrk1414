@@ -417,3 +417,4 @@ List<MenuGroup> menuGroups = MenuGroup.getAllMenuGroups();
 
 - final로 막는점
 - 테스트를 위해 증정즘 샴페인 증정품을 클래스로 분리 - 3주차 조언 적용
+- [Refactor(christmas)] Order 클래스와의 종속성 독립
