@@ -25,7 +25,7 @@ public class DiscountManagement {
     public Integer getTotalDiscount() {
         Integer totalDiscount = 0;
 
-        if (orders.getOrderMoney() >= CONDITION_DISCOUNT_MONEY) {
+        if (isConditionDiscount()) {
             totalDiscount = discountManagement.stream()
                     .map(Discount::giveAmount)
                     .reduce(0, Integer::sum);
@@ -41,12 +41,16 @@ public class DiscountManagement {
             String discountTitle = discount.giveTitle();
             Integer discountAmount = 0;
 
-            if (orders.getOrderMoney() >= CONDITION_DISCOUNT_MONEY) {
+            if (isConditionDiscount()) {
                 discountAmount = discount.giveAmount();
             }
             informations.put(discountTitle, discountAmount);
         }
 
         return informations;
+    }
+
+    private boolean isConditionDiscount() {
+        return orders.getOrderMoney() >= CONDITION_DISCOUNT_MONEY;
     }
 }
