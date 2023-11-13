@@ -58,6 +58,6 @@ public class Management {
     }
 
     public Map<String, Integer> getFreebies() {
-        return freebie.getFreebies(orders);
+        return freebie.getFreebieCount(orders);
     }
 }
