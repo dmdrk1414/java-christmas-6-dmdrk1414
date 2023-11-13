@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Orders {
+    private static final String COMMA_REGEX = ",";
+    private static final String DASH_REGEX = "-";
     private Map<String, Integer> orders;
     private OrderCalculator calculator;
 
@@ -39,7 +41,6 @@ public class Orders {
         return beveragetCount;
     }
 
-
     public Integer getOrderMoney() {
         Integer orderMoney = calculator.getOrderMoney(orders);
 
@@ -56,7 +57,7 @@ public class Orders {
             String item = order.getKey();
             Integer quantity = order.getValue();
             Boolean isCondition = appetizer.isMenu(item);
-            
+
             if (isCondition) {
                 menuCount = menuCount + quantity;
             }
@@ -67,10 +68,10 @@ public class Orders {
     private Map<String, Integer> parseOrders(String input) {
         Map<String, Integer> menuMap = new HashMap<>();
 
-        String[] orders = input.split(",");
+        String[] orders = input.split(COMMA_REGEX);
 
         for (String order : orders) {
-            String[] orderParts = order.split("-");
+            String[] orderParts = order.split(DASH_REGEX);
             String menuName = orderParts[0];
             int orderQuantity = Integer.parseInt(orderParts[1]);
 
