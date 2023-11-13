@@ -11,7 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ValidateOrder {
-    private static final List<MenuGroup> menuGroups = List.of(MenuGroup.MAIN_DISH, MenuGroup.APPETIZER, MenuGroup.DESSERT, MenuGroup.BEVERAGE);
+    private static final List<MenuGroup> menuGroups = MenuGroup.getAllMenuGroups();
     private static final String SEQUENCE_COMMA = ",,";
     private static final String BLANK = " ";
     private static final Character COMMA_CHAR = ',';
