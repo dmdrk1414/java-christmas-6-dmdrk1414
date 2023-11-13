@@ -10,6 +10,7 @@ public class ValidateOrder {
     // 2. 메뉴의 개수는 1 이상의 숫자만 입력되도록 해주세요.
     // 3. 메뉴 형식이 예시와 다른 경우,
     // 4. 중복 메뉴를 입력한 경우(e.g. 시저샐러드-1,시저샐러드-1),
+    private static final Character COMMA_CHAR = ',';
 
     public static void hasConsecutiveEmptyValues(String strLine) {
         if (strLine.contains(SEQUENCE_COMMA)) {
@@ -19,6 +20,14 @@ public class ValidateOrder {
 
     public static void includeBlank(String date) {
         if (date.contains(BLANK)) {
+            throwNumberFormatExceptionAboutOrder();
+        }
+    }
+
+    public static void commaStartOrEnd(String strLine) {
+        int length = strLine.length();
+
+        if (strLine.charAt(length - 1) == COMMA_CHAR || strLine.charAt(0) == COMMA_CHAR) {
             throwNumberFormatExceptionAboutOrder();
         }
     }

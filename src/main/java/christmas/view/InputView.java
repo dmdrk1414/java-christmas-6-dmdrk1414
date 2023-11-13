@@ -51,6 +51,7 @@ public class InputView {
     private void validateReadOrder(String orderString) {
         ValidateOrder.hasConsecutiveEmptyValues(orderString);
         ValidateOrder.includeBlank(orderString);
+        ValidateOrder.commaStartOrEnd(orderString);
     }
 
     private void println(String string) {
