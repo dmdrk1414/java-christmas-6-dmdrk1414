@@ -12,8 +12,6 @@ import christmas.view.InputView;
 import christmas.view.OutputView;
 import christmas.view.View;
 
-import java.util.Map;
-
 public class Config {
     public static DDayDiscount dDayDiscount(Integer orderDay) {
         return new DDayDiscount(orderDay);

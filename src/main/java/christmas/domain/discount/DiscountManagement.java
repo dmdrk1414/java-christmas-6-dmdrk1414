@@ -46,6 +46,7 @@ public class DiscountManagement {
             }
             informations.put(discountTitle, discountAmount);
         }
+        
         return informations;
     }
 }

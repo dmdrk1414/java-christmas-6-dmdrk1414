@@ -7,6 +7,7 @@ import christmas.domain.order.Orders;
 import java.util.HashMap;
 import java.util.Map;
 
+// TODO: 11/13/23 고민 
 public class Freebie {
     private static final Integer CONDITION_SHAMPAGNE_ORDER_MONEY = 12_0000;
     private static final Integer FREEBIE_COUNT = 1;

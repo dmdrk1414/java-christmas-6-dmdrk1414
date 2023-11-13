@@ -2,7 +2,6 @@ package christmas.domain.badge;
 
 import christmas.constant.discount.Badge;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BadgeManagement {
