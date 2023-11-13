@@ -48,6 +48,4 @@ public class DiscountManagement {
         }
         return informations;
     }
-
-    // TODO: 11/11/23 해당하는 해택들의 이름, 돈 반환
 }

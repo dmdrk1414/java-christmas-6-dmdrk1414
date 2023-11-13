@@ -14,18 +14,12 @@ public class ValidateOrder {
     private static final List<MenuGroup> menuGroups = List.of(MenuGroup.MAIN_DISH, MenuGroup.APPETIZER, MenuGroup.DESSERT, MenuGroup.BEVERAGE);
     private static final String SEQUENCE_COMMA = ",,";
     private static final String BLANK = " ";
-
-    // 1. 고객이 메뉴판에 없는 메뉴를 입력하는 경우,
-    // 2. 메뉴의 개수는 1 이상의 숫자만 입력되도록 해주세요.
-    // 3. 메뉴 형식이 예시와 다른 경우,
-    // 4. 중복 메뉴를 입력한 경우(e.g. 시저샐러드-1,시저샐러드-1),
     private static final Character COMMA_CHAR = ',';
     private static final String DASH_REGEX = "-";
     private static final String COMMAR_REGEX = ",";
     private static final Integer MENU_NAME = 0;
     private static final Integer MENU_QUANTITY = 1;
     private static final String DASH = "-";
-    private static final String KOREA_REGEX = "^[가-힣]+$";
     private static final String NUMERIC_REGEX = "\\d+";
     private static final Integer SPLIT_PART_SIZE = 2;
     private static final Integer MAX_MENU_COUNT = 20;
