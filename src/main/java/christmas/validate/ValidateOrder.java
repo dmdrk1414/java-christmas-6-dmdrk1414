@@ -16,7 +16,7 @@ public class ValidateOrder {
     private static final String BLANK = " ";
     private static final Character COMMA_CHAR = ',';
     private static final String DASH_REGEX = "-";
-    private static final String COMMAR_REGEX = ",";
+    private static final String COMMA_REGEX = ",";
     private static final Integer MENU_NAME = 0;
     private static final Integer MENU_QUANTITY = 1;
     private static final String DASH = "-";
@@ -52,7 +52,7 @@ public class ValidateOrder {
     }
 
     public static void collectFormat(String order) {
-        String[] orderArr = order.split(COMMAR_REGEX);
+        String[] orderArr = order.split(COMMA_REGEX);
 
         for (String orderValue : orderArr) {
             isincludDash(orderValue);
@@ -68,7 +68,7 @@ public class ValidateOrder {
     }
 
     public static void menuCount(String orderString) {
-        String[] orderArr = orderString.split(COMMAR_REGEX);
+        String[] orderArr = orderString.split(COMMA_REGEX);
 
         for (String orderValue : orderArr) {
             String[] partsOfDash = orderValue.split(DASH_REGEX);
@@ -81,7 +81,7 @@ public class ValidateOrder {
     }
 
     public static void onlyBeverage(String orderString) {
-        String[] orderArr = orderString.split(COMMAR_REGEX);
+        String[] orderArr = orderString.split(COMMA_REGEX);
 
         for (String orderValue : orderArr) {
             String[] partsOfDash = orderValue.split(DASH_REGEX);
@@ -95,7 +95,7 @@ public class ValidateOrder {
     }
 
     public static void notExistenceMenu(String orderString) {
-        String[] orderArr = orderString.split(COMMAR_REGEX);
+        String[] orderArr = orderString.split(COMMA_REGEX);
 
         for (String orderValue : orderArr) {
             String[] partsOfDash = orderValue.split(DASH_REGEX);
@@ -109,7 +109,7 @@ public class ValidateOrder {
 
     public static void duplicateMenu(String orderString) {
         Set<String> uniqueOrders = new HashSet<>();
-        String[] orderArr = orderString.split(COMMAR_REGEX);
+        String[] orderArr = orderString.split(COMMA_REGEX);
 
         for (String orderValue : orderArr) {
             String[] partsOfDash = orderValue.split(DASH_REGEX);
@@ -122,7 +122,7 @@ public class ValidateOrder {
     }
 
     public static void maxMenuCount(String orderString) {
-        String[] orderArr = orderString.split(COMMAR_REGEX);
+        String[] orderArr = orderString.split(COMMA_REGEX);
         Integer totalQuantity = 0;
 
         for (String orderValue : orderArr) {
