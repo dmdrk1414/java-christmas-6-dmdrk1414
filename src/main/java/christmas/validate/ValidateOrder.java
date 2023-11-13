@@ -53,17 +53,17 @@ public class ValidateOrder {
 
     public static void collectFormat(String order) {
         String[] orderArr = order.split(COMMAR_REGEX);
-        
+
         for (String orderValue : orderArr) {
             isincludDash(orderValue);
 
             String[] partsOfDash = orderValue.split(DASH_REGEX);
             hasOrderAndQuantitySize(partsOfDash);
 
-            String itemName = partsOfDash[MENU_NAME];
-            String quantityStr = partsOfDash[MENU_QUANTITY];
+            String menuName = getMenuName(partsOfDash);
+            String quantity = getQuantity(partsOfDash);
 
-            hasKoreaMenuDashQuantity(itemName, quantityStr);
+            hasKoreaMenuDashQuantity(menuName, quantity);
         }
     }
 
@@ -72,9 +72,9 @@ public class ValidateOrder {
 
         for (String orderValue : orderArr) {
             String[] partsOfDash = orderValue.split(DASH_REGEX);
-            String quantityStr = partsOfDash[MENU_QUANTITY];
+            String quantity = getQuantity(partsOfDash);
 
-            if (CommonUtils.parsInt(quantityStr) < 1) {
+            if (parsInt(quantity) < 1) {
                 throwNumberFormatExceptionAboutOrder();
             }
         }
@@ -85,9 +85,9 @@ public class ValidateOrder {
 
         for (String orderValue : orderArr) {
             String[] partsOfDash = orderValue.split(DASH_REGEX);
-            String menu = partsOfDash[MENU_NAME];
+            String menuName = getMenuName(partsOfDash);
 
-            if (!MenuGroup.isBeverage(menu)) {
+            if (!MenuGroup.isBeverage(menuName)) {
                 return;
             }
         }
@@ -99,8 +99,9 @@ public class ValidateOrder {
 
         for (String orderValue : orderArr) {
             String[] partsOfDash = orderValue.split(DASH_REGEX);
-            String menu = partsOfDash[MENU_NAME];
-            if (notExistMenu(menu)) {
+            String menuName = getMenuName(partsOfDash);
+
+            if (notExistMenu(menuName)) {
                 throwNumberFormatExceptionAboutOrder();
             }
         }
@@ -112,8 +113,9 @@ public class ValidateOrder {
 
         for (String orderValue : orderArr) {
             String[] partsOfDash = orderValue.split(DASH_REGEX);
-            String menu = partsOfDash[MENU_NAME];
-            if (!uniqueOrders.add(menu)) {
+            String menuName = getMenuName(partsOfDash);
+
+            if (!uniqueOrders.add(menuName)) {
                 throwNumberFormatExceptionAboutOrder();
             }
         }
@@ -125,8 +127,8 @@ public class ValidateOrder {
 
         for (String orderValue : orderArr) {
             String[] partsOfDash = orderValue.split(DASH_REGEX);
-            String menuQuantity = partsOfDash[MENU_QUANTITY];
-            totalQuantity = totalQuantity + CommonUtils.parsInt(menuQuantity);
+            String quantity = getQuantity(partsOfDash);
+            totalQuantity = totalQuantity + parsInt(quantity);
 
             if (totalQuantity > MAX_MENU_COUNT) {
                 throwNumberFormatExceptionAboutOrder();
@@ -160,6 +162,7 @@ public class ValidateOrder {
     private static boolean menuContainsOnlyKorea(String str) {
         Pattern pattern = Pattern.compile(KOREA_REGEX);
         Matcher matcher = pattern.matcher(str);
+
         return matcher.matches();
     }
 
@@ -169,5 +172,17 @@ public class ValidateOrder {
 
     private static void throwNumberFormatExceptionAboutOrder() {
         throw new NumberFormatException(ValidateConstant.ERROR_ORDER.getMSG());
+    }
+
+    private static String getMenuName(String[] partsOfDash) {
+        return partsOfDash[MENU_NAME];
+    }
+
+    private static String getQuantity(String[] partsOfDash) {
+        return partsOfDash[MENU_QUANTITY];
+    }
+
+    private static Integer parsInt(String quantity) {
+        return CommonUtils.parsInt(quantity);
     }
 }
