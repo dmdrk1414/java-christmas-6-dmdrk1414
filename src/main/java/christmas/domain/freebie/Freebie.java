@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Freebie {
-    private Champagne champagne;
+    private final Champagne champagne;
 
     public Freebie() {
         this.champagne = Config.champagne();
@@ -34,7 +34,7 @@ public class Freebie {
         if (champagne.isEligible(totalOrderMoney)) {
             freebiePrice = Menu.CHAMPAGNE.getPrice();
         }
-        
+
         return freebiePrice;
     }
 
