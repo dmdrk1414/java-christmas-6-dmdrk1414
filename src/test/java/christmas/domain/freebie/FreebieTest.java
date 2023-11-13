@@ -91,7 +91,7 @@ class FreebieTest {
         Orders order = new Orders(orderString);
 
         // when
-        Integer result = freebie.getChampagnePrice(order.getOrderMoney());
+        Integer result = freebie.getChampagneBenefit(order.getOrderMoney());
 
         // than
         assertThat(result).isEqualTo(target);

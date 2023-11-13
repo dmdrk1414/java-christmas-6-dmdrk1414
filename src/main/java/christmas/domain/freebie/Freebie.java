@@ -1,7 +1,6 @@
 package christmas.domain.freebie;
 
 import christmas.config.Config;
-import christmas.constant.menu.Menu;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,7 +27,7 @@ public class Freebie {
         return informations;
     }
 
-    public Integer getChampagnePrice(Integer totalOrderMoney) {
+    public Integer getChampagneBenefit(Integer totalOrderMoney) {
         Integer champagnePrice = 0;
 
         if (isEligible(totalOrderMoney)) {
