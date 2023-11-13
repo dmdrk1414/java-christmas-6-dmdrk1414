@@ -15,25 +15,6 @@ class OrdersTest {
     void setUp() {
     }
 
-    @DisplayName("주문의 에피타이저 갯수를 반환하는 기능 수정")
-    @ParameterizedTest
-    @ValueSource(strings = {
-            "티본스테이크-1,바비큐립-1,양송이수프-2,초코케이크-2,제로콜라-1",
-            "티본스테이크-1,바비큐립-1,양송이수프-1,타파스-1,초코케이크-2,제로콜라-1",
-            "티본스테이크-1,바비큐립-1,시저샐러드-1,양송이수프-1,초코케이크-2,제로콜라-1",
-            "티본스테이크-1,바비큐립-1,타파스-1,시저샐러드-1,초코케이크-2,제로콜라-1",
-    })
-    void getAppetizerCount(String ordersString) {
-        // given
-        Orders orders = new Orders(ordersString);
-
-        // when
-        Integer result = orders.getAppetizerCount();
-
-        // then
-        assertThat(result).isEqualTo(2);
-    }
-
     @DisplayName("주문의 메인 갯수를 반환하는 기능 수정")
     @ParameterizedTest
     @ValueSource(strings = {

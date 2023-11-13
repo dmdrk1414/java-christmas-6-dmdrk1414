@@ -16,12 +16,6 @@ public class Orders {
         this.calculator = Config.calculator();
     }
 
-    public Integer getAppetizerCount() {
-        Integer appetizerCount = getMenuCount(MenuGroup.APPETIZER);
-
-        return appetizerCount;
-    }
-
     public Integer getMainCount() {
         Integer mainCount = getMenuCount(MenuGroup.MAIN_DISH);
 
@@ -32,12 +26,6 @@ public class Orders {
         Integer dessertCount = getMenuCount(MenuGroup.DESSERT);
 
         return dessertCount;
-    }
-
-    public Integer getBeverageCount() {
-        Integer beveragetCount = getMenuCount(MenuGroup.BEVERAGE);
-
-        return beveragetCount;
     }
 
     public Integer getOrderMoney() {
@@ -63,6 +51,4 @@ public class Orders {
         }
         return menuCount;
     }
-
-
 }
