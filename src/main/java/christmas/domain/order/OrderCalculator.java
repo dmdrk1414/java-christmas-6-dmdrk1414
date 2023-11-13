@@ -15,7 +15,7 @@ public class OrderCalculator {
             Integer menuQuantity = entry.getValue();
 
             menuPrice = getMenuPrice(menuName);
-            orderMoney = orderMoney + (menuPrice * menuQuantity);
+            orderMoney = orderMoney + getTotalMenuPrice(menuPrice, menuQuantity);
         }
 
         return orderMoney;
@@ -26,12 +26,24 @@ public class OrderCalculator {
         List<MenuGroup> menuGroups = MenuGroup.getAllMenuGroups();
 
         for (MenuGroup menuGroup : menuGroups) {
-            if (menuGroup.isMenu(menuName)) {
-                menuPrice = menuGroup.getMenuPrice(menuName);
+            if (isSameName(menuName, menuGroup)) {
+                menuPrice = getMenuPrice(menuName, menuGroup);
                 break;
             }
         }
 
         return menuPrice;
+    }
+
+    private Integer getMenuPrice(String menuName, MenuGroup menuGroup) {
+        return menuGroup.getMenuPrice(menuName);
+    }
+
+    private int getTotalMenuPrice(Integer menuPrice, Integer menuQuantity) {
+        return menuPrice * menuQuantity;
+    }
+
+    private Boolean isSameName(String menuName, MenuGroup menuGroup) {
+        return menuGroup.isMenu(menuName);
     }
 }
