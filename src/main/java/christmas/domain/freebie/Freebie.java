@@ -28,14 +28,13 @@ public class Freebie {
         return informations;
     }
 
-    // TODO: 11/12/23 과연 이방법이 맞는 것인가.
-
     public Integer getFreebiePrice(Integer totalOrderMoney) {
         Integer freebiePrice = 0;
 
         if (champagne.isEligible(totalOrderMoney)) {
             freebiePrice = Menu.CHAMPAGNE.getPrice();
         }
+        
         return freebiePrice;
     }
 
