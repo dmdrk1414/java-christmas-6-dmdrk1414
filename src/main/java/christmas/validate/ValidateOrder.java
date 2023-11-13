@@ -1,6 +1,7 @@
 package christmas.validate;
 
 import christmas.constant.validate.ValidateConstant;
+import christmas.utill.CommonUtils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -61,6 +62,19 @@ public class ValidateOrder {
             String quantityStr = partsOfDash[MENU_QUANTITY];
 
             hasKoreaMenuDashQuantity(itemName, quantityStr);
+        }
+    }
+
+    public static void menuCount(String orderString) {
+        String[] orderArr = orderString.split(COMMAR_REGEX);
+
+        for (String orderValue : orderArr) {
+            String[] partsOfDash = orderValue.split(DASH_REGEX);
+            String quantityStr = partsOfDash[MENU_QUANTITY];
+
+            if (CommonUtils.parsInt(quantityStr) < 1) {
+                throwNumberFormatExceptionAboutOrder();
+            }
         }
     }
 
