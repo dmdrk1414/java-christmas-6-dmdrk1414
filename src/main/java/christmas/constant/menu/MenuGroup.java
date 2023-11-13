@@ -9,8 +9,8 @@ public enum MenuGroup {
     DESSERT("디저트", List.of(Menu.CHOCOLATE_CAKE, Menu.ICE_CREAM)),
     BEVERAGE("음료", List.of(Menu.ZERO_COLA, Menu.RED_WINE, Menu.CHAMPAGNE));
 
-    private String type;
-    private List<Menu> menuList;
+    private final String type;
+    private final List<Menu> menuList;
 
     MenuGroup(String type, List<Menu> menuList) {
         this.type = type;
