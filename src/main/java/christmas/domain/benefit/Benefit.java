@@ -58,4 +58,8 @@ public class Benefit {
 
         return badgeManagement.getBadge(totalBenefit);
     }
+
+    public Map<String, Integer> getFreebieCount(Integer totalOrderMoney) {
+        return freebie.getFreebieCount(totalOrderMoney);
+    }
 }

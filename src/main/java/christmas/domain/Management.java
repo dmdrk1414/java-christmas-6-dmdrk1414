@@ -4,7 +4,6 @@ import christmas.config.Config;
 import christmas.domain.badge.BadgeManagement;
 import christmas.domain.benefit.Benefit;
 import christmas.domain.calculator.PaymentCalculator;
-import christmas.domain.freebie.Freebie;
 import christmas.domain.order.Orders;
 
 import java.util.Map;
@@ -12,14 +11,12 @@ import java.util.Map;
 public class Management {
     private final BadgeManagement badgeManagement;
     private final PaymentCalculator paymentCalculator;
-    private final Freebie freebie;
     private Benefit benefit;
     private Orders orders;
 
     public Management() {
         this.badgeManagement = Config.badgeManagement();
         this.paymentCalculator = Config.paymentCalculator();
-        this.freebie = Config.freebie();
     }
 
     public Map<String, Integer> getOrderInformation(Integer orderDay, String orderString) {
@@ -52,7 +49,7 @@ public class Management {
     public Map<String, Integer> getFreebies() {
         Integer totalOrderMoney = orders.getOrderMoney();
 
-        return freebie.getFreebieCount(totalOrderMoney);
+        return benefit.getFreebieCount(totalOrderMoney);
     }
 
     private void generateBenefit(Integer orderDay, Orders orders) {
