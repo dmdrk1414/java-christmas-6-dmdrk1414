@@ -165,6 +165,19 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "짜장면-1,초코케이크-2,제로콜라-1",
+            "티본스테이크-1,짜장면-2,제로콜라-1",
+            "티본스테이크-1,초코케이크-2,짜장면-1",
+    })
+    void 주문_예외_테스트_존제하지_않은_메뉴(String orderString) {
+        assertSimpleTest(() -> {
+            runException("1", orderString);
+            assertThat(output()).contains("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        });
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
