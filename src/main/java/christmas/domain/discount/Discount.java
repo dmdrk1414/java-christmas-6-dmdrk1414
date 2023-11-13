@@ -3,7 +3,7 @@ package christmas.domain.discount;
 import christmas.constant.discount.DiscountGroup;
 
 public abstract class Discount {
-    private Integer orderDay;
+    private final Integer orderDay;
 
     public Discount(Integer orderDay) {
         this.orderDay = orderDay;
