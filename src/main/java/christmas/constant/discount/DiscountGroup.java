@@ -33,8 +33,8 @@ public enum DiscountGroup {
             Discount.SPECIAL_DAY_THREE, Discount.SPECIAL_DAY_TEN, Discount.SPECIAL_DAY_SEVENTEEN,
             Discount.SPECIAL_DAY_TWENTY_FOUR, Discount.SPECIAL_DAY_TWENTY_FIVE, Discount.SPECIAL_DAY_THIRTY_ONE));
 
-    private String title;
-    private List<Discount> discountList;
+    private final String title;
+    private final List<Discount> discountList;
 
     DiscountGroup(String title, List<Discount> discountList) {
         this.title = title;

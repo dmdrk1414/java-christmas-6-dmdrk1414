@@ -6,8 +6,8 @@ public enum Badge {
     SANTA("산타", 20_000);
 
     private static final String NOTTING = "없음";
-    private String name;
-    private Integer condition;
+    private final String name;
+    private final Integer condition;
 
     Badge(String name, Integer condition) {
         this.name = name;
