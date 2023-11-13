@@ -42,6 +42,7 @@ public class Orders {
 
     public Integer getOrderMoney() {
         Integer orderMoney = calculator.getOrderMoney(orders);
+
         return orderMoney;
     }
 
@@ -54,8 +55,8 @@ public class Orders {
         for (Map.Entry<String, Integer> order : orders.entrySet()) {
             String item = order.getKey();
             Integer quantity = order.getValue();
-
             Boolean isCondition = appetizer.isMenu(item);
+            
             if (isCondition) {
                 menuCount = menuCount + quantity;
             }

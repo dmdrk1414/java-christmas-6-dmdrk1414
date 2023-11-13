@@ -18,6 +18,7 @@ public class OrderCalculator {
             menuPrice = getMenuPrice(menuName);
             orderMoney = orderMoney + (menuPrice * menuQuantity);
         }
+        
         return orderMoney;
     }
 
