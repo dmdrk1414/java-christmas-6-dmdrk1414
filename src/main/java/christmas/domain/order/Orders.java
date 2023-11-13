@@ -38,12 +38,13 @@ public class Orders {
         return orders;
     }
 
-    private Integer getMenuCount(MenuGroup appetizer) {
+    private Integer getMenuCount(MenuGroup menuGroup) {
         Integer menuCount = 0;
+
         for (Map.Entry<String, Integer> order : orders.entrySet()) {
-            String item = order.getKey();
+            String name = order.getKey();
             Integer quantity = order.getValue();
-            Boolean isCondition = appetizer.isMenu(item);
+            Boolean isCondition = menuGroup.isMenu(name);
 
             if (isCondition) {
                 menuCount = menuCount + quantity;
