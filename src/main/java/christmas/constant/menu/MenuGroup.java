@@ -21,6 +21,10 @@ public enum MenuGroup {
         return Arrays.asList(values());
     }
 
+    public static Boolean isBeverage(String orderMenu) {
+        return BEVERAGE.isMenu(orderMenu);
+    }
+
     public Boolean isMenu(String orderMenu) {
         return menuList.stream()
                 .anyMatch(menu -> menu.is(orderMenu));
