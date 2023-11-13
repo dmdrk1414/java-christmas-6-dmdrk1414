@@ -9,11 +9,13 @@ public class ValidateOrderDate {
 
     private static final String BLANK = " ";
     private static final String KOREAN_ENGLISH_REGEX = ".*[^0-9\\s].*";
+    private static final Integer START_DATE_RANGE = 1;
+    private static final Integer END_DATE_RANGE = 31;
 
     public static void orderDateRange(String date) {
         Integer dateNum = parseInt(date);
 
-        if (dateNum < 1 || dateNum > 31) {
+        if (dateNum < START_DATE_RANGE || dateNum > END_DATE_RANGE) {
             throwNumberFormatExceptionAboutOrderDate();
         }
     }
