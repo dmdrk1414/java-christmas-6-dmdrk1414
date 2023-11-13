@@ -9,8 +9,8 @@ import java.util.Map;
 
 public class DiscountManagement {
     private static final Integer CONDITION_DISCOUNT_MONEY = 10000;
-    private List<Discount> discountManagement;
-    private Orders orders;
+    private final List<Discount> discountManagement;
+    private final Orders orders;
 
     public DiscountManagement(Integer orderDay, Orders orders) {
         discountManagement = List.of(
@@ -46,7 +46,7 @@ public class DiscountManagement {
             }
             informations.put(discountTitle, discountAmount);
         }
-        
+
         return informations;
     }
 }
