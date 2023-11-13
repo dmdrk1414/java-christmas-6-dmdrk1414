@@ -58,6 +58,7 @@ public class InputView {
         ValidateOrder.onlyBeverage(orderString);
         ValidateOrder.notExistenceMenu(orderString);
         ValidateOrder.duplicateMenu(orderString);
+        ValidateOrder.maxMenuCount(orderString);
     }
 
     private void println(String string) {

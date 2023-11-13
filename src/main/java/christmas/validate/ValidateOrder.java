@@ -28,6 +28,7 @@ public class ValidateOrder {
     private static final String KOREA_REGEX = "^[가-힣]+$";
     private static final String NUMERIC_REGEX = "\\d+";
     private static final Integer SPLIT_PART_SIZE = 2;
+    private static final Integer MAX_MENU_COUNT = 20;
 
     public static void hasConsecutiveEmptyValues(String strLine) {
         if (strLine.contains(SEQUENCE_COMMA)) {
@@ -117,6 +118,21 @@ public class ValidateOrder {
             String[] partsOfDash = orderValue.split(DASH_REGEX);
             String menu = partsOfDash[MENU_NAME];
             if (!uniqueOrders.add(menu)) {
+                throwNumberFormatExceptionAboutOrder();
+            }
+        }
+    }
+
+    public static void maxMenuCount(String orderString) {
+        String[] orderArr = orderString.split(COMMAR_REGEX);
+        Integer totalQuantity = 0;
+
+        for (String orderValue : orderArr) {
+            String[] partsOfDash = orderValue.split(DASH_REGEX);
+            String menuQuantity = partsOfDash[MENU_QUANTITY];
+            totalQuantity = totalQuantity + CommonUtils.parsInt(menuQuantity);
+
+            if (totalQuantity > MAX_MENU_COUNT) {
                 throwNumberFormatExceptionAboutOrder();
             }
         }
