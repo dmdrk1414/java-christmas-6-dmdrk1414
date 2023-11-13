@@ -453,3 +453,14 @@ List<MenuGroup> menuGroups = MenuGroup.getAllMenuGroups();
   ```
 
   
+
+- ```
+      public Map<String, Integer> getOrderInformation(Integer orderDay, String orderString) {
+          generateOrder(orderString);
+          generateBenefit(orderDay, orders);
+  
+          return orders.getOrderInformation();
+      }
+  ```
+
+  

@@ -21,11 +21,7 @@ public class View {
         String orderLine = inputOrder();
 
         printEventPreview(orderDate);
-
-        // TODO: 11/13/23 생각하기 
-        makeOrder(orderDate, orderLine);
-
-        printOrderMenu();
+        printOrderMenu(orderDate, orderLine);
         printOriginalOrderTotalAcount();
         printFreebies();
         printBenefitInformations();
@@ -66,12 +62,8 @@ public class View {
         outputView.printOriginalOrderTotalAcount(management.getOriginalOrderTotal());
     }
 
-    private void printOrderMenu() {
-        outputView.printOrderMenu(management.getOrderInformation());
-    }
-
-    private void makeOrder(Integer orderDate, String orderLine) {
-        management.generateOrder(orderDate, orderLine);
+    private void printOrderMenu(Integer orderDay, String orderString) {
+        outputView.printOrderMenu(management.getOrderInformation(orderDay, orderString));
     }
 
     private void printEventPreview(Integer orderDate) {

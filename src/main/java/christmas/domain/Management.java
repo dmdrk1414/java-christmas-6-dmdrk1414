@@ -22,16 +22,10 @@ public class Management {
         this.freebie = Config.freebie();
     }
 
-    public void generateOrder(Integer orderDay, String orderString) {
-        orders = Config.orders(orderString);
+    public Map<String, Integer> getOrderInformation(Integer orderDay, String orderString) {
+        generateOrder(orderString);
         generateBenefit(orderDay, orders);
-    }
 
-    private void generateBenefit(Integer orderDay, Orders orders) {
-        benefit = Config.benefit(orderDay, orders);
-    }
-
-    public Map<String, Integer> getOrderInformation() {
         return orders.getOrderInformation();
     }
 
@@ -59,5 +53,13 @@ public class Management {
         Integer totalOrderMoney = orders.getOrderMoney();
 
         return freebie.getFreebieCount(totalOrderMoney);
+    }
+
+    private void generateBenefit(Integer orderDay, Orders orders) {
+        benefit = Config.benefit(orderDay, orders);
+    }
+
+    private void generateOrder(String orderString) {
+        orders = Config.orders(orderString);
     }
 }
