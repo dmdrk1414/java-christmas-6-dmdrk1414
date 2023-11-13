@@ -13,7 +13,7 @@ public class InputView {
 
         while (true) {
             try {
-                String orderDateString = Console.readLine();
+                String orderDateString = Console.readLine().trim();
                 validateReadDate(orderDateString);
 
                 return CommonUtils.parsInt(orderDateString);
@@ -31,7 +31,7 @@ public class InputView {
 
     public String readOrder() {
         System.out.println("주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1)");
-        String orderString = Console.readLine();
+        String orderString = Console.readLine().trim();
 
         return orderString;
     }
