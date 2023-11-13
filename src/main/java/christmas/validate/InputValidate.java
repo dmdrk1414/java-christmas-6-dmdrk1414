@@ -12,6 +12,7 @@ public class InputValidate {
         }
     }
 
+    // TODO: 11/13/23 검증 적용 
     public static Boolean blankCheck(String strLine) {
         if (!strLine.equals(NOTING_STRING)) {
             return true;
