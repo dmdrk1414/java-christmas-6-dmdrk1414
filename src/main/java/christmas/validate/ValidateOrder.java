@@ -101,8 +101,7 @@ public class ValidateOrder {
         for (String orderValue : orderArr) {
             String[] partsOfDash = orderValue.split(DASH_REGEX);
             String menu = partsOfDash[MENU_NAME];
-
-            if (notExistMenu(orderString)) {
+            if (notExistMenu(menu)) {
                 throwNumberFormatExceptionAboutOrder();
             }
         }
