@@ -418,3 +418,38 @@ List<MenuGroup> menuGroups = MenuGroup.getAllMenuGroups();
 - final로 막는점
 - 테스트를 위해 증정즘 샴페인 증정품을 클래스로 분리 - 3주차 조언 적용
 - [Refactor(christmas)] Order 클래스와의 종속성 독립
+
+- 클래스 분리
+
+- ```
+  package christmas.domain.order;
+  
+  import java.util.HashMap;
+  import java.util.Map;
+  
+  public class Parse {
+      private static final String COMMA_REGEX = ",";
+      private static final String DASH_REGEX = "-";
+      private static final Integer MENU_NAME = 0;
+      private static final Integer MENU_QUANTITY = 1;
+  
+      public static Map<String, Integer> orders(String orderString) {
+          Map<String, Integer> menuMap = new HashMap<>();
+  
+          String[] orders = orderString.split(COMMA_REGEX);
+  
+          for (String order : orders) {
+              String[] orderParts = order.split(DASH_REGEX);
+              String menuName = orderParts[MENU_NAME];
+              int orderQuantity = Integer.parseInt(orderParts[MENU_QUANTITY]);
+  
+              menuMap.put(menuName, orderQuantity);
+          }
+  
+          return menuMap;
+      }
+  }
+  
+  ```
+
+  

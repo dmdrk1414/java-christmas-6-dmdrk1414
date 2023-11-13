@@ -2,20 +2,17 @@ package christmas.domain.order;
 
 import christmas.config.Config;
 import christmas.constant.menu.MenuGroup;
+import christmas.utill.Parser;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class Orders {
-    private static final String COMMA_REGEX = ",";
-    private static final String DASH_REGEX = "-";
-    private static final Integer MENU_NAME = 0;
-    private static final Integer MENU_QUANTITY = 1;
+
     private final Map<String, Integer> orders;
     private final OrderCalculator calculator;
 
     public Orders(String orderString) {
-        this.orders = parseOrders(orderString);
+        this.orders = Parser.orders(orderString);
         this.calculator = Config.calculator();
     }
 
@@ -67,19 +64,5 @@ public class Orders {
         return menuCount;
     }
 
-    private Map<String, Integer> parseOrders(String input) {
-        Map<String, Integer> menuMap = new HashMap<>();
 
-        String[] orders = input.split(COMMA_REGEX);
-
-        for (String order : orders) {
-            String[] orderParts = order.split(DASH_REGEX);
-            String menuName = orderParts[MENU_NAME];
-            int orderQuantity = Integer.parseInt(orderParts[MENU_QUANTITY]);
-
-            menuMap.put(menuName, orderQuantity);
-        }
-
-        return menuMap;
-    }
 }
