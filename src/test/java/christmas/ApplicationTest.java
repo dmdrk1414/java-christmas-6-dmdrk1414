@@ -29,7 +29,6 @@ class ApplicationTest extends NsTest {
         });
     }
 
-    @Disabled
     @Test
     void 혜택_내역_없음_출력() {
         assertSimpleTest(() -> {
@@ -46,7 +45,6 @@ class ApplicationTest extends NsTest {
         });
     }
 
-    @Disabled
     @Test
     void 주문_예외_테스트() {
         assertSimpleTest(() -> {
