@@ -36,7 +36,6 @@ public class Benefit {
         return informations;
     }
 
-
     public Boolean isEligibleFreebie() {
         return freebie.isEligible(orders);
     }
