@@ -5,7 +5,7 @@ import christmas.constant.validate.ValidateConstant;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class InputValidate {
+public class ValidateOrderDate {
 
     private static final String BLANK = " ";
     private static final String KOREAN_ENGLISH_REGEX = ".*[^0-9\\s].*";

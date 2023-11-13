@@ -2,7 +2,7 @@ package christmas.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import christmas.utill.CommonUtils;
-import christmas.validate.InputValidate;
+import christmas.validate.ValidateOrderDate;
 
 public class InputView {
 
@@ -25,9 +25,9 @@ public class InputView {
 
     //  적용
     private void validateReadDate(String orderDateString) {
-        InputValidate.includeBlank(orderDateString);
-        InputValidate.includeString(orderDateString);
-        InputValidate.orderDateRange(orderDateString);
+        ValidateOrderDate.includeBlank(orderDateString);
+        ValidateOrderDate.includeString(orderDateString);
+        ValidateOrderDate.orderDateRange(orderDateString);
     }
 
     // TODO: 11/12/23 검증하기
