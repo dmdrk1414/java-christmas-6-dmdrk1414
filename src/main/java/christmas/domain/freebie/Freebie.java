@@ -31,7 +31,7 @@ public class Freebie {
         Integer champagnePrice = 0;
 
         if (isEligible(totalOrderMoney)) {
-            champagnePrice = champagne.getPrice();
+            champagnePrice = getChampagnePrice();
         }
 
         return champagnePrice;
@@ -50,5 +50,9 @@ public class Freebie {
 
     private Boolean isEligible(Integer totalOrderMoney) {
         return champagne.isEligible(totalOrderMoney);
+    }
+
+    private Integer getChampagnePrice() {
+        return champagne.getPrice();
     }
 }
