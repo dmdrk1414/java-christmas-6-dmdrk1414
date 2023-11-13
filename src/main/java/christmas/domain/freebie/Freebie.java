@@ -17,10 +17,6 @@ public class Freebie {
         this.champagne = Menu.CHAMPAGNE.getName();
     }
 
-    public String getFreebie() {
-        return champagne;
-    }
-
     public Boolean isEligible(Orders orders) {
         return orders.getOrderMoney() >= CONDITION_SHAMPAGNE_ORDER_MONEY;
     }
