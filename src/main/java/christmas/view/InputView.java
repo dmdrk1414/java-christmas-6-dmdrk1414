@@ -50,6 +50,7 @@ public class InputView {
 
     private void validateReadOrder(String orderString) {
         ValidateOrder.hasConsecutiveEmptyValues(orderString);
+        ValidateOrder.includeBlank(orderString);
     }
 
     private void println(String string) {
