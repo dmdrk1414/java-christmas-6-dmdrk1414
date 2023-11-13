@@ -82,7 +82,7 @@
     - [x] '-'을 포함하고있는가
     - [x] '-'을 기준으로 "주문-갯수" 인가
     - [x] 특수기호 포함 검사
-  - [ ] 음료만 주문 시, 주문할 수 없습니다.
+  - [x] 음료만 주문 시, 주문할 수 없습니다.
   - [ ] 메뉴는 한 번에 최대 20개까지만 주문할 수 있습니다.
     (e.g. 시저샐러드-1, 티본스테이크-1, 크리스마스파스타-1, 제로콜라-3, 아이스크림-1의 총개수는 7개)
 
@@ -363,7 +363,7 @@ List<MenuGroup> menuGroups = MenuGroup.getAllMenuGroups();
 
 - 검증의 순서가 중요하다
 
-  ```
+  ```java
     private void validateReadDate(String orderDateString) {
           InputValidate.includeBlank(orderDateString);
           InputValidate.orderDateRange(orderDateString);
@@ -372,6 +372,27 @@ List<MenuGroup> menuGroups = MenuGroup.getAllMenuGroups();
         private void validateReadDate(String orderDateString) {
           InputValidate.orderDateRange(orderDateString);
   				InputValidate.includeBlank(orderDateString);
+      }
+  ```
+
+  
+
+- 이넘을 관리하여 찾기
+
+  ```java
+  
+      public static void onlyBeverage(String orderString) {
+          String[] orderArr = orderString.split(COMMAR_REGEX);
+  
+          for (String orderValue : orderArr) {
+              String[] partsOfDash = orderValue.split(DASH_REGEX);
+              String menu = partsOfDash[MENU_NAME];
+  
+              if (!MenuGroup.isBeverage(menu)) {
+                  return;
+              }
+          }
+          throwNumberFormatExceptionAboutOrder();
       }
   ```
 

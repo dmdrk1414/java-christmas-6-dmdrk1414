@@ -1,12 +1,16 @@
 package christmas.validate;
 
+import christmas.constant.menu.Menu;
+import christmas.constant.menu.MenuGroup;
 import christmas.constant.validate.ValidateConstant;
 import christmas.utill.CommonUtils;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ValidateOrder {
+    private static final List<MenuGroup> menuGroups = List.of(MenuGroup.MAIN_DISH, MenuGroup.APPETIZER, MenuGroup.DESSERT, MenuGroup.BEVERAGE);
     private static final String SEQUENCE_COMMA = ",,";
     private static final String BLANK = " ";
 
@@ -76,6 +80,20 @@ public class ValidateOrder {
                 throwNumberFormatExceptionAboutOrder();
             }
         }
+    }
+
+    public static void onlyBeverage(String orderString) {
+        String[] orderArr = orderString.split(COMMAR_REGEX);
+
+        for (String orderValue : orderArr) {
+            String[] partsOfDash = orderValue.split(DASH_REGEX);
+            String menu = partsOfDash[MENU_NAME];
+
+            if (!MenuGroup.isBeverage(menu)) {
+                return;
+            }
+        }
+        throwNumberFormatExceptionAboutOrder();
     }
 
     private static void hasKoreaMenuDashQuantity(String menuName, String quantity) {

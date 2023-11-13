@@ -55,6 +55,7 @@ public class InputView {
         ValidateOrder.commaStartOrEnd(orderString);
         ValidateOrder.collectFormat(orderString);
         ValidateOrder.menuCount(orderString);
+        ValidateOrder.onlyBeverage(orderString);
     }
 
     private void println(String string) {
