@@ -71,7 +71,7 @@ class FreebieTest {
         target.put(Menu.CHAMPAGNE.getName(), Menu.CHAMPAGNE.getPrice());
 
         // when
-        Map<String, Integer> result = freebie.getInformations(order.getOrderMoney());
+        Map<String, Integer> result = freebie.getPriceInformations(order.getOrderMoney());
 
         // then
         assertThat(result).isEqualTo(target);
