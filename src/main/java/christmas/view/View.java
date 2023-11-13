@@ -4,9 +4,9 @@ import christmas.config.Config;
 import christmas.domain.Management;
 
 public class View {
-    private InputView inputView;
-    private OutputView outputView;
-    private Management management;
+    private final InputView inputView;
+    private final OutputView outputView;
+    private final Management management;
 
     public View() {
         this.inputView = Config.inputView();
