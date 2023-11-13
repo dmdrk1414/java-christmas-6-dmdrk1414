@@ -10,8 +10,8 @@ public class Champagne {
 
     public Map<String, Integer> makeChampagneCountInformation() {
         Map<String, Integer> champagneInformation = new HashMap<>();
-        String champagne = Freebies.CHAMPAGNE.getName();
-        Integer count = Freebies.CHAMPAGNE.getCount();
+        String champagne = getChampagneName();
+        Integer count = getChampagneCount();
 
         champagneInformation.put(champagne, count);
 
@@ -20,8 +20,8 @@ public class Champagne {
 
     public Map<String, Integer> makeChampagnePriceInformation() {
         Map<String, Integer> champagneInformation = new HashMap<>();
-        String champagne = Freebies.CHAMPAGNE.getName();
-        Integer price = Freebies.CHAMPAGNE.getPrice();
+        String champagne = getChampagneName();
+        Integer price = getChampagnePrice();
 
         champagneInformation.put(champagne, price);
 
@@ -33,6 +33,18 @@ public class Champagne {
     }
 
     public Integer getPrice() {
+        return getChampagnePrice();
+    }
+
+    private Integer getChampagneCount() {
+        return Freebies.CHAMPAGNE.getCount();
+    }
+
+    private String getChampagneName() {
+        return Freebies.CHAMPAGNE.getName();
+    }
+
+    private Integer getChampagnePrice() {
         return Freebies.CHAMPAGNE.getPrice();
     }
 }
