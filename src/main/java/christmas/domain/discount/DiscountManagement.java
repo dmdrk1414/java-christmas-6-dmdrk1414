@@ -13,7 +13,7 @@ public class DiscountManagement {
     private final Orders orders;
 
     public DiscountManagement(Integer orderDay, Orders orders) {
-        discountManagement = List.of(
+        this.discountManagement = List.of(
                 Config.dDayDiscount(orderDay),
                 Config.weekDayDiscount(orderDay, orders.getDessertCount()),
                 Config.weekendDayDiscount(orderDay, orders.getMainCount()),

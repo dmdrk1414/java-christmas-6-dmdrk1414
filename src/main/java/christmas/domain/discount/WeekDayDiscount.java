@@ -3,7 +3,7 @@ package christmas.domain.discount;
 import christmas.constant.discount.DiscountGroup;
 
 public class WeekDayDiscount extends Discount {
-    private Integer dessertOrderCount;
+    private final Integer dessertOrderCount;
 
     public WeekDayDiscount(Integer orderDay, Integer dessertCount) {
         super(orderDay);
