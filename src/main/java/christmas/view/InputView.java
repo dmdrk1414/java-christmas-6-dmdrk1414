@@ -26,6 +26,7 @@ public class InputView {
     //  적용
     private void validateReadDate(String orderDateString) {
         InputValidate.includeBlank(orderDateString);
+        InputValidate.includeString(orderDateString);
         InputValidate.orderDateRange(orderDateString);
     }
 
