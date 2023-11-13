@@ -44,12 +44,16 @@ public class Orders {
         for (Map.Entry<String, Integer> order : orders.entrySet()) {
             String name = order.getKey();
             Integer quantity = order.getValue();
-            Boolean isCondition = menuGroup.isMenu(name);
 
-            if (isCondition) {
+            if (includeMenuGroup(menuGroup, name)) {
                 menuCount = menuCount + quantity;
             }
         }
+        
         return menuCount;
+    }
+
+    private Boolean includeMenuGroup(MenuGroup menuGroup, String name) {
+        return menuGroup.isMenu(name);
     }
 }
