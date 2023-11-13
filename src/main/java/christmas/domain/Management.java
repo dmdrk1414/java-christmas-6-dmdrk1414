@@ -39,10 +39,6 @@ public class Management {
         return orders.getOrderMoney();
     }
 
-    public Map<String, Integer> getFreebieInformation() {
-        return freebie.getInformations(orders);
-    }
-
     public Map<String, Integer> getDiscountInformation() {
         return benefit.generateInformations();
     }
