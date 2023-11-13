@@ -2,6 +2,9 @@ package christmas.validate;
 
 import christmas.constant.validate.ValidateConstant;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class ValidateOrder {
     private static final String SEQUENCE_COMMA = ",,";
     private static final String BLANK = " ";
@@ -11,6 +14,14 @@ public class ValidateOrder {
     // 3. 메뉴 형식이 예시와 다른 경우,
     // 4. 중복 메뉴를 입력한 경우(e.g. 시저샐러드-1,시저샐러드-1),
     private static final Character COMMA_CHAR = ',';
+    private static final String DASH_REGEX = "-";
+    private static final String COMMAR_REGEX = ",";
+    private static final Integer MENU_NAME = 0;
+    private static final Integer MENU_QUANTITY = 1;
+    private static final String DASH = "-";
+    private static final String KOREA_REGEX = "^[가-힣]+$";
+    private static final String NUMERIC_REGEX = "\\d+";
+    private static final Integer SPLIT_PART_SIZE = 2;
 
     public static void hasConsecutiveEmptyValues(String strLine) {
         if (strLine.contains(SEQUENCE_COMMA)) {
@@ -30,6 +41,55 @@ public class ValidateOrder {
         if (strLine.charAt(length - 1) == COMMA_CHAR || strLine.charAt(0) == COMMA_CHAR) {
             throwNumberFormatExceptionAboutOrder();
         }
+    }
+
+    public static void empty(String order) {
+        if (order == null || order.isEmpty()) {
+            throwNumberFormatExceptionAboutOrder();
+        }
+    }
+
+    public static void collectFormat(String order) {
+        String[] orderArr = order.split(COMMAR_REGEX);
+        for (String orderValue : orderArr) {
+            isincludDash(orderValue);
+
+            String[] partsOfDash = orderValue.split(DASH_REGEX);
+            hasOrderAndQuantitySize(partsOfDash);
+
+            String itemName = partsOfDash[MENU_NAME];
+            String quantityStr = partsOfDash[MENU_QUANTITY];
+
+            hasKoreaMenuDashQuantity(itemName, quantityStr);
+        }
+    }
+
+    private static void hasKoreaMenuDashQuantity(String menuName, String quantity) {
+        if (!menuContainsOnlyKorea(menuName) || !isNumeric(quantity)) {
+            throwNumberFormatExceptionAboutOrder();
+        }
+    }
+
+    private static void hasOrderAndQuantitySize(String[] parts) {
+        if (parts.length != SPLIT_PART_SIZE) {
+            throwNumberFormatExceptionAboutOrder();
+        }
+    }
+
+    private static void isincludDash(String orderItem) {
+        if (!orderItem.contains(DASH)) {
+            throwNumberFormatExceptionAboutOrder();
+        }
+    }
+
+    private static boolean menuContainsOnlyKorea(String str) {
+        Pattern pattern = Pattern.compile("^[가-힣]+$");
+        Matcher matcher = pattern.matcher(str);
+        return matcher.matches();
+    }
+
+    private static boolean isNumeric(String str) {
+        return str.matches(NUMERIC_REGEX);
     }
 
     private static void throwNumberFormatExceptionAboutOrder() {
