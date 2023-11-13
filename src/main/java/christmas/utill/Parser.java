@@ -15,13 +15,21 @@ public class Parser {
 
         for (String order : orders) {
             String[] orderParts = getSplitDash(order);
-            String menuName = orderParts[MENU_NAME];
-            Integer orderQuantity = CommonUtils.parsInt(orderParts[MENU_QUANTITY]);
+            String menuName = getMenuName(orderParts);
+            Integer orderQuantity = getOrderQuantity(orderParts);
 
             menuMap.put(menuName, orderQuantity);
         }
 
         return menuMap;
+    }
+
+    private static String getMenuName(String[] orderParts) {
+        return orderParts[MENU_NAME];
+    }
+
+    private static Integer getOrderQuantity(String[] orderParts) {
+        return CommonUtils.parsInt(orderParts[MENU_QUANTITY]);
     }
 
     private static String[] getSplitComma(String orderString) {
