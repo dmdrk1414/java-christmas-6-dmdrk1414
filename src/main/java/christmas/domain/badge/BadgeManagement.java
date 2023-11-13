@@ -4,10 +4,7 @@ import christmas.constant.badge.Badge;
 
 public class BadgeManagement {
     public String getBadge(Integer totalBenefit) {
-        String badge = "";
-        badge = getBatName(totalBenefit);
-
-        return badge;
+        return getBatName(totalBenefit);
     }
 
     private String getBatName(Integer totalBenefit) {
