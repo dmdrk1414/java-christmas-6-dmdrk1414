@@ -11,8 +11,8 @@ public class Orders {
     private static final String DASH_REGEX = "-";
     private static final Integer MENU_NAME = 0;
     private static final Integer MENU_QUANTITY = 1;
-    private Map<String, Integer> orders;
-    private OrderCalculator calculator;
+    private final Map<String, Integer> orders;
+    private final OrderCalculator calculator;
 
     public Orders(String orders) {
         this.orders = parseOrders(orders);

@@ -11,7 +11,7 @@ import java.util.Map;
 public class Freebie {
     private static final Integer CONDITION_SHAMPAGNE_ORDER_MONEY = 12_0000;
     private static final Integer FREEBIE_COUNT = 1;
-    private String champagne;
+    private final String champagne;
 
     public Freebie() {
         this.champagne = Menu.CHAMPAGNE.getName();

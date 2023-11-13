@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 public class OrderCalculator {
-
     public Integer getOrderMoney(Map<String, Integer> orders) {
         Integer orderMoney = 0;
         Integer menuPrice = 0;
@@ -18,7 +17,7 @@ public class OrderCalculator {
             menuPrice = getMenuPrice(menuName);
             orderMoney = orderMoney + (menuPrice * menuQuantity);
         }
-        
+
         return orderMoney;
     }
 
