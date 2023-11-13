@@ -53,6 +53,7 @@ public class ValidateOrder {
 
     public static void collectFormat(String order) {
         String[] orderArr = order.split(COMMAR_REGEX);
+        
         for (String orderValue : orderArr) {
             isincludDash(orderValue);
 
