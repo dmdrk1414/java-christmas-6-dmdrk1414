@@ -48,9 +48,7 @@ public class Management {
     }
 
     public Integer getFinalPayment() {
-        Integer finalPayment = paymentCalculator.estimateFinalPayment(getOriginalOrderTotal(), getTotalDiscount());
-
-        return finalPayment;
+        return paymentCalculator.estimateFinalPayment(getOriginalOrderTotal(), getTotalDiscount());
     }
 
     public String getBadgeName() {

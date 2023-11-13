@@ -17,21 +17,15 @@ public class Orders {
     }
 
     public Integer getMainCount() {
-        Integer mainCount = getMenuCount(MenuGroup.MAIN_DISH);
-
-        return mainCount;
+        return getMenuCount(MenuGroup.MAIN_DISH);
     }
 
     public Integer getDessertCount() {
-        Integer dessertCount = getMenuCount(MenuGroup.DESSERT);
-
-        return dessertCount;
+        return getMenuCount(MenuGroup.DESSERT);
     }
 
     public Integer getOrderMoney() {
-        Integer orderMoney = calculator.getOrderMoney(orders);
-
-        return orderMoney;
+        return calculator.getOrderMoney(orders);
     }
 
     public Map<String, Integer> getOrderInformation() {
@@ -49,7 +43,7 @@ public class Orders {
                 menuCount = menuCount + quantity;
             }
         }
-        
+
         return menuCount;
     }
 
