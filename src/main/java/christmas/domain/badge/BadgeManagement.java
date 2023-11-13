@@ -2,13 +2,9 @@ package christmas.domain.badge;
 
 import christmas.constant.discount.Badge;
 
-import java.util.List;
-
 public class BadgeManagement {
-    private List<Badge> BadgeManagement;
 
     public BadgeManagement() {
-        BadgeManagement = List.of(Badge.STAR, Badge.TREE, Badge.SANTA);
     }
 
     public String getBadge(Integer totalBenefit) {
