@@ -40,7 +40,7 @@ public class Benefit {
     public Boolean isEligibleFreebie() {
         Integer totalOrderMoney = orders.getOrderMoney();
 
-        return freebie.isEligible(totalOrderMoney);
+        return freebie.isEligibleChampagne(totalOrderMoney);
     }
 
     public Integer getTotalAmount() {

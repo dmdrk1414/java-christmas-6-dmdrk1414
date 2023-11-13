@@ -55,7 +55,7 @@ class FreebieTest {
         Orders order = new Orders(orderString);
 
         // when
-        Boolean result = freebie.isEligible(order.getOrderMoney());
+        Boolean result = freebie.isEligibleChampagne(order.getOrderMoney());
 
         // then
         assertThat(result).isEqualTo(target);
