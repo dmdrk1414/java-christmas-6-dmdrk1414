@@ -4,6 +4,7 @@ import christmas.domain.Management;
 import christmas.domain.badge.BadgeManagement;
 import christmas.domain.benefit.Benefit;
 import christmas.domain.calculator.PaymentCalculator;
+import christmas.domain.freebie.Champagne;
 import christmas.domain.order.OrderCalculator;
 import christmas.domain.order.Orders;
 import christmas.domain.discount.*;
@@ -71,5 +72,9 @@ public class Config {
 
     public static View view() {
         return new View();
+    }
+
+    public static Champagne champagne() {
+        return new Champagne();
     }
 }

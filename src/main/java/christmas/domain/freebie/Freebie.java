@@ -1,15 +1,19 @@
 package christmas.domain.freebie;
 
-import christmas.constant.Freebies;
+import christmas.config.Config;
 import christmas.constant.menu.Menu;
 import christmas.domain.order.Orders;
 
 import java.util.HashMap;
 import java.util.Map;
 
-// TODO: 11/13/23 고민 
 public class Freebie {
     private static final Integer CONDITION_SHAMPAGNE_ORDER_MONEY = 12_0000;
+    private Champagne champagne;
+
+    public Freebie() {
+        this.champagne = Config.champagne();
+    }
 
     public Boolean isEligible(Orders orders) {
         return orders.getOrderMoney() >= CONDITION_SHAMPAGNE_ORDER_MONEY;
@@ -17,9 +21,10 @@ public class Freebie {
 
     public Map<String, Integer> getInformations(Orders orders) {
         Map<String, Integer> informations = new HashMap<>();
+        Map<String, Integer> champagnePriceInformation = champagne.makeChampagnePriceInformation();
 
         if (isEligible(orders)) {
-            informations.putAll(makeChampagnePriceInformation());
+            informations.putAll(champagnePriceInformation);
         }
 
         return informations;
@@ -36,33 +41,14 @@ public class Freebie {
         return freebiePrice;
     }
 
-    public Map<String, Integer> getFreebies(Orders orders) {
+    public Map<String, Integer> getFreebieCount(Orders orders) {
         Map<String, Integer> freebies = new HashMap<>();
+        Map<String, Integer> champagneCountInformation = champagne.makeChampagneCountInformation();
 
         if (isEligible(orders)) {
-            freebies.putAll(makeChampagneCountInformation());
+            freebies.putAll(champagneCountInformation);
         }
 
         return freebies;
-    }
-
-    private Map<String, Integer> makeChampagneCountInformation() {
-        Map<String, Integer> champagneInformation = new HashMap<>();
-        String champagne = Freebies.CHAMPAGNE.getName();
-        Integer count = Freebies.CHAMPAGNE.getCount();
-
-        champagneInformation.put(champagne, count);
-
-        return champagneInformation;
-    }
-
-    private Map<String, Integer> makeChampagnePriceInformation() {
-        Map<String, Integer> champagneInformation = new HashMap<>();
-        String champagne = Freebies.CHAMPAGNE.getName();
-        Integer price = Freebies.CHAMPAGNE.getPrice();
-
-        champagneInformation.put(champagne, price);
-
-        return champagneInformation;
     }
 }
