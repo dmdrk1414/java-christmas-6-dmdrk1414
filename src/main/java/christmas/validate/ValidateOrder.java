@@ -1,6 +1,5 @@
 package christmas.validate;
 
-import christmas.constant.menu.Menu;
 import christmas.constant.menu.MenuGroup;
 import christmas.constant.validate.ValidateConstant;
 import christmas.utill.CommonUtils;
@@ -94,6 +93,24 @@ public class ValidateOrder {
             }
         }
         throwNumberFormatExceptionAboutOrder();
+    }
+
+    public static void notExistenceMenu(String orderString) {
+        String[] orderArr = orderString.split(COMMAR_REGEX);
+
+        for (String orderValue : orderArr) {
+            String[] partsOfDash = orderValue.split(DASH_REGEX);
+            String menu = partsOfDash[MENU_NAME];
+
+            if (notExistMenu(orderString)) {
+                throwNumberFormatExceptionAboutOrder();
+            }
+        }
+    }
+
+    private static Boolean notExistMenu(String orderString) {
+        return !menuGroups.stream()
+                .anyMatch(menuGroup -> menuGroup.isMenu(orderString));
     }
 
     private static void hasKoreaMenuDashQuantity(String menuName, String quantity) {
