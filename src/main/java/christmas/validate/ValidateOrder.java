@@ -23,6 +23,7 @@ public class ValidateOrder {
     private static final String NUMERIC_REGEX = "\\d+";
     private static final Integer SPLIT_PART_SIZE = 2;
     private static final Integer MAX_MENU_COUNT = 20;
+    private static final String KOREA_REGEX = "^[가-힣]+$";
 
     public static void hasConsecutiveEmptyValues(String strLine) {
         if (strLine.contains(SEQUENCE_COMMA)) {
@@ -156,7 +157,7 @@ public class ValidateOrder {
     }
 
     private static boolean menuContainsOnlyKorea(String str) {
-        Pattern pattern = Pattern.compile("^[가-힣]+$");
+        Pattern pattern = Pattern.compile(KOREA_REGEX);
         Matcher matcher = pattern.matcher(str);
         return matcher.matches();
     }
