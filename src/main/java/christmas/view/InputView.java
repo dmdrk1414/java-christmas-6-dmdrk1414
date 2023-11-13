@@ -18,12 +18,14 @@ public class InputView {
 
                 return CommonUtils.parsInt(orderDateString);
             } catch (NumberFormatException e) {
-                println(e);
+                println(e.getMessage());
             }
         }
     }
 
+    //  적용
     private void validateReadDate(String orderDateString) {
+        InputValidate.includeBlank(orderDateString);
         InputValidate.orderDateRange(orderDateString);
     }
 
@@ -36,7 +38,7 @@ public class InputView {
         return orderString;
     }
 
-    private void println(NumberFormatException e) {
-        System.out.println(e.getMessage());
+    private void println(String string) {
+        System.out.println(string);
     }
 }
