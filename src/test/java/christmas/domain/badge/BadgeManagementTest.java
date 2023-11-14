@@ -11,7 +11,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BadgeManagementTest {
 
-    @DisplayName("해택 금액에 따른 벳지결과 확인")
     @ParameterizedTest
     @CsvSource({
             "0, 없음",
@@ -24,7 +23,7 @@ class BadgeManagementTest {
             "30000, 산타",
 
     })
-    void getBadge(Integer benefit, String badge) {
+    void 해택_금액에_따른_배지결과_확인(Integer benefit, String badge) {
         // given
         BadgeManagement badgeManagement = new BadgeManagement();
 
