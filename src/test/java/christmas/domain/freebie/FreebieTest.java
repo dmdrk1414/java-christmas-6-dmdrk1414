@@ -49,7 +49,7 @@ class FreebieTest {
             "양송이수프-1바비큐립-1초코케이크-1레드와인-1, true",
             "시저샐러드-2크리스마스파스타-1아이스크림-2샴페인-1, false"
     })
-    void isEligible(String orderString, Boolean target) {
+    void isEligibleChampagne(String orderString, Boolean target) {
         // given
         orderString = TestUtill.insertComma(orderString);
         Orders order = new Orders(orderString);
@@ -61,21 +61,10 @@ class FreebieTest {
         assertThat(result).isEqualTo(target);
     }
 
-//    @DisplayName("증정품의 정보를 얻는 기능")
-//    @Test
-//    void getInformations() {
-//        // given
-//        String orderString = TestUtill.insertComma("티본스테이크-1바비큐립-1초코케이크-2제로콜라-1");
-//        Orders order = new Orders(orderString);
-//        Map<String, Integer> target = new HashMap<>();
-//        target.put(Menu.CHAMPAGNE.getName(), Menu.CHAMPAGNE.getPrice());
-//
-//        // when
-//        Map<String, Integer> result = freebie.getPriceInformations(order.getOrderMoney());
-//
-//        // then
-//        assertThat(result).isEqualTo(target);
-//    }
+    @DisplayName("증정품의 정보(증정 이벤트의 제목과 해택 가격을) 알려준다")
+    @Test
+    void getPriceInformation() {
+    }
 
     @DisplayName("증정품 샴페인의 가격을 알려주는 기능 추가")
     @ParameterizedTest
@@ -85,7 +74,7 @@ class FreebieTest {
             "양송이수프-1타파스-2티본스테이크-1아이스크림-3제로콜라-2, 0",
             "시저샐러드-2바비큐립-1초코케이크-1레드와인-1, 25000",
     })
-    void getFreebiePriceString(String orderString, Integer target) {
+    void getChampagneBenefit(String orderString, Integer target) {
         // given
         orderString = TestUtill.insertComma(orderString);
         Orders order = new Orders(orderString);
@@ -95,5 +84,9 @@ class FreebieTest {
 
         // than
         assertThat(result).isEqualTo(target);
+    }
+
+    @Test
+    void getFreebieCount() {
     }
 }
