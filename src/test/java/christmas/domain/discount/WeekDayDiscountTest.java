@@ -1,6 +1,7 @@
 package christmas.domain.discount;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -48,5 +49,23 @@ class WeekDayDiscountTest {
         assertThat(result).isEqualTo(amount);
     }
 
+    @DisplayName("평일 할인의 제목을 확인한다.")
+    @ParameterizedTest
+    @CsvSource({
+            "3", "4", "5", "6", "7",
+            "10", "11", "12", "13", "14",
+            "17", "18", "19", "20", "21",
+            "24", "25", "26", "27", "28",
+            "31"
+    })
+    void giveTitle(Integer orderDay) {
+        // given
+        WeekDayDiscount weekDayDiscount = new WeekDayDiscount(orderDay, 1);
 
+        // when
+        String result = weekDayDiscount.giveTitle();
+
+        // then
+        assertThat(result).contains("평일 할인");
+    }
 }
