@@ -1,6 +1,6 @@
 package christmas.domain.freebie;
 
-import christmas.constant.menu.Menu;
+import christmas.constant.freebie.Freebies;
 import christmas.domain.order.Orders;
 import christmas.domain.testutill.TestUtill;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,6 +18,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 class FreebieTest {
     private static final String FREEBIE_TITLE = "증정 이벤트";
     private static final Integer FREEBIE_PRICE = 25_000;
+    private static final Integer FREEBIE_COUNT = 1;
+    private static final String CHAMPANE = Freebies.CHAMPAGNE.getName();
     private Freebie freebie;
 
     @BeforeEach
@@ -110,7 +112,29 @@ class FreebieTest {
         assertThat(result).isEqualTo(target);
     }
 
-    @Test
-    void getFreebieCount() {
+    @DisplayName("주문금액이 12만원 이상일때 증정품의 메뉴를 알려준다")
+    @ParameterizedTest
+    @ValueSource(ints = {120_000, 200_000, 300_000})
+    void getFreebieMenu_1(Integer orderMoney) {
+        // given
+        Map<String, Integer> target = new HashMap<>();
+        target.put(CHAMPANE, FREEBIE_COUNT);
+
+        // when
+        Map<String, Integer> result = freebie.getFreebieMenu(orderMoney);
+
+        // than
+        assertThat(result).isEqualTo(target);
+    }
+
+    @DisplayName("주문금액이 12만원 미만일때 증정품의 메뉴를 알려준다")
+    @ParameterizedTest
+    @ValueSource(ints = {10_000, 100_000, 0})
+    void getFreebieMenu_2(Integer orderMoney) {
+        // when
+        Map<String, Integer> result = freebie.getFreebieMenu(orderMoney);
+
+        // than
+        assertThat(result).isEmpty();
     }
 }
