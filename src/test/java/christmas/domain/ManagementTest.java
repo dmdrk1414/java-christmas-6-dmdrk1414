@@ -166,13 +166,31 @@ class ManagementTest {
     }
 
     @Test
-    void getFinalPayment() {
+    void 할인_후_예상_결제_금액을_확인한다_할인이_있는_경우() {
         // given
+        String orderString = "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1";
+        Integer orderDay = 3;
 
         // when
+        management.getOrderInformation(orderDay, orderString);
+        Integer result = management.getFinalPayment();
 
         // than
+        assertThat(result).isEqualTo(135_754);
+    }
 
+    @Test
+    void 할인_후_예상_결제_금액을_확인한다_할인이_없는_경우() {
+        // given
+        String orderString = "타파스-1,제로콜라-1";
+        Integer orderDay = 3;
+
+        // when
+        management.getOrderInformation(orderDay, orderString);
+        Integer result = management.getFinalPayment();
+
+        // than
+        assertThat(result).isEqualTo(8_500);
     }
 
     @Test
