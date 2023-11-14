@@ -72,11 +72,23 @@ class BenefitTest {
         assertThat(result).isEqualTo(totalDiscount);
     }
 
-    @Test
-    void getTotalBenefit() {
+    @DisplayName("혜택의 총액을 확인한다.")
+    @ParameterizedTest
+    @CsvSource({
+            "티본스테이크-1바비큐립-1초코케이크-2제로콜라-1, 31246",
+            "타파스-1제로콜라-1, 0"
+    })
+    void getTotalBenefit(String orderString, Integer totalDiscount) {
         // given
+        orderString = TestUtill.insertComma(orderString);
+        Orders orders = new Orders(orderString);
+        benefit = new Benefit(3, orders);
+
         // when
+        Integer result = benefit.getTotalBenefit();
+
         // than
+        assertThat(result).isEqualTo(totalDiscount);
     }
 
     @Test
