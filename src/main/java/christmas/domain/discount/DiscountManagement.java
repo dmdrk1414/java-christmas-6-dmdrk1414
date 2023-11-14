@@ -9,6 +9,7 @@ import java.util.Map;
 
 public class DiscountManagement {
     private static final Integer CONDITION_DISCOUNT_MONEY = 10000;
+    private static final Integer ZERO_DISCOUNT = 0;
     private final List<Discount> discountManagement;
     private final Orders orders;
 
@@ -35,15 +36,22 @@ public class DiscountManagement {
 
         for (Discount discount : discountManagement) {
             String discountTitle = discount.giveTitle();
-            Integer discountAmount = 0;
+            Integer discountAmount = discount.giveAmount();
 
-            discountAmount = discount.giveAmount();
-            if (isConditionDiscount() && discountAmount != 0) {
+            if (isCondition(discountAmount)) {
                 informations.put(discountTitle, discountAmount);
             }
         }
 
         return informations;
+    }
+
+    private boolean isCondition(Integer discountAmount) {
+        return isConditionDiscount() && isNotZeroDiscount(discountAmount);
+    }
+
+    private boolean isNotZeroDiscount(Integer discountAmount) {
+        return discountAmount != ZERO_DISCOUNT;
     }
 
     private boolean isConditionDiscount() {
