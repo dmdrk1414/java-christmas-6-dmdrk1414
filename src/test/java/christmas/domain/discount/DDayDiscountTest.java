@@ -1,21 +1,11 @@
 package christmas.domain.discount;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class DDayDiscountTest {
-    private DDayDiscount dDayDiscount;
-
-    @BeforeEach
-    void setUp() {
-        dDayDiscount = new DDayDiscount(1);
-    }
-
-    @DisplayName("주문 날짜에 따른 디데이 행사의 여부와 가격 알기.")
     @ParameterizedTest
     @CsvSource({
             "1, 1000",
@@ -44,7 +34,7 @@ class DDayDiscountTest {
             "24, 3300",
             "25, 3400"
     })
-    void giveAmount(Integer orderDay, Integer amount) {
+    void 주문_날짜에_의한_디데이_행사의_여부확인(Integer orderDay, Integer amount) {
         // given
         DDayDiscount dDayDiscount = new DDayDiscount(orderDay);
         // when
@@ -53,5 +43,4 @@ class DDayDiscountTest {
         // then
         assertThat(result).isEqualTo(amount);
     }
-
 }
