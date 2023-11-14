@@ -23,15 +23,11 @@ public class DiscountManagement {
     }
 
     public Integer getTotalDiscount() {
-        Integer totalDiscount = 0;
-
         if (isConditionDiscount()) {
-            totalDiscount = discountManagement.stream()
-                    .map(Discount::giveAmount)
-                    .reduce(0, Integer::sum);
+            return calculatorTotalDiscount();
         }
-
-        return totalDiscount;
+        
+        return 0;
     }
 
     public Map<String, Integer> getInformations() {
@@ -52,5 +48,11 @@ public class DiscountManagement {
 
     private boolean isConditionDiscount() {
         return orders.getOrderMoney() >= CONDITION_DISCOUNT_MONEY;
+    }
+
+    private Integer calculatorTotalDiscount() {
+        return discountManagement.stream()
+                .map(Discount::giveAmount)
+                .reduce(0, Integer::sum);
     }
 }
