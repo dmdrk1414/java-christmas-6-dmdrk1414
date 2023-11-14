@@ -31,7 +31,7 @@ public class Management {
     }
 
     public Map<String, Integer> getDiscountInformation() {
-        return benefit.generateInformations();
+        return benefit.getInformation();
     }
 
     public Integer getTotalBenefit() {

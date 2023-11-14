@@ -17,7 +17,7 @@ public class Freebie {
         return isEligible(totalOrderMoney);
     }
 
-    public Map<String, Integer> getPriceInformations(Integer totalOrderMoney) {
+    public Map<String, Integer> getPriceInformation(Integer totalOrderMoney) {
         Map<String, Integer> informations = new HashMap<>();
         Integer champagnePrice = champagne.getPrice();
 

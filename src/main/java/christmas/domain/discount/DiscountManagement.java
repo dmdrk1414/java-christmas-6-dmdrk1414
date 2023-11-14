@@ -30,7 +30,7 @@ public class DiscountManagement {
         return 0;
     }
 
-    public Map<String, Integer> getInformations() {
+    public Map<String, Integer> getInformation() {
         Map<String, Integer> informations = new HashMap<>();
 
         for (Discount discount : discountManagement) {

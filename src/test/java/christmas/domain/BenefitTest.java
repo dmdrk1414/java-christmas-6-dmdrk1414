@@ -35,7 +35,7 @@ class BenefitTest {
         benefit = new Benefit(orderDay, order);
 
         // when
-        Map<String, Integer> result = benefit.generateInformations();
+        Map<String, Integer> result = benefit.getInformation();
 
         // then
         assertThat(result.toString()).contains(target);
