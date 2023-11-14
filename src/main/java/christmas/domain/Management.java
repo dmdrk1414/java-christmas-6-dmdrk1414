@@ -9,13 +9,11 @@ import christmas.domain.order.Orders;
 import java.util.Map;
 
 public class Management {
-    private final BadgeManagement badgeManagement;
     private final PaymentCalculator paymentCalculator;
     private Benefit benefit;
     private Orders orders;
 
     public Management() {
-        this.badgeManagement = Config.badgeManagement();
         this.paymentCalculator = Config.paymentCalculator();
     }
 
