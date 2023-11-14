@@ -78,7 +78,7 @@ class BenefitTest {
             "티본스테이크-1바비큐립-1초코케이크-2제로콜라-1, 31246",
             "타파스-1제로콜라-1, 0"
     })
-    void getTotalBenefit(String orderString, Integer totalDiscount) {
+    void getTotalBenefit(String orderString, Integer target) {
         // given
         orderString = TestUtill.insertComma(orderString);
         Orders orders = new Orders(orderString);
@@ -88,7 +88,7 @@ class BenefitTest {
         Integer result = benefit.getTotalBenefit();
 
         // than
-        assertThat(result).isEqualTo(totalDiscount);
+        assertThat(result).isEqualTo(target);
     }
 
     @DisplayName("해택 액수에 따른 뱃지를 확인한다.")
