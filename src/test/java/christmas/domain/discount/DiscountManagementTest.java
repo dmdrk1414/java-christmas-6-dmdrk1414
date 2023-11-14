@@ -2,7 +2,6 @@ package christmas.domain.discount;
 
 import christmas.domain.order.Orders;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -21,7 +20,6 @@ class DiscountManagementTest {
         orders = new Orders(inputString);
     }
 
-    @DisplayName("주문날짜의 총 할인 금액을 얻는 기능 구현_디데이_주말")
     @ParameterizedTest
     @CsvSource({
             "1, 5046",
@@ -39,7 +37,7 @@ class DiscountManagementTest {
             "29, 4046",
             "30, 4046",
     })
-    void getTotalDiscount_디데이_주말(Integer orderDay, Integer totalDiscount) {
+    void 주문날짜에_따른_총_할인_금액을_확인한다_디데이_주말(Integer orderDay, Integer totalDiscount) {
         // given
 
         DiscountManagement discountManagement = new DiscountManagement(orderDay, orders);
@@ -51,7 +49,6 @@ class DiscountManagementTest {
         assertThat(result).isEqualTo(totalDiscount);
     }
 
-    @DisplayName("주문날짜의 총 할인 금액을 얻는 기능 구현_디데이_평일")
     @ParameterizedTest
     @CsvSource({
             "3, 6246",
@@ -80,7 +77,7 @@ class DiscountManagementTest {
 
             "31, 5046",
     })
-    void getTotalDiscount_디데이_평일(Integer orderDay, Integer totalDiscount) {
+    void 주문날짜에_따른_총_할인_금액을_확인한다_디데이_평일(Integer orderDay, Integer totalDiscount) {
         // given
         String inputString = "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1";
         Orders orders = new Orders(inputString);
@@ -93,7 +90,6 @@ class DiscountManagementTest {
         assertThat(result).isEqualTo(totalDiscount);
     }
 
-    @DisplayName("주문날짜의 총 할인 금액을 얻는 기능 구현_특별")
     @ParameterizedTest
     @CsvSource({
             "3, 6246",
@@ -103,7 +99,7 @@ class DiscountManagementTest {
             "25, 8446",
             "31, 5046",
     })
-    void getTotalDiscount_특별(Integer orderDay, Integer totalDiscount) {
+    void 주문날짜에_따른_총_할인_금액을_확인한다_디데이_특별(Integer orderDay, Integer totalDiscount) {
         // given
         DiscountManagement discountManagement = new DiscountManagement(orderDay, orders);
 
@@ -114,9 +110,8 @@ class DiscountManagementTest {
         assertThat(result).isEqualTo(totalDiscount);
     }
 
-    @DisplayName("날짜 할인의 정보를 확인한다_1")
     @Test
-    void getInformation_1() {
+    void 주문날짜에_따른_할인_정보를_확인한다_1() {
         // given
         String inputString = "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1";
         Orders orders = new Orders(inputString);
@@ -135,9 +130,8 @@ class DiscountManagementTest {
         assertThat(result).isEqualTo(target);
     }
 
-    @DisplayName("날짜 할인의 정보를 확인한다_2")
     @Test
-    void getInformations_2() {
+    void 주문날짜에_따른_할인_정보를_확인한다_2() {
         // given
         String inputString = "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1";
         Orders orders = new Orders(inputString);
