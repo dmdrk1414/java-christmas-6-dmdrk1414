@@ -4,9 +4,13 @@ import christmas.domain.order.Orders;
 import christmas.domain.testutill.TestUtill;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -105,4 +109,20 @@ class OrdersTest {
         assertThat(result).isEqualTo(total);
     }
 
+    @Test
+    void 주문의_정보를_확인한다() {
+        String ordersString = "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1";
+        Orders orders = new Orders(ordersString);
+        Map<String, Integer> target = new HashMap<>();
+        target.put("티본스테이크", 1);
+        target.put("바비큐립", 1);
+        target.put("초코케이크", 2);
+        target.put("제로콜라", 1);
+
+        // when
+        Map<String, Integer> result = orders.getOrderInformation();
+
+        // then
+        assertThat(result).isEqualTo(target);
+    }
 }
