@@ -43,7 +43,10 @@ public class Management {
     }
 
     public Integer getFinalPayment() {
-        return paymentCalculator.estimateFinalPayment(orders.getOrderMoney(), benefit.getTotalDiscount());
+        Integer orderMoney = orders.getOrderMoney();
+        Integer totalDiscount = benefit.getTotalDiscount();
+
+        return paymentCalculator.estimateFinalPayment(orderMoney, totalDiscount);
     }
 
     public String getBadgeName() {
