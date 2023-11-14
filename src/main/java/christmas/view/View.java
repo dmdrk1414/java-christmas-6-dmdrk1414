@@ -30,47 +30,47 @@ public class View {
         printEventBadge();
     }
 
-    private String inputOrder() {
-        return inputView.readOrder();
+    private void printIntroduce() {
+        outputView.printIntroduce();
     }
 
     private Integer inputOrderDate() {
         return inputView.readDate();
     }
 
-    private void printEventBadge() {
-        outputView.printEventBadge(management.getBadgeName());
-    }
-
-    private void printFinalPayment() {
-        outputView.printFinalPayment(management.getFinalPayment());
-    }
-
-    private void printTotalBenefit() {
-        outputView.printTotalDiscount(management.getTotalBenefit());
-    }
-
-    private void printBenefitInformations() {
-        outputView.printBenefitInformations(management.getDiscountInformation());
-    }
-
-    private void printFreebieMenu() {
-        outputView.printFreebieMenu(management.getFreebieMenu());
-    }
-
-    private void printOriginalOrderTotalAcount() {
-        outputView.printOriginalOrderTotalAcount(management.getOriginalOrderTotal());
-    }
-
-    private void printOrderMenu(Integer orderDay, String orderString) {
-        outputView.printOrderMenu(management.getOrderInformation(orderDay, orderString));
+    private String inputOrder() {
+        return inputView.readOrder();
     }
 
     private void printEventPreview(Integer orderDate) {
         outputView.printEventPreview(orderDate);
     }
 
-    private void printIntroduce() {
-        outputView.printIntroduce();
+    private void printOrderMenu(Integer orderDay, String orderString) {
+        outputView.printOrderMenu(management.getOrderInformation(orderDay, orderString));
+    }
+
+    private void printOriginalOrderTotalAcount() {
+        outputView.printOriginalOrderTotalAcount(management.getOriginalOrderTotal());
+    }
+
+    private void printFreebieMenu() {
+        outputView.printFreebieMenu(management.getFreebieMenu());
+    }
+
+    private void printBenefitInformations() {
+        outputView.printBenefitInformations(management.getDiscountInformation());
+    }
+
+    private void printTotalBenefit() {
+        outputView.printTotalDiscount(management.getTotalBenefit());
+    }
+
+    private void printFinalPayment() {
+        outputView.printFinalPayment(management.getFinalPayment());
+    }
+
+    private void printEventBadge() {
+        outputView.printEventBadge(management.getBadgeName());
     }
 }

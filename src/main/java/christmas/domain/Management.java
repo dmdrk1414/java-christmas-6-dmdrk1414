@@ -30,6 +30,12 @@ public class Management {
         return orders.getOrderMoney();
     }
 
+    public Map<String, Integer> getFreebieMenu() {
+        Integer totalOrderMoney = orders.getOrderMoney();
+
+        return benefit.getFreebieMenu(totalOrderMoney);
+    }
+
     public Map<String, Integer> getDiscountInformation() {
         return benefit.getInformation();
     }
@@ -44,12 +50,6 @@ public class Management {
 
     public String getBadgeName() {
         return benefit.getBadgeName();
-    }
-
-    public Map<String, Integer> getFreebieMenu() {
-        Integer totalOrderMoney = orders.getOrderMoney();
-
-        return benefit.getFreebieMenu(totalOrderMoney);
     }
 
     private void generateBenefit(Integer orderDay, Orders orders) {
