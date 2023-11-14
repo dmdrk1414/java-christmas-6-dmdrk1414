@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ChampagneTest {
+    
     @BeforeEach
     void setUp() {
     }
-
 
     @Test
     void makeChampagneCountInformation() {
