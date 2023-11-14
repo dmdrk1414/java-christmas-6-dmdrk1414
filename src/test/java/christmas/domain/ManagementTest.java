@@ -51,11 +51,6 @@ class ManagementTest {
         // given
         String orderString = "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1";
         Integer orderDay = 3;
-        Map<String, Integer> target = new HashMap<>();
-        target.put("티본스테이크", 1);
-        target.put("바비큐립", 1);
-        target.put("초코케이크", 2);
-        target.put("제로콜라", 1);
 
         // when
         management.getOrderInformation(orderDay, orderString);
@@ -70,9 +65,6 @@ class ManagementTest {
         // given
         String orderString = "타파스-1,제로콜라-1";
         Integer orderDay = 3;
-        Map<String, Integer> target = new HashMap<>();
-        target.put("타파스", 1);
-        target.put("제로콜라", 1);
 
         // when
         management.getOrderInformation(orderDay, orderString);
@@ -83,13 +75,33 @@ class ManagementTest {
     }
 
     @Test
-    void getFreebieMenu() {
+    void 증정품의_메뉴를_확인한다_증정품이_있는_경우() {
         // given
+        String orderString = "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1";
+        Integer orderDay = 3;
+        Map<String, Integer> target = new HashMap<>();
+        target.put("샴페인", 1);
 
         // when
+        management.getOrderInformation(orderDay, orderString);
+        Map<String, Integer> result = management.getFreebieMenu();
 
         // than
+        assertThat(result).isEqualTo(target);
+    }
 
+    @Test
+    void 증정품의_메뉴를_확인한다_증정품이_없는경우() {
+        // given
+        String orderString = "타파스-1,제로콜라-1";
+        Integer orderDay = 3;
+
+        // when
+        management.getOrderInformation(orderDay, orderString);
+        Map<String, Integer> result = management.getFreebieMenu();
+
+        // than
+        assertThat(result).isEmpty();
     }
 
     @Test
