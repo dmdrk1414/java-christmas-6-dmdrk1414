@@ -52,15 +52,16 @@ class ChampagneTest {
         assertThat(result).isEqualTo(target);
     }
 
+    @DisplayName("증정품 샴페인의 가격을 확인한다.")
     @Test
     void getPrice() {
         // given
-
+        Integer target = Freebies.CHAMPAGNE.getPrice();
 
         // when
-
+        Integer result = champagne.getPrice();
 
         // then
-
+        assertThat(result).isEqualTo(target);
     }
 }
