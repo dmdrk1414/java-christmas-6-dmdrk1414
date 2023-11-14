@@ -91,11 +91,26 @@ class BenefitTest {
         assertThat(result).isEqualTo(totalDiscount);
     }
 
-    @Test
-    void getBadgeName() {
+    @DisplayName("해택 액수에 따른 뱃지를 확인한다.")
+    @ParameterizedTest
+    @CsvSource({
+            "티본스테이크-1바비큐립-1초코케이크-2제로콜라-1, 산타",
+            "타파스-1제로콜라-1, 없음",
+            "양송이수프-1타파스-2티본스테이크-1아이스크림-3제로콜라-2, 별",
+            "양송이수프-1타파스-1아이스크림-4제로콜라-2, 트리",
+            "시저샐러드-2바비큐립-1초코케이크-1레드와인-1, 산타",
+    })
+    void getBadgeName(String orderString, String target) {
         // given
+        orderString = TestUtill.insertComma(orderString);
+        Orders orders = new Orders(orderString);
+        benefit = new Benefit(3, orders);
+
         // when
+        String result = benefit.getBadgeName();
+
         // than
+        assertThat(result).contains(target);
     }
 
     @Test

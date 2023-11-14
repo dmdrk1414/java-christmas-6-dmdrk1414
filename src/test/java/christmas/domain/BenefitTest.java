@@ -98,7 +98,7 @@ class BenefitTest {
 //        assertThat(result).isEqualTo(target);
 //    }
 
-    @DisplayName("해택의 전체의 액수를 알수있는 테스트")
+    @DisplayName("해택에 따른 뱃지를 알수있는 테스트")
     @ParameterizedTest
     @CsvSource({
             "티본스테이크-1바비큐립-1초코케이크-2제로콜라-1, 산타",
