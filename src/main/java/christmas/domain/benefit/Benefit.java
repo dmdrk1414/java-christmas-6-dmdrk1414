@@ -26,10 +26,11 @@ public class Benefit {
     public Map<String, Integer> generateInformations() {
         Integer totalOrderMoney = orders.getOrderMoney();
         Map<String, Integer> informations = new HashMap<>();
-        Map<String, Integer> discountInformations = discountManagement.getInformations();
-        Map<String, Integer> freebieInformations = freebie.getPriceInformations(totalOrderMoney);
 
         if (getTotalAmount() != 0) {
+            Map<String, Integer> discountInformations = discountManagement.getInformations();
+            Map<String, Integer> freebieInformations = freebie.getPriceInformations(totalOrderMoney);
+            
             informations.putAll(discountInformations);
             informations.putAll(freebieInformations);
         }
