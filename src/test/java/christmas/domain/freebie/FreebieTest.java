@@ -8,6 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,6 +16,8 @@ import java.util.Map;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class FreebieTest {
+    private static final String FREEBIE_TITLE = "증정 이벤트";
+    private static final Integer FREEBIE_PRICE = 25_000;
     private Freebie freebie;
 
     @BeforeEach
@@ -61,9 +64,30 @@ class FreebieTest {
         assertThat(result).isEqualTo(target);
     }
 
-    @DisplayName("증정품의 정보(증정 이벤트의 제목과 해택 가격을) 알려준다")
-    @Test
-    void getPriceInformation() {
+    @DisplayName("주문금액이 12만원 이상일때 증정품의 정보(증정 이벤트의 제목과 해택 가격을) 알려준다")
+    @ParameterizedTest
+    @ValueSource(ints = {120_000, 200_000, 300_000})
+    void getPriceInformation_1(Integer orderMoney) {
+        // given
+        Map<String, Integer> target = new HashMap<>();
+        target.put(FREEBIE_TITLE, FREEBIE_PRICE);
+
+        // when
+        Map<String, Integer> result = freebie.getPriceInformation(orderMoney);
+
+        // than
+        assertThat(result).isEqualTo(target);
+    }
+
+    @DisplayName("주문금액이 12만원 미만일때 증정품의 정보(증정 이벤트의 제목과 해택 가격을) 알려준다")
+    @ParameterizedTest
+    @ValueSource(ints = {10_000, 100_000, 0})
+    void getPriceInformation_2(Integer orderMoney) {
+        // when
+        Map<String, Integer> result = freebie.getPriceInformation(orderMoney);
+
+        // than
+        assertThat(result).isEmpty();
     }
 
     @DisplayName("증정품 샴페인의 가격을 알려주는 기능 추가")
