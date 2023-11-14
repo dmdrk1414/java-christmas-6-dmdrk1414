@@ -42,12 +42,4 @@ public enum Badge {
     public String getName() {
         return name;
     }
-
-    public Integer getCondition() {
-        return condition;
-    }
-
-    public Boolean isCondition(Integer totalDiscount) {
-        return totalDiscount >= getCondition();
-    }
 }
