@@ -36,7 +36,7 @@ public class Management {
         return benefit.getFreebieMenu(totalOrderMoney);
     }
 
-    public Map<String, Integer> getDiscountInformation() {
+    public Map<String, Integer> getBenefitInformation() {
         return benefit.getInformation();
     }
 
