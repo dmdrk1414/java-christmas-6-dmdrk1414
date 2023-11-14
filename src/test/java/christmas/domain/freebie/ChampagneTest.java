@@ -4,6 +4,9 @@ import christmas.constant.freebie.Freebies;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,16 +36,20 @@ class ChampagneTest {
         assertThat(result).isEqualTo(target);
     }
 
-    @Test
-    void isEligible() {
-        // given
-
-
+    @DisplayName("샴페인의 증정받을 수 있는지 확인한다")
+    @ParameterizedTest
+    @CsvSource({
+            "10_000, false",
+            "100_000, false",
+            "120_000, true",
+            "220_000, true",
+    })
+    void isEligible(Integer orderMoney, Boolean target) {
         // when
-
+        Boolean result = champagne.isEligible(orderMoney);
 
         // then
-
+        assertThat(result).isEqualTo(target);
     }
 
     @Test
