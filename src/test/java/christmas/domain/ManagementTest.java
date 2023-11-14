@@ -47,13 +47,39 @@ class ManagementTest {
     }
 
     @Test
-    void getOriginalOrderTotal() {
+    void 주문의_원래의_가격을_확인한다() {
         // given
+        String orderString = "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1";
+        Integer orderDay = 3;
+        Map<String, Integer> target = new HashMap<>();
+        target.put("티본스테이크", 1);
+        target.put("바비큐립", 1);
+        target.put("초코케이크", 2);
+        target.put("제로콜라", 1);
 
         // when
+        management.getOrderInformation(orderDay, orderString);
+        Integer result = management.getOriginalOrderTotal();
 
         // than
+        assertThat(result).isEqualTo(142_000);
+    }
 
+    @Test
+    void 주문의_원래의_가격을_확인한다_2() {
+        // given
+        String orderString = "타파스-1,제로콜라-1";
+        Integer orderDay = 3;
+        Map<String, Integer> target = new HashMap<>();
+        target.put("타파스", 1);
+        target.put("제로콜라", 1);
+
+        // when
+        management.getOrderInformation(orderDay, orderString);
+        Integer result = management.getOriginalOrderTotal();
+
+        // than
+        assertThat(result).isEqualTo(8_500);
     }
 
     @Test
