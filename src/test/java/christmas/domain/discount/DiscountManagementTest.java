@@ -9,33 +9,35 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class DiscountManagementTest {
+    private Orders orders;
 
     @BeforeEach
     void setUp() {
+        String inputString = "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1";
+        orders = new Orders(inputString);
     }
 
-    @DisplayName("주문날짜의 총 할인 금액을 얻는 기능 구현_주말")
+    @DisplayName("주문날짜의 총 할인 금액을 얻는 기능 구현_디데이_주말")
     @ParameterizedTest
     @CsvSource({
-            "1, 2, 2, 5046",
-            "2, 2, 2, 5146",
+            "1, 5046",
+            "2, 5146",
 
-            "8, 2, 2, 5746",
-            "9, 2, 2, 5846",
+            "8, 5746",
+            "9, 5846",
 
-            "15, 2, 2, 6446",
-            "16, 2, 2, 6546",
+            "15, 6446",
+            "16, 6546",
 
-            "22, 2, 2, 7146",
-            "23, 2, 2, 7246",
+            "22, 7146",
+            "23, 7246",
 
-            "29, 2, 2, 4046",
-            "30, 2, 2, 4046",
+            "29, 4046",
+            "30, 4046",
     })
-    void getTotalDiscount_주말(Integer orderDay, Integer mainCount, Integer dessertCount, Integer totalDiscount) {
+    void getTotalDiscount_디데이_주말(Integer orderDay, Integer totalDiscount) {
         // given
-        String inputString = "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1";
-        Orders orders = new Orders(inputString);
+
         DiscountManagement discountManagement = new DiscountManagement(orderDay, orders);
 
         // when
@@ -45,36 +47,36 @@ class DiscountManagementTest {
         assertThat(result).isEqualTo(totalDiscount);
     }
 
-    @DisplayName("주문날짜의 총 할인 금액을 얻는 기능 구현_평일")
+    @DisplayName("주문날짜의 총 할인 금액을 얻는 기능 구현_디데이_평일")
     @ParameterizedTest
     @CsvSource({
-            "3, 2, 2, 6246",
-            "4, 2, 2, 5346",
-            "5, 2, 2, 5446",
-            "6, 2, 2, 5546",
-            "7, 2, 2, 5646",
+            "3, 6246",
+            "4, 5346",
+            "5, 5446",
+            "6, 5546",
+            "7, 5646",
 
-            "10, 2, 2, 6946",
-            "11, 2, 2, 6046",
-            "12, 2, 2, 6146",
-            "13, 2, 2, 6246",
-            "14, 2, 2, 6346",
+            "10, 6946",
+            "11, 6046",
+            "12, 6146",
+            "13, 6246",
+            "14, 6346",
 
-            "17, 2, 2, 7646",
-            "18, 2, 2, 6746",
-            "19, 2, 2, 6846",
-            "20, 2, 2, 6946",
-            "21, 2, 2, 7046",
+            "17, 7646",
+            "18, 6746",
+            "19, 6846",
+            "20, 6946",
+            "21, 7046",
 
-            "24, 2, 2, 8346",
-            "25, 2, 2, 8446",
-            "26, 2, 2, 4046",
-            "27, 2, 2, 4046",
-            "28, 2, 2, 4046",
+            "24, 8346",
+            "25, 8446",
+            "26, 4046",
+            "27, 4046",
+            "28, 4046",
 
-            "31, 2, 2, 5046",
+            "31, 5046",
     })
-    void getTotalDiscount_평일(Integer orderDay, Integer mainCount, Integer dessertCount, Integer totalDiscount) {
+    void getTotalDiscount_디데이_평일(Integer orderDay, Integer totalDiscount) {
         // given
         String inputString = "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1";
         Orders orders = new Orders(inputString);
@@ -90,17 +92,15 @@ class DiscountManagementTest {
     @DisplayName("주문날짜의 총 할인 금액을 얻는 기능 구현_특별")
     @ParameterizedTest
     @CsvSource({
-            "3, 2, 2, 6246",
-            "10, 2, 2, 6946",
-            "17, 2, 2, 7646",
-            "24, 2, 2, 8346",
-            "25, 2, 2, 8446",
-            "31, 2, 2, 5046",
+            "3, 6246",
+            "10, 6946",
+            "17, 7646",
+            "24, 8346",
+            "25, 8446",
+            "31, 5046",
     })
-    void getTotalDiscount_특별(Integer orderDay, Integer mainCount, Integer dessertCount, Integer totalDiscount) {
+    void getTotalDiscount_특별(Integer orderDay, Integer totalDiscount) {
         // given
-        String inputString = "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1";
-        Orders orders = new Orders(inputString);
         DiscountManagement discountManagement = new DiscountManagement(orderDay, orders);
 
         // when
