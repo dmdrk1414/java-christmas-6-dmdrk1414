@@ -1,5 +1,6 @@
 package christmas.domain.discount;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -42,5 +43,24 @@ class DDayDiscountTest {
 
         // then
         assertThat(result).isEqualTo(amount);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "1", "2", "3", "4", "5", "6", "7", "8", "9",
+
+            "10", "11", "12", "13", "14", "15", "16", "17", "18", "19",
+
+            "20", "21", "22", "23", "24", "25"
+    })
+    void 평일_할인의_제목을_확인한다(Integer orderDay) {
+        // given
+        DDayDiscount dDayDiscount = new DDayDiscount(orderDay);
+
+        // when
+        String result = dDayDiscount.giveTitle();
+
+        // then
+        assertThat(result).contains("디데이 할인");
     }
 }
