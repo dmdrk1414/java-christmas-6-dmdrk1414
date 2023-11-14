@@ -11,7 +11,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class BenefitTest {
     private Benefit benefit;
@@ -129,14 +128,14 @@ class BenefitTest {
             "양송이수프-1타파스-1아이스크림-4제로콜라-2, 37500, {}",
             "시저샐러드-2바비큐립-1초코케이크-1레드와인-1, 145000, {샴페인=1}",
     })
-    void getFreebieCount(String orderString, Integer orderMoney, String target) {
+    void getFreebieMenu(String orderString, Integer orderMoney, String target) {
         // given
         orderString = TestUtill.insertComma(orderString);
         Orders orders = new Orders(orderString);
         benefit = new Benefit(3, orders);
 
         // when
-        Map<String, Integer> result = benefit.getFreebieCount(orderMoney);
+        Map<String, Integer> result = benefit.getFreebieMenu(orderMoney);
 
         // than
         assertThat(result.toString()).contains(target);

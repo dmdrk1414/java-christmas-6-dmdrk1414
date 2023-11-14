@@ -38,7 +38,7 @@ public class Freebie {
         return champagnePrice;
     }
 
-    public Map<String, Integer> getFreebieCount(Integer totalOrderMoney) {
+    public Map<String, Integer> getFreebieMenu(Integer totalOrderMoney) {
         Map<String, Integer> freebies = new HashMap<>();
         Map<String, Integer> champagneCountInformation = champagne.makeChampagneCountInformation();
 

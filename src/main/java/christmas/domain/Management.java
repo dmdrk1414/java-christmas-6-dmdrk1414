@@ -46,10 +46,10 @@ public class Management {
         return benefit.getBadgeName();
     }
 
-    public Map<String, Integer> getFreebies() {
+    public Map<String, Integer> getFreebieMenu() {
         Integer totalOrderMoney = orders.getOrderMoney();
 
-        return benefit.getFreebieCount(totalOrderMoney);
+        return benefit.getFreebieMenu(totalOrderMoney);
     }
 
     private void generateBenefit(Integer orderDay, Orders orders) {

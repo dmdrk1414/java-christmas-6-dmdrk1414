@@ -32,7 +32,7 @@ public class OutputView {
         newLine();
     }
 
-    public void printFreebies(Map<String, Integer> freebies) {
+    public void printFreebieMenu(Map<String, Integer> freebies) {
         println("<증정 메뉴>");
 
         for (Map.Entry<String, Integer> entry : freebies.entrySet()) {

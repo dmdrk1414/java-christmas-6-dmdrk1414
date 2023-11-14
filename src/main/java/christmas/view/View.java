@@ -23,7 +23,7 @@ public class View {
         printEventPreview(orderDate);
         printOrderMenu(orderDate, orderLine);
         printOriginalOrderTotalAcount();
-        printFreebies();
+        printFreebieMenu();
         printBenefitInformations();
         printTotalBenefit();
         printFinalPayment();
@@ -54,8 +54,8 @@ public class View {
         outputView.printBenefitInformations(management.getDiscountInformation());
     }
 
-    private void printFreebies() {
-        outputView.printFreebies(management.getFreebies());
+    private void printFreebieMenu() {
+        outputView.printFreebieMenu(management.getFreebieMenu());
     }
 
     private void printOriginalOrderTotalAcount() {
