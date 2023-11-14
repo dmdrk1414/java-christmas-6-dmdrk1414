@@ -11,7 +11,6 @@ public abstract class Discount {
 
     abstract public Integer giveAmount();
 
-    abstract public Boolean checkPeriod();
 
     abstract public String giveTitle();
 

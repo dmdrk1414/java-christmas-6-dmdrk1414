@@ -49,57 +49,5 @@ class WeekDayDiscountTest {
         assertThat(result).isEqualTo(amount);
     }
 
-    @DisplayName("해당 주문 날짜기 평일 할인 행사인지 확인하는 기능 ")
-    @ParameterizedTest
-    @CsvSource({
-            //평일
-            "3, true",
-            "4, true",
-            "5, true",
-            "6, true",
-            "7, true",
 
-            "10, true",
-            "11, true",
-            "12, true",
-            "13, true",
-            "14, true",
-
-            "17, true",
-            "18, true",
-            "19, true",
-            "20, true",
-            "21, true",
-
-            "24, true",
-            "25, true",
-            "26, true",
-            "27, true",
-            "28, true",
-
-            "31, true",
-
-            // 주말
-            "1, false",
-            "2, false",
-            "8, false",
-            "9, false",
-            "15, false",
-            "16, false",
-            "22, false",
-            "23, false",
-            "29, false",
-            "30, false",
-    })
-    void checkPeriod(Integer orderDay, Boolean confirm) {
-        // given
-        Integer desserdOrderCount = 3;
-        WeekDayDiscount weekDayDiscount = new WeekDayDiscount(orderDay, desserdOrderCount);
-
-        // when
-        Boolean result = weekDayDiscount.checkPeriod();
-
-        // than
-        assertThat(result).isEqualTo(confirm);
-    }
 }

@@ -18,13 +18,6 @@ public class WeekendDayDiscount extends Discount {
     }
 
     @Override
-    public Boolean checkPeriod() {
-        Boolean confirm = super.getConfirm(DiscountGroup.WEEKEND_DAY_DISCOUNT);
-
-        return confirm;
-    }
-
-    @Override
     public String giveTitle() {
         return DiscountGroup.WEEKEND_DAY_DISCOUNT.getTitle();
     }

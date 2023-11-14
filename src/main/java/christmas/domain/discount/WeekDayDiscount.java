@@ -17,12 +17,6 @@ public class WeekDayDiscount extends Discount {
         return amount;
     }
 
-    @Override
-    public Boolean checkPeriod() {
-        Boolean confirm = super.getConfirm(DiscountGroup.WEEK_DAY_DISCOUNT);
-
-        return confirm;
-    }
 
     @Override
     public String giveTitle() {

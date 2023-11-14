@@ -9,17 +9,9 @@ public class DDayDiscount extends Discount {
 
     @Override
     public Integer giveAmount() {
-        Integer amount = super.getAmount(DiscountGroup.D_DAY_DISCOUNT);
-
-        return amount;
+        return super.getAmount(DiscountGroup.D_DAY_DISCOUNT);
     }
 
-    @Override
-    public Boolean checkPeriod() {
-        Boolean confirm = super.getConfirm(DiscountGroup.D_DAY_DISCOUNT);
-
-        return confirm;
-    }
 
     @Override
     public String giveTitle() {
