@@ -469,3 +469,6 @@ List<MenuGroup> menuGroups = MenuGroup.getAllMenuGroups();
 
   테스트또한 메서드이다 자료형이 들어가면 안된다
 
+- 전체적인 회고
+
+  order의 클래스에 종속성이 너무 심하다.... 이번과제에 잘못을 느겼습니다 객체의 독립성이 깨지니 분리가 너무 어렵습니다
