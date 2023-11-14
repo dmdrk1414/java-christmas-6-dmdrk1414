@@ -65,10 +65,10 @@ public class OutputView {
 
         println("<총혜택 금액>");
         if (totalDiscount == 0) {
-            println(totalDiscountString);
+            println(totalDiscountString + "원");
         }
         if (totalDiscount != 0) {
-            println("-" + totalDiscountString);
+            println("-" + totalDiscountString + "원");
         }
         newLine();
     }

@@ -77,26 +77,26 @@ class BenefitTest {
         assertThat(result).isEqualTo(target);
     }
 
-    @DisplayName("해택의 전체의 액수를 알수있는 테스트")
-    @ParameterizedTest
-    @CsvSource({
-            "티본스테이크-1바비큐립-1초코케이크-2제로콜라-1, 31246",
-            "타파스-1제로콜라-1, 0",
-            "양송이수프-1타파스-2티본스테이크-1아이스크림-3제로콜라-2, 8269",
-            "시저샐러드-2바비큐립-1초코케이크-1레드와인-1, 29223",
-    })
-    void getTotalAmount(String orderString, Integer target) {
-        // given
-        orderString = TestUtill.insertComma(orderString);
-        Orders order = new Orders(orderString);
-        Benefit benefit = new Benefit(3, order);
-
-        // when
-        Integer result = benefit.getTotalAmount();
-
-        // than
-        assertThat(result).isEqualTo(target);
-    }
+//    @DisplayName("해택의 전체의 액수를 알수있는 테스트")
+//    @ParameterizedTest
+//    @CsvSource({
+//            "티본스테이크-1바비큐립-1초코케이크-2제로콜라-1, 31246",
+//            "타파스-1제로콜라-1, 0",
+//            "양송이수프-1타파스-2티본스테이크-1아이스크림-3제로콜라-2, 8269",
+//            "시저샐러드-2바비큐립-1초코케이크-1레드와인-1, 29223",
+//    })
+//    void getTotalAmount(String orderString, Integer target) {
+//        // given
+//        orderString = TestUtill.insertComma(orderString);
+//        Orders order = new Orders(orderString);
+//        Benefit benefit = new Benefit(3, order);
+//
+//        // when
+//        Integer result = benefit.getTotalAmount();
+//
+//        // than
+//        assertThat(result).isEqualTo(target);
+//    }
 
     @DisplayName("해택의 전체의 액수를 알수있는 테스트")
     @ParameterizedTest

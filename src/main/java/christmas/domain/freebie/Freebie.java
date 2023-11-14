@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Freebie {
+    private static final String Freebie_Title = "증정 이벤트";
     private final Champagne champagne;
 
     public Freebie() {
@@ -18,10 +19,10 @@ public class Freebie {
 
     public Map<String, Integer> getPriceInformations(Integer totalOrderMoney) {
         Map<String, Integer> informations = new HashMap<>();
-        Map<String, Integer> champagnePriceInformation = champagne.makeChampagnePriceInformation();
+        Integer champagnePrice = champagne.getPrice();
 
         if (isEligible(totalOrderMoney)) {
-            informations.putAll(champagnePriceInformation);
+            informations.put(Freebie_Title, champagnePrice);
         }
 
         return informations;

@@ -26,7 +26,7 @@ public class DiscountManagement {
         if (isConditionDiscount()) {
             return calculatorTotalDiscount();
         }
-        
+
         return 0;
     }
 
@@ -37,10 +37,10 @@ public class DiscountManagement {
             String discountTitle = discount.giveTitle();
             Integer discountAmount = 0;
 
-            if (isConditionDiscount()) {
-                discountAmount = discount.giveAmount();
+            discountAmount = discount.giveAmount();
+            if (isConditionDiscount() && discountAmount != 0) {
+                informations.put(discountTitle, discountAmount);
             }
-            informations.put(discountTitle, discountAmount);
         }
 
         return informations;

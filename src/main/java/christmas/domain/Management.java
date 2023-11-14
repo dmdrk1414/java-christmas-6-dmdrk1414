@@ -34,12 +34,12 @@ public class Management {
         return benefit.generateInformations();
     }
 
-    public Integer getTotalDiscount() {
+    public Integer getTotalBenefit() {
         return benefit.getTotalAmount();
     }
 
     public Integer getFinalPayment() {
-        return paymentCalculator.estimateFinalPayment(getOriginalOrderTotal(), getTotalDiscount());
+        return paymentCalculator.estimateFinalPayment(orders.getOrderMoney(), benefit.getTotalDiscount());
     }
 
     public String getBadgeName() {

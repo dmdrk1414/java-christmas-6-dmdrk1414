@@ -18,22 +18,12 @@ public class Champagne {
         return champagneInformation;
     }
 
-    public Map<String, Integer> makeChampagnePriceInformation() {
-        Map<String, Integer> champagneInformation = new HashMap<>();
-        String champagne = getChampagneName();
-        Integer price = getChampagnePrice();
-
-        champagneInformation.put(champagne, price);
-
-        return champagneInformation;
-    }
-
     public Boolean isEligible(Integer totalOrderMoney) {
         return totalOrderMoney >= CONDITION_SHAMPAGNE_ORDER_MONEY;
     }
 
     public Integer getPrice() {
-        return getChampagnePrice();
+        return Freebies.CHAMPAGNE.getPrice();
     }
 
     private Integer getChampagneCount() {
@@ -44,7 +34,4 @@ public class Champagne {
         return Freebies.CHAMPAGNE.getName();
     }
 
-    private Integer getChampagnePrice() {
-        return Freebies.CHAMPAGNE.getPrice();
-    }
 }

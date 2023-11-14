@@ -25,7 +25,7 @@ public class View {
         printOriginalOrderTotalAcount();
         printFreebies();
         printBenefitInformations();
-        printTotalDiscount();
+        printTotalBenefit();
         printFinalPayment();
         printEventBadge();
     }
@@ -46,8 +46,8 @@ public class View {
         outputView.printFinalPayment(management.getFinalPayment());
     }
 
-    private void printTotalDiscount() {
-        outputView.printTotalDiscount(management.getTotalDiscount());
+    private void printTotalBenefit() {
+        outputView.printTotalDiscount(management.getTotalBenefit());
     }
 
     private void printBenefitInformations() {

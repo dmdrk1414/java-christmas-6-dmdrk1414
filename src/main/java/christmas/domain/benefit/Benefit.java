@@ -30,7 +30,7 @@ public class Benefit {
         if (getTotalAmount() != 0) {
             Map<String, Integer> discountInformations = discountManagement.getInformations();
             Map<String, Integer> freebieInformations = freebie.getPriceInformations(totalOrderMoney);
-            
+
             informations.putAll(discountInformations);
             informations.putAll(freebieInformations);
         }
@@ -42,6 +42,14 @@ public class Benefit {
         Integer totalOrderMoney = orders.getOrderMoney();
 
         return freebie.isEligibleChampagne(totalOrderMoney);
+    }
+
+    public Integer getTotalDiscount() {
+        Integer totalAmount = 0;
+
+        totalAmount = totalAmount + discountManagement.getTotalDiscount();
+
+        return totalAmount;
     }
 
     public Integer getTotalAmount() {
