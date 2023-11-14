@@ -44,9 +44,8 @@ class BenefitTest {
         assertThat(result.toString()).contains(target);
     }
 
-    @DisplayName("모든 해택에 관한 정보를 얻는다_2")
     @Test
-    void getInformation_2() {
+    void 해택_내역_할인_경품을_확인한다_혜택의_내역이_없는_경우() {
         // given
         String orderString = "타파스-1,제로콜라-1";
         Orders orders = new Orders(orderString);
@@ -59,13 +58,12 @@ class BenefitTest {
         assertThat(result.toString()).contains("{}");
     }
 
-    @DisplayName("날짜 기반 할인 총 액수를 확인한다.")
     @ParameterizedTest
     @CsvSource({
             "티본스테이크-1바비큐립-1초코케이크-2제로콜라-1, 6246",
             "타파스-1제로콜라-1, 0"
     })
-    void getTotalDiscount(String orderString, Integer totalDiscount) {
+    void 날짜에따른_할인의_총_액수를_확인한다(String orderString, Integer totalDiscount) {
         // given
         orderString = TestUtill.insertComma(orderString);
         Orders orders = new Orders(orderString);
@@ -78,13 +76,12 @@ class BenefitTest {
         assertThat(result).isEqualTo(totalDiscount);
     }
 
-    @DisplayName("혜택의 총액을 확인한다.")
     @ParameterizedTest
     @CsvSource({
             "티본스테이크-1바비큐립-1초코케이크-2제로콜라-1, 31246",
             "타파스-1제로콜라-1, 0"
     })
-    void getTotalBenefit(String orderString, Integer target) {
+    void 혜택의_총액을_확인한다(String orderString, Integer target) {
         // given
         orderString = TestUtill.insertComma(orderString);
         Orders orders = new Orders(orderString);
@@ -97,7 +94,6 @@ class BenefitTest {
         assertThat(result).isEqualTo(target);
     }
 
-    @DisplayName("해택 액수에 따른 뱃지를 확인한다.")
     @ParameterizedTest
     @CsvSource({
             "티본스테이크-1바비큐립-1초코케이크-2제로콜라-1, 산타",
@@ -106,7 +102,7 @@ class BenefitTest {
             "양송이수프-1타파스-1아이스크림-4제로콜라-2, 트리",
             "시저샐러드-2바비큐립-1초코케이크-1레드와인-1, 산타",
     })
-    void getBadgeName(String orderString, String target) {
+    void 혜택_액수에_따른_배지를_확인한다(String orderString, String target) {
         // given
         orderString = TestUtill.insertComma(orderString);
         Orders orders = new Orders(orderString);
@@ -119,7 +115,6 @@ class BenefitTest {
         assertThat(result).contains(target);
     }
 
-    @DisplayName("증정 메뉴을 확인한다")
     @ParameterizedTest
     @CsvSource({
             "티본스테이크-1바비큐립-1초코케이크-2제로콜라-1, 142000, {샴페인=1}",
@@ -128,7 +123,7 @@ class BenefitTest {
             "양송이수프-1타파스-1아이스크림-4제로콜라-2, 37500, {}",
             "시저샐러드-2바비큐립-1초코케이크-1레드와인-1, 145000, {샴페인=1}",
     })
-    void getFreebieMenu(String orderString, Integer orderMoney, String target) {
+    void 증정_메뉴을_확인한다(String orderString, Integer orderMoney, String target) {
         // given
         orderString = TestUtill.insertComma(orderString);
         Orders orders = new Orders(orderString);
