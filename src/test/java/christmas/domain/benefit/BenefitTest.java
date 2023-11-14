@@ -113,10 +113,25 @@ class BenefitTest {
         assertThat(result).contains(target);
     }
 
-    @Test
-    void getFreebieCount() {
+    @DisplayName("증정 메뉴을 확인한다")
+    @ParameterizedTest
+    @CsvSource({
+            "티본스테이크-1바비큐립-1초코케이크-2제로콜라-1, 142000, {샴페인=1}",
+            "타파스-1제로콜라-1, 8500, {}",
+            "양송이수프-1타파스-2티본스테이크-1아이스크림-3제로콜라-2, 93000, {}",
+            "양송이수프-1타파스-1아이스크림-4제로콜라-2, 37500, {}",
+            "시저샐러드-2바비큐립-1초코케이크-1레드와인-1, 145000, {샴페인=1}",
+    })
+    void getFreebieCount(String orderString, Integer orderMoney, String target) {
         // given
+        orderString = TestUtill.insertComma(orderString);
+        Orders orders = new Orders(orderString);
+        benefit = new Benefit(3, orders);
+
         // when
+        Map<String, Integer> result = benefit.getFreebieCount(orderMoney);
+
         // than
+        assertThat(result.toString()).contains(target);
     }
 }
