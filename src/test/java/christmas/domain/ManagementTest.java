@@ -105,13 +105,36 @@ class ManagementTest {
     }
 
     @Test
-    void getDiscountInformation() {
+    void 주문_날짜에_의한_모든_혜택의_정보를_확인한다_혜택이_있는경우() {
         // given
+        String orderString = "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1";
+        Integer orderDay = 3;
+        Map<String, Integer> target = new HashMap<>();
+        target.put("크리스마스 디데이 할인", 1_200);
+        target.put("평일 할인", 4_046);
+        target.put("특별 할인", 1_000);
+        target.put("증정 이벤트", 25_000);
 
         // when
+        management.getOrderInformation(orderDay, orderString);
+        Map<String, Integer> result = management.getBenefitInformation();
 
         // than
+        assertThat(result).isEqualTo(target);
+    }
 
+    @Test
+    void 주문_날짜에_의한_모든_혜택의_정보를_확인한다_혜택이_없는경우() {
+        // given
+        String orderString = "타파스-1,제로콜라-1";
+        Integer orderDay = 3;
+
+        // when
+        management.getOrderInformation(orderDay, orderString);
+        Map<String, Integer> result = management.getBenefitInformation();
+
+        // than
+        assertThat(result).isEmpty();
     }
 
     @Test
