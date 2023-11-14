@@ -1,15 +1,11 @@
 package christmas.domain.discount;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class WeekendDayDiscountTest {
-
-    @DisplayName("해당 주문 날짜기 디데이 할인 행사인지 확인하는 기능 ")
     @ParameterizedTest
     @CsvSource({
             "1, 2023",
@@ -27,7 +23,7 @@ class WeekendDayDiscountTest {
             "29, 2023",
             "30, 2023",
     })
-    void giveAmount(Integer orderDay, Integer amount) {
+    void 주문_날짜에_따른_주말_할인_혜택_금액을_확인한다(Integer orderDay, Integer amount) {
         // given
         Integer mainCount = 1;
         amount = amount * mainCount;
@@ -40,7 +36,6 @@ class WeekendDayDiscountTest {
     }
 
 
-    @DisplayName("주말 할인의 제목을 확인한다. ")
     @ParameterizedTest
     @CsvSource({
             "1", "2",
@@ -49,7 +44,7 @@ class WeekendDayDiscountTest {
             "22", "23",
             "29", "30",
     })
-    void giveTitle(Integer orderDay) {
+    void 주말_할인의_제목을_확인한다(Integer orderDay) {
         // given
         Integer mainCount = 1;
         WeekendDayDiscount weekendDayDiscount = new WeekendDayDiscount(orderDay, mainCount);
