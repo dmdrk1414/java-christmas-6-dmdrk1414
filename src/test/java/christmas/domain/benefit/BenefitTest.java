@@ -52,17 +52,29 @@ class BenefitTest {
 
     @Test
     void getTotalDiscount() {
+        // given
+        // when
+        // than
     }
 
     @Test
     void getTotalBenefit() {
+        // given
+        // when
+        // than
     }
 
     @Test
     void getBadgeName() {
+        // given
+        // when
+        // than
     }
 
     @Test
     void getFreebieCount() {
+        // given
+        // when
+        // than
     }
 }
