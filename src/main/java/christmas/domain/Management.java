@@ -1,7 +1,6 @@
 package christmas.domain;
 
 import christmas.config.Config;
-import christmas.domain.badge.BadgeManagement;
 import christmas.domain.benefit.Benefit;
 import christmas.domain.calculator.PaymentCalculator;
 import christmas.domain.order.Orders;
