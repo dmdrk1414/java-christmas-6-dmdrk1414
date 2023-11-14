@@ -138,13 +138,31 @@ class ManagementTest {
     }
 
     @Test
-    void getTotalBenefit() {
+    void 총혜택_금액을_확인한다_혜택이_있는경우() {
         // given
+        String orderString = "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1";
+        Integer orderDay = 3;
 
         // when
+        management.getOrderInformation(orderDay, orderString);
+        Integer result = management.getTotalBenefit();
 
         // than
+        assertThat(result).isEqualTo(31_246);
+    }
 
+    @Test
+    void 총혜택_금액을_확인한다_혜택이_없는경우() {
+        // given
+        String orderString = "타파스-1,제로콜라-1";
+        Integer orderDay = 3;
+
+        // when
+        management.getOrderInformation(orderDay, orderString);
+        Integer result = management.getTotalBenefit();
+
+        // than
+        assertThat(result).isEqualTo(0);
     }
 
     @Test
