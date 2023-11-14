@@ -27,7 +27,7 @@ public class Benefit {
         Integer totalOrderMoney = orders.getOrderMoney();
         Map<String, Integer> informations = new HashMap<>();
 
-        if (getTotalAmount() != 0) {
+        if (getTotalBenefit() != 0) {
             Map<String, Integer> discountInformations = discountManagement.getInformations();
             Map<String, Integer> freebieInformations = freebie.getPriceInformations(totalOrderMoney);
 
@@ -38,12 +38,6 @@ public class Benefit {
         return informations;
     }
 
-    public Boolean isEligibleFreebie() {
-        Integer totalOrderMoney = orders.getOrderMoney();
-
-        return freebie.isEligibleChampagne(totalOrderMoney);
-    }
-
     public Integer getTotalDiscount() {
         Integer totalAmount = 0;
 
@@ -52,7 +46,7 @@ public class Benefit {
         return totalAmount;
     }
 
-    public Integer getTotalAmount() {
+    public Integer getTotalBenefit() {
         Integer totalAmount = 0;
         Integer totalOrderMoney = orders.getOrderMoney();
 
@@ -63,7 +57,7 @@ public class Benefit {
     }
 
     public String getBadgeName() {
-        Integer totalBenefit = getTotalAmount();
+        Integer totalBenefit = getTotalBenefit();
 
         return badgeManagement.getBadge(totalBenefit);
     }
