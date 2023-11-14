@@ -2,17 +2,14 @@ package christmas.domain.freebie;
 
 import christmas.constant.freebie.Freebies;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class ChampagneTest {
     private Champagne champagne;
@@ -22,9 +19,8 @@ class ChampagneTest {
         champagne = new Champagne();
     }
 
-    @DisplayName("샴페인의 정보를 Map형태로 확인한다")
     @Test
-    void makeChampagneCountInformation() {
+    void 증점품_샴페인의_이름_갯수_정보를_확인한다() {
         // given
         Map<String, Integer> target = new HashMap<>();
         target.put(Freebies.CHAMPAGNE.getName(), Freebies.CHAMPAGNE.getCount());
@@ -36,7 +32,6 @@ class ChampagneTest {
         assertThat(result).isEqualTo(target);
     }
 
-    @DisplayName("샴페인의 증정받을 수 있는지 확인한다")
     @ParameterizedTest
     @CsvSource({
             "10_000, false",
@@ -44,7 +39,7 @@ class ChampagneTest {
             "120_000, true",
             "220_000, true",
     })
-    void isEligible(Integer orderMoney, Boolean target) {
+    void 증정품_샴페인을_증점받을_수_있는지_확인한다(Integer orderMoney, Boolean target) {
         // when
         Boolean result = champagne.isEligible(orderMoney);
 
@@ -52,9 +47,8 @@ class ChampagneTest {
         assertThat(result).isEqualTo(target);
     }
 
-    @DisplayName("증정품 샴페인의 가격을 확인한다.")
     @Test
-    void getPrice() {
+    void 증정품_샴페인의_가격을_확인한다() {
         // given
         Integer target = Freebies.CHAMPAGNE.getPrice();
 
