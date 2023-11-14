@@ -60,7 +60,8 @@ class WeekDayDiscountTest {
     })
     void giveTitle(Integer orderDay) {
         // given
-        WeekDayDiscount weekDayDiscount = new WeekDayDiscount(orderDay, 1);
+        Integer desserdCount = 3;
+        WeekDayDiscount weekDayDiscount = new WeekDayDiscount(orderDay, desserdCount);
 
         // when
         String result = weekDayDiscount.giveTitle();
