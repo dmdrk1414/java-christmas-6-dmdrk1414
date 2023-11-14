@@ -24,23 +24,23 @@
 - [x] **평일 할인** 하는 기능 구현 (일요일~목요일)
 
   - [x] 평일에는 **디저트 메뉴**를 메뉴 1개당 2,023원 할인
-  - [x]  2023.12.1 ~ 2023.12.31 동안 적용
+  - [x] 2023.12.1 ~ 2023.12.31 동안 적용
 
 - [x] **주말 할인** 하는 기능 구현 (금요일, 토요일)
 
   - [x] 주말에는 **메인 메뉴**를 메뉴 1개당 2,023원 할인
-  - [x]  2023.12.1 ~ 2023.12.31 동안 적용
+  - [x] 2023.12.1 ~ 2023.12.31 동안 적용
 
 - [x] **특별 할인**하는 기능 구현 (이벤트 달력에 별)
 
   - [x] 이벤트 달력에 별이 있으면 총주문 금액에서 1,000원 할인
-  - [x]  2023.12.1 ~ 2023.12.31 동안 적용
+  - [x] 2023.12.1 ~ 2023.12.31 동안 적용
 
 - [x] **증정 이벤트**하는 기능 구현 
 
   - [x] 할인 전 총주문 금액이 12만 원 이상일 때, 샴페인 1개 증정
-  - [x]  2023.12.1 ~ 2023.12.31 동안 적용
-  
+  - [x] 2023.12.1 ~ 2023.12.31 동안 적용
+
 - [x] 할인 후 예상 결제 금액을 알려주는 기능 구현
 
 #### 🗒️ [혜택 금액에 따른 배지 부여]
@@ -112,52 +112,6 @@
   - [x] 총혜택 금액에 따라 이벤트 배지의 이름을 다르게 보여 주세요.
   - [x] 이벤트 배지가 부여되지 않는 경우, "없음"으로 보여 주세요.
 - [x] 적용된 이벤트가 하나도 없는 경우는 아래 예시를 참고해 주세요.
-
-# enum
-
-- enum으로 관리
-- 2중 enum으로 관리 해보자.
-
-```java
-enum <메뉴> {
-  enum <메인> {
-	티본스테이크(55,000), 바비큐립(54,000), 해산물파스타(35,000), 크리스마스파스타(25,000)
-	}
-	enum <애피타이저> {
-	 양송이수프(6,000), 타파스(5,500), 시저샐러드(8,000)
-	}
-	enum <디저트> {
-		초코케이크(15,000), 아이스크림(5,000)
-  }
-	enum <음료> {
-		제로콜라(3,000), 레드와인(60,000), 샴페인(25,000)
-  }
-}
-```
-
-- enum으로 관리
-
-- 특별 할인
-
-```java
-enum <할인>{
-  enum <디데이 할인>{
-    1일 부터(1000월) ~ 25일 까지 (3,400)월
-  }
-  enum <평일 할인>{
-    일요일~목요일
-    2,023원 할인
-  }
-  enum <주말 할인>{
-    금요일, 토요일
-    2,023원 할인
-  }
-  enum <특별 할인>{
-    3, 10, 17, 24, 25, 31일
-		1000원 할인
-  }
-}
-```
 
 # [🎯 프로그래밍 요구 사항]
 
@@ -247,36 +201,46 @@ enum <할인>{
 
 # 이번 과제의 목표
 
-- 커밋의 내용을 적고 구현을 해보자.
-
+- 커밋의 내용을 먼저 적고 구현을 해보자
+  - TDD을 왜 해야되는지 느겼다.
+  - 30분에 한번식 내가 무엇을 하는지 커밋을 보면서 확인을 하였다
 - 기능구현당 커밋을 해보자, 너무 잘잘하게하니... 문제파악이 어려워서 실험적으로 적용해보자.
-
+  - 커밋내용을 적고 커밋내용을 구현한수 커밋을 하였다
+  - 문제파악과 기능구현의 효율적인 것을 느겼습니다.
 - enum을 할용해보자.
+  - enum을 활용해보니 너무 좋았습니다. 
+  - 상수를 이용한 Searching의 방식을 보며
+  - 왜 enum을 사용하는지 생각하였습니다.
 - 객체지향적 관점
   - Discount의 abstruct의 추상클래스가 과연 맞는지 모르겠다. 하지만 만족스러운 결과를 가져온 것같다.
+  - 할인의 공통점과 디데이, 주말, 평일, 특별 할인의 상속도를 생각을 하였습니다
+  - 처음으로 추상클래스를 적용해 보았는데 객체지향의 개념이 확장되었습니다.
+  - 정말 감사합니다 선생님들...😍
 
 # 회고
 
-- 상속 클래스의 구현
+- 상속을 적용
 
-- Stream reduce 사용
+  저는 이 메서드를 사용을 하고 Overriding을 사용하는 이유을 깨닳았습니다.
+
+  지금까지 상속에 대한 편함을 느낀적이 적었지만 이제 알았습니다.
+
+  Overriding은 객체지향의 꽃이라는 것을 친구들에게 알려주고있습니다.
 
 ```java
-        // 이전
-				Integer totalDiscount = 0;
-        List<Integer> list = discountManagement.stream()
-                .map(discount -> discount.giveAmount())
-                .collect(Collectors.toList());
+public class DiscountManagement {
+    private final List<Discount> discountManagement = List.of(
+	  	dDayDiscount(...),
+      weekDayDiscount(...),
+   	  weekendDayDiscount(...),
+   	  specialDayDiscount(...),
+   );
 
-        for (Integer integer : list) {
-            totalDiscount = totalDiscount + integer;
-        }
-
-				// 이후
-        Integer totalDiscount = discountManagement.stream()
+    private Integer calculatorTotalDiscount() {
+        return discountManagement.stream()
                 .map(Discount::giveAmount)
                 .reduce(0, Integer::sum);
-        return totalDiscount;
+    }
 ```
 
 - Order
@@ -299,7 +263,7 @@ enum <할인>{
 
 - 이넘을의 모든 상수가 리스트로 반환
 
-```java
+```
         List<MenuGroup> menuGroups = List.of(MenuGroup.MAIN_DISH, MenuGroup.APPETIZER, MenuGroup.DESSERT, MenuGroup.BEVERAGE);
 
 
@@ -312,6 +276,12 @@ enum <할인>{
 List<MenuGroup> menuGroups = MenuGroup.getAllMenuGroups();
 
 ```
+
+
+
+---
+
+
 
 - 이넘을 이용한 총 주문 액수 계산
 
@@ -367,7 +337,7 @@ List<MenuGroup> menuGroups = MenuGroup.getAllMenuGroups();
       
         private void validateReadDate(String orderDateString) {
           InputValidate.orderDateRange(orderDateString);
-  				InputValidate.includeBlank(orderDateString);
+             InputValidate.includeBlank(orderDateString);
       }
   ```
 
