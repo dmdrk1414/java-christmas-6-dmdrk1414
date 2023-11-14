@@ -3,7 +3,6 @@ package christmas.domain.benefit;
 import christmas.domain.order.Orders;
 import christmas.domain.testutill.TestUtill;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -22,7 +21,6 @@ class BenefitTest {
         benefit = new Benefit(3, orders);
     }
 
-    @DisplayName("혜택 내역(할인, 경품)을 Map구조로 만드는 기능 추가")
     @ParameterizedTest
     @CsvSource({
             "티본스테이크-1바비큐립-1초코케이크-2제로콜라-1 ,1, 크리스마스 디데이 할인=1000, 주말 할인=4046, 증정 이벤트=25000, 평일 할인=0, 특별 할인=0",

@@ -10,9 +10,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PaymentCalculatorTest {
 
-    @DisplayName("할인후 예산 결제 금액을 알려주는 기능 추가.")
     @Test
-    void estimateFinalPayment() {
+    void 할인후_주문_예산_결제_금액을_확인한다() {
         // given
         Integer totalOrderMoney = 20_000;
         Integer discount = 2_000;
