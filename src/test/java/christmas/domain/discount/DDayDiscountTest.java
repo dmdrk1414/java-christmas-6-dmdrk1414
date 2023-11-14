@@ -53,7 +53,7 @@ class DDayDiscountTest {
 
             "20", "21", "22", "23", "24", "25"
     })
-    void 평일_할인의_제목을_확인한다(Integer orderDay) {
+    void 디데이_할인의_제목을_확인한다(Integer orderDay) {
         // given
         DDayDiscount dDayDiscount = new DDayDiscount(orderDay);
 
