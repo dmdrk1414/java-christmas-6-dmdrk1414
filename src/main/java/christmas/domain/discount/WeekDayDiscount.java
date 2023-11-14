@@ -12,9 +12,7 @@ public class WeekDayDiscount extends Discount {
 
     @Override
     public Integer giveAmount() {
-        Integer amount = super.getAmount(DiscountGroup.WEEK_DAY_DISCOUNT) * dessertOrderCount;
-
-        return amount;
+        return super.getAmount(DiscountGroup.WEEK_DAY_DISCOUNT) * dessertOrderCount;
     }
 
 

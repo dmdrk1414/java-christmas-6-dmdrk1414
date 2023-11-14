@@ -9,9 +9,7 @@ public class SpecialDayDiscount extends Discount {
 
     @Override
     public Integer giveAmount() {
-        Integer amount = super.getAmount(DiscountGroup.SPECIAL_DAY_DISCOUNT);
-
-        return amount;
+        return super.getAmount(DiscountGroup.SPECIAL_DAY_DISCOUNT);
     }
 
 
