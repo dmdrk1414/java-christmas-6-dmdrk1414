@@ -1,6 +1,5 @@
-package christmas.domain.disconunt;
+package christmas.domain.discount;
 
-import christmas.domain.discount.DDayDiscount;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
