@@ -8,8 +8,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class WeekDayDiscountTest {
-
-    @DisplayName("주문 날짜에 따른 평일 할인 해택 금액을 알려주는 기능")
     @ParameterizedTest
     @CsvSource({
             "3, 2023",
@@ -38,7 +36,7 @@ class WeekDayDiscountTest {
 
             "31, 2023"
     })
-    void giveAmount(Integer orderDay, Integer amount) {
+    void 주문_날짜에_따른_평일_할인_혜택_금액을_확인한다(Integer orderDay, Integer amount) {
         Integer desserdCount = 3;
         amount = amount * desserdCount;
         WeekDayDiscount weekDayDiscount = new WeekDayDiscount(orderDay, desserdCount);
@@ -49,7 +47,6 @@ class WeekDayDiscountTest {
         assertThat(result).isEqualTo(amount);
     }
 
-    @DisplayName("평일 할인의 제목을 확인한다.")
     @ParameterizedTest
     @CsvSource({
             "3", "4", "5", "6", "7",
@@ -58,7 +55,7 @@ class WeekDayDiscountTest {
             "24", "25", "26", "27", "28",
             "31"
     })
-    void giveTitle(Integer orderDay) {
+    void 평일_할인의_제목을_확인한다(Integer orderDay) {
         // given
         Integer desserdCount = 3;
         WeekDayDiscount weekDayDiscount = new WeekDayDiscount(orderDay, desserdCount);
