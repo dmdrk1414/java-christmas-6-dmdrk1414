@@ -1,10 +1,5 @@
 package christmas.domain;
 
-import christmas.config.Config;
-import christmas.domain.badge.BadgeManagement;
-import christmas.domain.benefit.Benefit;
-import christmas.domain.calculator.PaymentCalculator;
-import christmas.domain.order.Orders;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,20 +7,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class ManagementTest {
     private Management management;
-    private BadgeManagement badgeManagement;
-    private PaymentCalculator paymentCalculator;
-    private Benefit benefit;
-    private Orders orders;
 
     @BeforeEach
     void setUp() {
         this.management = new Management();
-        this.badgeManagement = Config.badgeManagement();
-        this.paymentCalculator = Config.paymentCalculator();
     }
 
     @Test
