@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Benefit {
+    private static final Integer ZERO_BENEFIT = 0;
     private final DiscountManagement discountManagement;
     private final Freebie freebie;
     private final Orders orders;
@@ -26,7 +27,7 @@ public class Benefit {
         Integer totalOrderMoney = orders.getOrderMoney();
         Map<String, Integer> information = new HashMap<>();
 
-        if (getTotalBenefit() != 0) {
+        if (isNotZeroBenefit()) {
             Map<String, Integer> discountInformation = discountManagement.getInformation();
             Map<String, Integer> freebieInformation = freebie.getPriceInformation(totalOrderMoney);
 
@@ -63,5 +64,9 @@ public class Benefit {
 
     public Map<String, Integer> getFreebieCount(Integer totalOrderMoney) {
         return freebie.getFreebieCount(totalOrderMoney);
+    }
+
+    private boolean isNotZeroBenefit() {
+        return getTotalBenefit() != ZERO_BENEFIT;
     }
 }
