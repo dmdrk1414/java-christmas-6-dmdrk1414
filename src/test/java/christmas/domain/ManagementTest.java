@@ -194,12 +194,58 @@ class ManagementTest {
     }
 
     @Test
-    void getBadgeName() {
+    void 혜택에_의헤_얻는_배지를_확인한다_없음() {
         // given
+        String orderString = "타파스-1,제로콜라-1";
+        Integer orderDay = 3;
 
         // when
+        management.getOrderInformation(orderDay, orderString);
+        String result = management.getBadgeName();
 
         // than
+        assertThat(result).contains("없음");
+    }
 
+    @Test
+    void 혜택에_의헤_얻는_배지를_확인한다_별() {
+        // given
+        String orderString = "초코케이크-2,제로콜라-1";
+        Integer orderDay = 3;
+
+        // when
+        management.getOrderInformation(orderDay, orderString);
+        String result = management.getBadgeName();
+
+        // than
+        assertThat(result).contains("별");
+    }
+
+    @Test
+    void 혜택에_의헤_얻는_배지를_확인한다_트리() {
+        // given
+        String orderString = "초코케이크-6,제로콜라-1";
+        Integer orderDay = 3;
+
+        // when
+        management.getOrderInformation(orderDay, orderString);
+        String result = management.getBadgeName();
+
+        // than
+        assertThat(result).contains("트리");
+    }
+
+    @Test
+    void 혜택에_의헤_얻는_배지를_확인한다_산타() {
+        // given
+        String orderString = "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1";
+        Integer orderDay = 3;
+
+        // when
+        management.getOrderInformation(orderDay, orderString);
+        String result = management.getBadgeName();
+
+        // than
+        assertThat(result).contains("산타");
     }
 }
