@@ -31,7 +31,6 @@ class FreebieTest {
     void getFreebie() {
     }
 
-    @DisplayName("샴페인 증정 상품을 얻을 수 있는 지 확인하는 기능 테스트")
     @ParameterizedTest
     @CsvSource({
             "티본스테이크-1바비큐립-1초코케이크-2제로콜라-1, true",
@@ -54,7 +53,7 @@ class FreebieTest {
             "양송이수프-1바비큐립-1초코케이크-1레드와인-1, true",
             "시저샐러드-2크리스마스파스타-1아이스크림-2샴페인-1, false"
     })
-    void isEligibleChampagne(String orderString, Boolean target) {
+    void 증정_상품중_샴페인을_얻을_수_있는지_확인한다(String orderString, Boolean target) {
         // given
         orderString = TestUtill.insertComma(orderString);
         Orders order = new Orders(orderString);
@@ -66,10 +65,9 @@ class FreebieTest {
         assertThat(result).isEqualTo(target);
     }
 
-    @DisplayName("주문금액이 12만원 이상일때 증정품의 정보(증정 이벤트의 제목과 해택 가격을) 알려준다")
     @ParameterizedTest
     @ValueSource(ints = {120_000, 200_000, 300_000})
-    void getPriceInformation_1(Integer orderMoney) {
+    void 주문금액이_12만원_이상일때_증정품의_정보_알려준다(Integer orderMoney) {
         // given
         Map<String, Integer> target = new HashMap<>();
         target.put(FREEBIE_TITLE, FREEBIE_PRICE);
@@ -81,10 +79,9 @@ class FreebieTest {
         assertThat(result).isEqualTo(target);
     }
 
-    @DisplayName("주문금액이 12만원 미만일때 증정품의 정보(증정 이벤트의 제목과 해택 가격을) 알려준다")
     @ParameterizedTest
     @ValueSource(ints = {10_000, 100_000, 0})
-    void getPriceInformation_2(Integer orderMoney) {
+    void 주문금액이_12만원_미만일때_증정품의_정보_알려준다(Integer orderMoney) {
         // when
         Map<String, Integer> result = freebie.getPriceInformation(orderMoney);
 
@@ -92,7 +89,6 @@ class FreebieTest {
         assertThat(result).isEmpty();
     }
 
-    @DisplayName("증정품 샴페인의 가격을 알려주는 기능 추가")
     @ParameterizedTest
     @CsvSource({
             "티본스테이크-1바비큐립-1초코케이크-2제로콜라-1, 25000",
@@ -100,7 +96,7 @@ class FreebieTest {
             "양송이수프-1타파스-2티본스테이크-1아이스크림-3제로콜라-2, 0",
             "시저샐러드-2바비큐립-1초코케이크-1레드와인-1, 25000",
     })
-    void getChampagneBenefit(String orderString, Integer target) {
+    void 증정품_샴페인의_가격을_확인한다(String orderString, Integer target) {
         // given
         orderString = TestUtill.insertComma(orderString);
         Orders order = new Orders(orderString);
@@ -112,10 +108,9 @@ class FreebieTest {
         assertThat(result).isEqualTo(target);
     }
 
-    @DisplayName("주문금액이 12만원 이상일때 증정품의 메뉴를 알려준다")
     @ParameterizedTest
     @ValueSource(ints = {120_000, 200_000, 300_000})
-    void getFreebieMenu_1(Integer orderMoney) {
+    void 주문금액이_12만원_이상일때_증정품의_메뉴를_확인한다(Integer orderMoney) {
         // given
         Map<String, Integer> target = new HashMap<>();
         target.put(CHAMPANE, FREEBIE_COUNT);
@@ -127,10 +122,9 @@ class FreebieTest {
         assertThat(result).isEqualTo(target);
     }
 
-    @DisplayName("주문금액이 12만원 미만일때 증정품의 메뉴를 알려준다")
     @ParameterizedTest
     @ValueSource(ints = {10_000, 100_000, 0})
-    void getFreebieMenu_2(Integer orderMoney) {
+    void 주문금액이_12만원_미만일때_증정품의_메뉴를_알려준다(Integer orderMoney) {
         // when
         Map<String, Integer> result = freebie.getFreebieMenu(orderMoney);
 
