@@ -17,8 +17,4 @@ public abstract class Discount {
     protected Integer getAmount(DiscountGroup discount) {
         return discount.getAmount(orderDay);
     }
-
-    protected Boolean getConfirm(DiscountGroup discount) {
-        return discount.hasDiscount(orderDay);
-    }
 }
