@@ -35,7 +35,7 @@ public class Management {
     }
 
     public Integer getTotalBenefit() {
-        return benefit.getTotalAmount();
+        return benefit.getTotalBenefit();
     }
 
     public Integer getFinalPayment() {
