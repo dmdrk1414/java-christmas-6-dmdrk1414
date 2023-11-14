@@ -23,19 +23,26 @@ class BenefitTest {
         benefit = new Benefit(3, orders);
     }
 
-    @DisplayName("모든 해택에 관한 정보를 얻는다")
-    @Test
-    void getInformation() {
+    @DisplayName("혜택 내역(할인, 경품)을 Map구조로 만드는 기능 추가")
+    @ParameterizedTest
+    @CsvSource({
+            "티본스테이크-1바비큐립-1초코케이크-2제로콜라-1 ,1, 크리스마스 디데이 할인=1000, 주말 할인=4046, 샴페인=25000, 평일 할인=0, 특별 할인=0",
+            "양송이수프-1타파스-2티본스테이크-1아이스크림-3제로콜라-2, 3, 크리스마스 디데이 할인=1200, 주말 할인=0, 평일 할인=6069, 특별 할인=1000",
+            "시저샐러드-2바비큐립-1초코케이크-1레드와인-1, 4, 크리스마스 디데이 할인=1300, 주말 할인=0, 샴페인=25000, 평일 할인=2023, 특별 할인=0",
+            "해산물파스타-1크리스마스파스타-1아이스크림-2샴페인-1, 5, 크리스마스 디데이 할인=1400, 주말 할인=0, 평일 할인=4046, 특별 할인=0",
+
+    })
+    void getInformation(String orderString, Integer orderDay, String target) {
         // given
-        String orderString = "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1";
-        Orders orders = new Orders(orderString);
-        benefit = new Benefit(3, orders);
+        orderString = TestUtill.insertComma(orderString);
+        Orders order = new Orders(orderString);
+        benefit = new Benefit(orderDay, order);
 
         // when
         Map<String, Integer> result = benefit.getInformation();
 
-        // than
-        assertThat(result.toString()).contains("{크리스마스 디데이 할인=1200, 평일 할인=4046, 특별 할인=1000, 증정 이벤트=25000}");
+        // then
+        assertThat(result.toString()).contains(target);
     }
 
     @DisplayName("모든 해택에 관한 정보를 얻는다_2")

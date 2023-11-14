@@ -1,4 +1,4 @@
-package christmas.domain;
+package christmas.domain.order;
 
 import christmas.domain.order.Orders;
 import christmas.domain.testutill.TestUtill;
@@ -35,7 +35,6 @@ class OrdersTest {
         // then
         assertThat(result).isEqualTo(2);
     }
-
 
     @DisplayName("주문의 디저트 갯수를 반환하는 기능 수정")
     @ParameterizedTest
