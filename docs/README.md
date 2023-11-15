@@ -444,7 +444,7 @@ public static Boolean isBeverage(String orderMenu) {
 
 
 
-# 회고
+# 회고 - 제출
 
 <abstract 클래스 적용>
 
