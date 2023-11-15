@@ -228,6 +228,7 @@
   Overriding은 객체지향의 꽃이라는 것을 친구들에게 알려주고있습니다.
 
 ```java
+#DiscountManagement.class
 public class DiscountManagement {
     private final List<Discount> discountManagement = List.of(
 	  	dDayDiscount(...),
@@ -236,23 +237,24 @@ public class DiscountManagement {
    	  specialDayDiscount(...),
    );
 
-    private Integer calculatorTotalDiscount() {
+    private Integer calculatorTotalDiscount() { <- Overriding 사용
         return discountManagement.stream()
                 .map(Discount::giveAmount)
                 .reduce(0, Integer::sum);
     }
 ```
 
-- Order
+- Order클래스의 
 
 ```java
-    private Integer getMenuCount(MenuGroup appetizer) {
+#Orders.class
+		private Integer getMenuCount(MenuGroup appetizer) {
         Integer menuCount = 0;
         for (Map.Entry<String, Integer> order : orders.entrySet()) {
             String item = order.getKey();
             Integer quantity = order.getValue();
 
-            Boolean isCondition = appetizer.isMenu(item);
+            Boolean isCondition = appetizer.isMenu(item);    <- enum 적용
             if (isCondition) {
                 menuCount = menuCount + quantity;
             }
@@ -261,9 +263,10 @@ public class DiscountManagement {
     }
 ```
 
-- 이넘을의 모든 상수가 리스트로 반환
+- enum을 활용한 
 
-```
+```java
+#MenuGroup.enum
         List<MenuGroup> menuGroups = List.of(MenuGroup.MAIN_DISH, MenuGroup.APPETIZER, MenuGroup.DESSERT, MenuGroup.BEVERAGE);
 
 
@@ -277,163 +280,110 @@ List<MenuGroup> menuGroups = MenuGroup.getAllMenuGroups();
 
 ```
 
-
-
----
-
-
-
 - 이넘을 이용한 총 주문 액수 계산
 
-```java
-    public Integer getOrderMoney() {
-        Integer orderMoney = 0;
-        Integer menuPrice = 0;
+  enum의 메서드를 이용하여 메뉴가 맞는지, 메뉴의 가격을 가져온다
 
-        for (Map.Entry<String, Integer> entry : orders.entrySet()) {
-            String menuName = entry.getKey();
-            Integer menuQuantity = entry.getValue();
+  Menu.enum을 만들고 MenuGroup.enum을 이용해 Menu.enum을 관리하는 형태이다.
 
-            menuPrice = getMenuPrice(menuName);
-            orderMoney = orderMoney + (menuPrice * menuQuantity);
-        }
-        return orderMoney;
-    }
-
-    private Integer getMenuPrice(String menuName) {
-        Integer menuPrice = 0;
-        List<MenuGroup> menuGroups = MenuGroup.getAllMenuGroups();
-
-        for (MenuGroup menuGroup : menuGroups) {
-            if (menuGroup.isMenu(menuName)) {
-                menuPrice = menuGroup.getMenuPrice(menuName);
-                break;
-            }
-        }
-
-        return menuPrice;
-    }
-```
-
-- 과연 매개변수로 Order을 받는게 맞는가?
+  enum에 메서드를 생성해본적은 처음이지만 너무 편한 방식인 것 같습니다.
 
 ```java
-    public Boolean isEligible(Orders orders) {
-        return orders.getOrderMoney() >= CONDITION_SHAMPAGNE_ORDER_MONEY;
-    }
+private Integer getMenuPrice(String menuName) {
+  ...
+  List<MenuGroup> menuGroups = MenuGroup.getAllMenuGroups();
+
+  for (MenuGroup menuGroup : menuGroups) {
+      if (menuGroup.isMenu(menuName)) { <- 메뉴가 맞는가?
+          menuPrice = menuGroup.getMenuPrice(menuName); <- 메뉴의 가격을 가져온다
+          break;
+      }
+  }
+	...
+}
+
+#MenuGroup.enum
+public Boolean isMenu(String orderMenu) {
+    return menuList.stream()
+            .anyMatch(menu -> menu.is(orderMenu));
+}
 ```
 
-왜냐하면 비효휼 부를시 계산을 해야한다.
+```java
+#InputView.class
+public static void onlyBeverage(String orderString) {
+    ...
+    for (String orderValue : orderArr) {
+        String 메뉴이름 = ...
+
+        if (!MenuGroup.isBeverage(메뉴이름)) {
+            return;
+        }
+    }
+    throwNumberFormatExceptionAboutOrder();
+}
+
+#MenuGroup.enum
+public static Boolean isBeverage(String orderMenu) {
+	return BEVERAGE.isMenu(orderMenu);
+}
+```
 
 - ui로직을 최대한 분리 (이제 ui라는게 무엇인지 알꺼같다.)
 
-- 검증의 순서가 중요하다
+  "ui을  View클래스에서 관리하고 domain은 비지니스 로직에 집중하라" 라는 말을 이제 이해 했습니다.
 
-  ```java
-    private void validateReadDate(String orderDateString) {
-          InputValidate.includeBlank(orderDateString);
-          InputValidate.orderDateRange(orderDateString);
-      }
-      
-        private void validateReadDate(String orderDateString) {
-          InputValidate.orderDateRange(orderDateString);
-             InputValidate.includeBlank(orderDateString);
-      }
-  ```
+- final사용
 
-  
-
-- 이넘을 관리하여 찾기
-
-  ```java
-  
-      public static void onlyBeverage(String orderString) {
-          String[] orderArr = orderString.split(COMMAR_REGEX);
-  
-          for (String orderValue : orderArr) {
-              String[] partsOfDash = orderValue.split(DASH_REGEX);
-              String menu = partsOfDash[MENU_NAME];
-  
-              if (!MenuGroup.isBeverage(menu)) {
-                  return;
-              }
-          }
-          throwNumberFormatExceptionAboutOrder();
-      }
-  ```
-
-  
-
-- 존제하지 않는 메뉴 찾기
-
-```java
-   public static void notExistenceMenu(String orderString) {
-        String[] orderArr = orderString.split(COMMAR_REGEX);
-
-        for (String orderValue : orderArr) {
-            String[] partsOfDash = orderValue.split(DASH_REGEX);
-            String menu = partsOfDash[MENU_NAME];
-
-            if (notExistMenu(orderString)) {
-                throwNumberFormatExceptionAboutOrder();
-            }
-        }
-    }
-```
-
-- final로 막는점
 - 테스트를 위해 증정즘 샴페인 증정품을 클래스로 분리 - 3주차 조언 적용
-- [Refactor(christmas)] Order 클래스와의 종속성 독립
 
-- 클래스 분리
+  - Champagne.class 분리
 
-- ```
-  package christmas.domain.order;
-  
-  import java.util.HashMap;
-  import java.util.Map;
-  
-  public class Parse {
-      private static final String COMMA_REGEX = ",";
-      private static final String DASH_REGEX = "-";
-      private static final Integer MENU_NAME = 0;
-      private static final Integer MENU_QUANTITY = 1;
-  
-      public static Map<String, Integer> orders(String orderString) {
-          Map<String, Integer> menuMap = new HashMap<>();
-  
-          String[] orders = orderString.split(COMMA_REGEX);
-  
-          for (String order : orders) {
-              String[] orderParts = order.split(DASH_REGEX);
-              String menuName = orderParts[MENU_NAME];
-              int orderQuantity = Integer.parseInt(orderParts[MENU_QUANTITY]);
-  
-              menuMap.put(menuName, orderQuantity);
+    - 올바르게 적용을 하였는가는 고민을 해야겠지만
+
+    - 증정품을 관리하는 Freebie클래스에서 Champagne의 클래스를 따로 관리를 하였습니다. 
+
+    - ```java
+      public class Champagne {
+          private static final Integer CONDITION_SHAMPAGNE_ORDER_MONEY = 12_0000;
+      
+          public Map<String, Integer> makeChampagneCountInformation() {
+             ... 증정품의 메뉴은 샴페인의 정보를 만든다.
+          }	
+        ...
+      }
+      ```
+
+  - 문자열을 원하는 타입으로 파싱해주는 Parse.class 생성
+
+    - Order에서 주문의 문자열을 Map 형식으로 파싱을 하였습니다.
+
+    - 하지만 테스트를 적용하기에는 private이기에 테스트를 하지 못하였습니다. 
+
+    - 그래서 클래스로 분리할 시기인가? 라는 고민을 하여 Parse.class으로 분리하여 테스트코드또한 작성하였습니다.
+
+    - ```java
+      public class Parse {
+         	...
+          public static Map<String, Integer> orders(String orderString) {
+             ... 주문의 문자열을 Map 형식으로 변경을 한다.
           }
-  
-          return menuMap;
       }
-  }
-  
-  ```
-
-  
-
-- ```
-      public Map<String, Integer> getOrderInformation(Integer orderDay, String orderString) {
-          generateOrder(orderString);
-          generateBenefit(orderDay, orders);
-  
-          return orders.getOrderInformation();
-      }
-  ```
+      ```
 
 - 테스트 이름 을 변경을 해야한다.
 
-  이번에 느꼈다 테스트 이름을 지금까지 잘못한것 같다 메서드 이름이 아닌 행위의 기능을 단위 테스트 했으면 좋았을텐데 
+  테스트 메서드의 에름에 대한 고찰을 하였습니다. 
 
-  테스트또한 메서드이다 자료형이 들어가면 안된다
+  지금까지 테스트 메서드의 이름을 테스트를 하고싶은 메서드의 이름을 사용하였습니다. 
+
+  그렇게 하니 메서드를 변경을 하였을때 테스트 메서드또한 변경해야 한다는 것을 알았습니다. 
+
+  메서드가 하는 역할, 기능에대한 이름을 부여하여 테스트를 하였으면 좋았을 것같다는 생각을 하였고
+
+  지금까지 잘못하고 있었다는 생각을 하였습니다. 
+
+  
 
 - 전체적인 회고
 
