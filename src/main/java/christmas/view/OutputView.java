@@ -1,11 +1,13 @@
 package christmas.view;
 
+import christmas.constant.title.Title;
+
 import java.text.NumberFormat;
 import java.util.Map;
 
 public class OutputView {
     public void printIntroduce() {
-        println("안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.");
+        println(Title.INTRODUCE.msg());
     }
 
     public void printEventPreview(Integer orderDate) {
@@ -14,7 +16,7 @@ public class OutputView {
     }
 
     public void printOrderMenu(Map<String, Integer> orders) {
-        println("<주문 메뉴>");
+        println(Title.ORDER_MENU.msg());
 
         for (Map.Entry<String, Integer> entry : orders.entrySet()) {
             String menu = entry.getKey();
@@ -26,14 +28,14 @@ public class OutputView {
     }
 
     public void printOriginalOrderTotalAcount(Integer orderTotalAcount) {
-        println("<할인 전 총주문 금액>");
+        println(Title.ORIGINAL_ORDER_TOTAL_ACOUNT.msg());
 
         println(orderTotalAcount + "원");
         newLine();
     }
 
     public void printFreebieMenu(Map<String, Integer> freebies) {
-        println("<증정 메뉴>");
+        println(Title.FREEBIE_MENU.msg());
 
         for (Map.Entry<String, Integer> entry : freebies.entrySet()) {
             String freebie = entry.getKey();
@@ -47,7 +49,7 @@ public class OutputView {
     }
 
     public void printBenefitInformations(Map<String, Integer> benefitInformations) {
-        println("<혜택 내역>");
+        println(Title.BENEFIT_INFORMATION.msg());
 
         for (Map.Entry<String, Integer> entry : benefitInformations.entrySet()) {
             String title = entry.getKey();
@@ -63,7 +65,7 @@ public class OutputView {
     public void printTotalDiscount(Integer totalDiscount) {
         String totalDiscountString = formatNumberWithCommas(totalDiscount);
 
-        println("<총혜택 금액>");
+        println(Title.TOTAL_DISCOUNT.msg());
         if (totalDiscount == 0) {
             println(totalDiscountString + "원");
         }
@@ -76,13 +78,13 @@ public class OutputView {
     public void printFinalPayment(Integer finalPaymantMoney) {
         String finalPaymantMoneyString = formatNumberWithCommas(finalPaymantMoney);
 
-        println("<할인 후 예상 결제 금액>");
+        println(Title.FINAL_PAYMENT.msg());
         println(finalPaymantMoneyString + "원");
         newLine();
     }
 
     public void printEventBadge(String badgeName) {
-        println("<12월 이벤트 배지>");
+        println(Title.EVENT_BADGE.msg());
 
         println(badgeName);
     }
