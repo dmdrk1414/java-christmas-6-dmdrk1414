@@ -179,8 +179,6 @@
   }
   ```
 
-  
-
   ```java
   public class OutputView {
       public void printMenu() {
@@ -196,6 +194,12 @@
 - [라이브러리]camp.nextstep.edu.missionutils 에서 제공하는 Console API를 사용하여 구현해야 한다.
 
 - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
+
+```
+- [라이브러리]camp.nextstep.edu.missionutils 에서 제공하는 Console API를 사용하여 구현해야 한다.
+
+- 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
+```
 
 
 
