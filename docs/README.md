@@ -179,10 +179,8 @@
   }
   ```
 
-  
-
   ```java
-  public class OutputView {
+public class OutputView {
       public void printMenu() {
           System.out.println("<주문 메뉴>");
           // ...
@@ -190,7 +188,7 @@
       // ...
   }
   ```
-
+  
   
 
 - [라이브러리]camp.nextstep.edu.missionutils 에서 제공하는 Console API를 사용하여 구현해야 한다.
@@ -219,6 +217,47 @@
 
 # 회고
 
+- 클래스의 분리
+
+  저는 이번과제에서 클래스의 분리을 최대한 노력을 하였습니다. 
+
+  private가 기능을 담당하면 바로 클래스의 분리를 고민하였습니다.
+
+  Discount의 abstract 클래스를 적용하여 상속을 적용하였습니다.
+  
+  아직 abstract을 사용이 맞는지에 관한 확신이 없습니다. 이는 코드리뷰를 통해 사람들과 이야기를 하고싶습니다.
+  
+  <img src="/Users/seungchan/Library/Application Support/typora-user-images/image-20231115112552009.png" alt="image-20231115112552009" style="zoom: 50%;" />
+  
+  화이트 보드에 그림을 그려가면서 작업을 하였습니다.
+  
+  혜택
+  
+  - 할인
+  
+    - Discount, DDayDiscount, WeekDayDiscount, WeekendDayDiscount, SpecialDayDiscount
+  
+    - DiscountManagement - Discount 클래스 관리
+  
+  - 증정품
+  
+    - Freebie, Champane
+  
+  - 배지
+  
+    - BadgeManagement
+  
+  주문
+  
+  - Order
+  - OrderCalculator -  주문 금액 계산
+  
+  혜택 적용 금액
+  
+  - PaymentCalculator
+  
+  
+  
 - 상속을 적용
 
   저는 이 메서드를 사용을 하고 Overriding을 사용하는 이유을 깨닳았습니다.
@@ -383,8 +422,64 @@ public static Boolean isBeverage(String orderMenu) {
 
   지금까지 잘못하고 있었다는 생각을 하였습니다. 
 
+  ```java
+  이전 방식의 테스트 메서드 선언 방식 - 테스트 하고자하는 메서드 명시
+  void giveTitle(Integer orderDay) {
+      ...
+  }
+  
+  변경된 테스트 메서드 선언 방식 - 행위, 기능, 역할의 이름을 부여
+  void 디데이_할인의_제목을_확인한다(Integer orderDay) {
+      ...
+  }
+  ```
+
   
 
 - 전체적인 회고
 
-  order의 클래스에 종속성이 너무 심하다.... 이번과제에 잘못을 느겼습니다 객체의 독립성이 깨지니 분리가 너무 어렵습니다
+  ~~order의 클래스에 종속성이 너무 심하다.... 이번과제에 잘못을 느겼습니다 객체의 독립성이 깨지니 분리가 너무 어렵습니다~~
+
+  전체적인 클래스를 살펴보니 Order.class의 종속이 심하여 클래스의 분리가 힘들었습니다.
+
+  지금도 분리가 가능한지, 분리가 맞는지 확신이 없는 상태입니다. 
+
+  다음에 설계와 구상을할때 참고를 하여 작업을 해야겠습니다.
+
+  혜택을 관리하는 Benefit.class을 생성하기 위해서는 Order클래스를 매개변수로 사용하여 생성을 해야됩니다.
+
+  저는 Order와 Benefit을 분리하여 사용을 하고싶지만 분리할수없음을 알았습니다.
+
+  ```java
+  public class Management {
+      private Benefit benefit;
+      private Orders orders;
+    
+      private void generateBenefit(Integer orderDay, Orders orders) {
+          benefit = Config.benefit(orderDay, orders);
+      }
+  
+  ```
+
+  
+
+감사합니다 선생님들...🥰
+
+이번 우테코에 떨어져도 아쉬움이 없습니다. 한달간의 프리코스 기간 동안 최선을 다했습니다. 
+
+전기, 기계일을 하여 약6년 정도 일을 하고 고등학교때 부터 도전을 하고싶었지만 스스로의 확신과 무서움때문에 하지 못하였던 프로그램을 하고자 학교에 다시 복학을 하여 기계공학과에서 컴퓨터 공학과로 전과를 하였습니다.
+
+2022년 6월테 우테코를 알았고 우테코에 관련된 모든 프로그램에 대한 공부를 하였습니다.  프로그램이 너무 재미있었습니다. 새로운 지식을 알고 동생, 친구들과 전공에 대해 토론하는 과정이 너무 신났으며
+
+저의 생활에 프로그램을 적용하여 편리함을 느끼는 과정이 너무 짜릿했습니다. 
+
+우테코덕분에 확장된 객체지향의 개념이 생겼고, 혼자 코딩을 하는 것이 아닌 남들과 협업을 하는 방법에 대해 고민하는 시간은 저의 프로그램의 습관을 봐꿔버리는 시간이었습니다. 
+
+약 1년 4개월간 프로그램에 미쳐있었습니다.
+
+우테코는 저에게  '세상을 프로그램하는 방식중 하나인' 객체지향에 대해 공부, 단위 테스트의 중요성, 요구사항을 분석하는 방법 등 저에게 너무 선물을 주었습니다. 
+
+처음 프로그램을 하였을때 걱정과 비난을 하던 친구들과 가족들은 저의 꿈을 응원을 해주고 있습니다. 
+
+프로그램의 벽을 없애준 우테코 선생님들께 정말 감사합니다ㅎㅎ
+
