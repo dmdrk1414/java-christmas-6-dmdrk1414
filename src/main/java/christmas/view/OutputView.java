@@ -6,12 +6,19 @@ import java.text.NumberFormat;
 import java.util.Map;
 
 public class OutputView {
+    private static final String NOTTING = "없음";
+    private static final String UNIT_MONEY = "원";
+    private static final String BLANK = " ";
+    private static final String DASH = "-";
+    private static final String UNIT_QUANTITY = "개";
+    private static final String MONTH = "12월";
+
     public void printIntroduce() {
         println(Title.INTRODUCE.msg());
     }
 
     public void printEventPreview(Integer orderDate) {
-        println("12월 " + orderDate + "일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!");
+        println(MONTH + BLANK + orderDate + "일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!");
         newLine();
     }
 
@@ -22,7 +29,7 @@ public class OutputView {
             String menu = entry.getKey();
             Integer quantity = entry.getValue();
 
-            println(menu + " " + quantity + "개");
+            println(menu + BLANK + quantity + UNIT_QUANTITY);
         }
         newLine();
     }
@@ -30,7 +37,7 @@ public class OutputView {
     public void printOriginalOrderTotalAcount(Integer orderTotalAcount) {
         println(Title.ORIGINAL_ORDER_TOTAL_ACOUNT.msg());
 
-        println(orderTotalAcount + "원");
+        println(orderTotalAcount + UNIT_MONEY);
         newLine();
     }
 
@@ -41,7 +48,7 @@ public class OutputView {
             String freebie = entry.getKey();
             Integer quantity = entry.getValue();
 
-            println(freebie + " " + quantity + "개");
+            println(freebie + BLANK + quantity + UNIT_QUANTITY);
         }
 
         notThingFreebies(freebies);
@@ -55,7 +62,7 @@ public class OutputView {
             String title = entry.getKey();
             String discountMoney = formatNumberWithCommas(entry.getValue());
 
-            println(title + ": -" + discountMoney + "원");
+            println(title + ": -" + discountMoney + UNIT_MONEY);
         }
 
         notTingBenefitInformation(benefitInformations);
@@ -67,10 +74,10 @@ public class OutputView {
 
         println(Title.TOTAL_DISCOUNT.msg());
         if (totalDiscount == 0) {
-            println(totalDiscountString + "원");
+            println(totalDiscountString + UNIT_MONEY);
         }
         if (totalDiscount != 0) {
-            println("-" + totalDiscountString + "원");
+            println(DASH + totalDiscountString + UNIT_MONEY);
         }
         newLine();
     }
@@ -79,7 +86,7 @@ public class OutputView {
         String finalPaymantMoneyString = formatNumberWithCommas(finalPaymantMoney);
 
         println(Title.FINAL_PAYMENT.msg());
-        println(finalPaymantMoneyString + "원");
+        println(finalPaymantMoneyString + UNIT_MONEY);
         newLine();
     }
 
@@ -102,7 +109,7 @@ public class OutputView {
     }
 
     private void printNotThing() {
-        println("없음");
+        println(NOTTING);
     }
 
     private void println(String string) {
