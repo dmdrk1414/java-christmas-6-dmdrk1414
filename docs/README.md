@@ -156,9 +156,9 @@
 
 - [x] 사용자가 잘못된 값을 입력할 경우
 
-​	 IllegalArgumentException 를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 그 부분부터 입력을 다시 받는다.
+- [x] IllegalArgumentException 를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 그 부분부터 입력을 다시 받는다.
 
-​	Exception`이 아닌 `IllegalArgumentException`, `IllegalStateException` 등과 같은 명확한 유형을 처리한다.
+- [x] Exception`이 아닌 `IllegalArgumentException`, `IllegalStateException` 등과 같은 명확한 유형을 처리한다.
 
 # [추가된 요구 사항]
 
@@ -227,9 +227,11 @@ public class OutputView {
   
   아직 abstract을 사용이 맞는지에 관한 확신이 없습니다. 이는 코드리뷰를 통해 사람들과 이야기를 하고싶습니다.
   
-  <img src="/Users/seungchan/Library/Application Support/typora-user-images/image-20231115112552009.png" alt="image-20231115112552009" style="zoom: 50%;" />
+  <img src="https://private-user-images.githubusercontent.com/76943741/283008517-6cc79fad-39e1-4377-a47c-3c2d77dcffda.jpeg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE3MDAwMzQ1NzYsIm5iZiI6MTcwMDAzNDI3NiwicGF0aCI6Ii83Njk0Mzc0MS8yODMwMDg1MTctNmNjNzlmYWQtMzllMS00Mzc3LWE0N2MtM2MyZDc3ZGNmZmRhLmpwZWc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBSVdOSllBWDRDU1ZFSDUzQSUyRjIwMjMxMTE1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDIzMTExNVQwNzQ0MzZaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1jMDRiNWIzMzA1ZmM2ZmIzOGNhZDIwMjNlZjA3ZWUwNGNiMWY3NjY5Njk4YTY2NzZiM2UzYmYyOWU3ZWYxYzBjJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.KdpYILSbhjsSO73JyvIElLcL3M85Fv2r6ZzpRoxBAEA" alt="클래스_관계도" style="zoom:50%;" />
   
   화이트 보드에 그림을 그려가면서 작업을 하였습니다.
+  
+  **클래스**
   
   혜택
   
@@ -258,7 +260,7 @@ public class OutputView {
   
   
   
-- 상속을 적용
+- 상속을 Overriding 적용
 
   저는 이 메서드를 사용을 하고 Overriding을 사용하는 이유을 깨닳았습니다.
 
@@ -283,40 +285,15 @@ public class DiscountManagement {
     }
 ```
 
-- Order클래스의 
+- Order클래스의 enum적용
 
 ```java
 #Orders.class
-		private Integer getMenuCount(MenuGroup appetizer) {
-        Integer menuCount = 0;
-        for (Map.Entry<String, Integer> order : orders.entrySet()) {
-            String item = order.getKey();
-            Integer quantity = order.getValue();
-
-            Boolean isCondition = appetizer.isMenu(item);    <- enum 적용
-            if (isCondition) {
-                menuCount = menuCount + quantity;
-            }
-        }
-        return menuCount;
-    }
-```
-
-- enum을 활용한 
-
-```java
-#MenuGroup.enum
-        List<MenuGroup> menuGroups = List.of(MenuGroup.MAIN_DISH, MenuGroup.APPETIZER, MenuGroup.DESSERT, MenuGroup.BEVERAGE);
-
-
-=======
-    public static List<MenuGroup> getAllMenuGroups() {
-        return Arrays.asList(values());
-    }
-
-
-List<MenuGroup> menuGroups = MenuGroup.getAllMenuGroups();
-
+private Integer getMenuCount(MenuGroup appetizer) {
+	...
+	Boolean isCondition = appetizer.isMenu(item);    <- enum 적용
+	...
+}
 ```
 
 - 이넘을 이용한 총 주문 액수 계산
@@ -333,8 +310,8 @@ private Integer getMenuPrice(String menuName) {
   List<MenuGroup> menuGroups = MenuGroup.getAllMenuGroups();
 
   for (MenuGroup menuGroup : menuGroups) {
-      if (menuGroup.isMenu(menuName)) { <- 메뉴가 맞는가?
-          menuPrice = menuGroup.getMenuPrice(menuName); <- 메뉴의 가격을 가져온다
+      if (menuGroup.isMenu(menuName)) { <- enum 메뉴가 맞는가?
+          menuPrice = menuGroup.getMenuPrice(menuName); <- enum 메뉴의 가격을 가져온다
           break;
       }
   }
@@ -352,14 +329,11 @@ public Boolean isMenu(String orderMenu) {
 #InputView.class
 public static void onlyBeverage(String orderString) {
     ...
-    for (String orderValue : orderArr) {
-        String 메뉴이름 = ...
+    String 메뉴이름 = ...
 
-        if (!MenuGroup.isBeverage(메뉴이름)) {
-            return;
-        }
+    if (!MenuGroup.isBeverage(메뉴이름)) {
+        return;
     }
-    throwNumberFormatExceptionAboutOrder();
 }
 
 #MenuGroup.enum
@@ -461,7 +435,72 @@ public static Boolean isBeverage(String orderMenu) {
   
   ```
 
-  
+
+
+
+# 회고
+
+<abstract 클래스 적용>
+
+이번 과제에서는 클래스의 분리를 최대한 고려하였고, 처음으로 abstract 클래스를 도입해 보았습니다.
+
+'디데이', '주말', '평일', '특별 할인' 등 할인이라는 공통적인 부분을 기본 클래스로 설정하고, 오버라이딩을 메서드를 구현하는 방식을 시도해 보았습니다.
+
+인터페이스를 선언하여 구현하고 싶었지만, 인터페이스 내에서 static을 구현해야 하는 부분이 마음에 걸려, 책에서만 보아 왔던 추상 클래스를 사용하여 구현하게 되었습니다.
+
+Discount라는 기본 클래스를 상속받아 'dDayDiscount', 'weekDayDiscount', 'weekendDayDiscount', 'specialDayDiscount'를 선언하였고, 주문 날짜에 해당하는 혜택의 금액을 'Discount#giveAmount()'를 이용해 값을 얻는 과정에서 큰 희열을 느꼈습니다.
+
+아직도 추상 클래스를 사용한 점에 대해 의심하고 있습니다. 더 나은 방법에 대한 확신이 없어, 코드 리뷰를 통해 다른 사람들과 이야기를 나누고 싶습니다.
+
+그러나, 결과적으로는 성공적이었다고 생각합니다🤔
+
+
+
+<enum 클래스 적용>
+
+3주차 과제에서는 enum을 적용해 보았고, 더 많은 적용 사례를 공부한 뒤, 이번에는 메뉴 관리와 할인 날짜 관리에 도전해 보았습니다. Menu.enum 안에 메뉴의 이름과 가격을 선언하였고, MenuGroup.enum을 이용하여 찾고자 하는 이름이 메뉴에 있는지, 그리고 그 가격이 얼마인지를 알 수 있는 'MenuGroup#isMenu'와 'MenuGroup#getMenuPrice'을 사용하는 과정에서 상수을 어떻게 관리해야 하는지에 대한 이해를 더욱 깊게 하게 되었습니다.
+
+enum을 단순히 상수를 관리하는 클래스라고 생각했었는데, 이번에 enum 안에 상수들을 이용해 관리해주는 메서드를 선언하고 사용하면서, enum과 interface, abstract등 모든건 만들어진 이유가 있으며, 클래스를 만들 때 생각을 많이 해야 한다는 것을 깨달았습니다
+
+
+
+<ui을  View클래스에서 관리하고 domain은 비지니스 로직에 집중하라>
+
+저는 클래스를 클래스 답게 관리하는 방법에 대해 고민하게 되었습니다. 클래스를 어떻게 클래스 답게 사용할 것인가를 고민하는 시간은 매우 가치 있는 시간이었습니다.
+
+지금까지 클래스에 UI 관련 메서드를 만들었습니다. 당시에는 출력을 View에서 하니, UI와 비즈니스 로직이 분리되었다고 생각했었습니다. 하지만, 이는 완전한 분리가 아니었다는 것을 깨달았습니다.
+
+'비즈니스 로직과 UI 로직을 한 클래스가 담당하지 않도록 한다. 이는 단일 책임 원칙에도 위배된다.'라는 말을 보며 UI 클래스를 제외한 클래스들은 값의 이동만 책임지며, 사용자에게 보여지는 UI 클래스에서는 UI 작업만 담당한다는 것을 이해하게 되었습니다. , 책임에 대한 이해도가 높아졌습니다.
+
+
+
+<클래스 분리>
+
+  'private 함수를 테스트 하고 싶다면 클래스(객체) 분리를 고려한다'라는 말을 보고, 이번 과제를 진행하면서 이를 고려해보기로 결정했습니다. 클래스를 분리하는 것은 정말 어려운 작업입니다. 과도하게 분리하면 클래스의 남용이 되어 이해하는 데 어려움을 겪을 수 있습니다. 하지만  선생님들의 피드백은 이 과정에서 큰 도움이 되었습니다. 
+
+  Champagne.class, Parse.class, OrderCalculator.class, PaymentCalculator.class 등의 클래스들은 '가독성 이상의 역할을 하는 경우, 테스트하기 쉽게 구현하기 위해서는 해당 역할을 수행하는 다른 객체를 만들 타이밍이 아닐지 고민해 볼 수 있다.'라는 글에서 힌트를 얻어 클래스 분리를 시도해보았습니다.
+
+  가독성 이상의 역할을 하는 private 메서드는 클래스의 책임을 가지고 있으며, 이런 분할 과정을 통해 클래스의 책임을 줄이는 과정을 공부하고 생각해보는 것이 유익했습니다. 이런 훈련은 점차 많은 클래스 간의 관계성을 구상하는 데 도움이 된다고 확신하고 있습니다. 
+
+<테스트 코드>
+
+  지금까지 저는 테스트 메서드의 이름을 테스트하고 싶은 메서드의 이름으로 사용하였습니다. 그러나 그렇게 하다 보니, 메서드를 변경하였을 때 테스트 메서드 역시 변경해야 하는 작업이 생기게 되었습니다. 그래서 메서드가 하는 역할이나 기능에 대한 이름을 부여하여 테스트를 진행하는 것이 더 좋겠다는 생각을 하였고, 테스트 메서드의 이름을 변경하게 되었습니다.
+
+  테스트 코드는 지금까지 제가 만든 메서드가 제대로 반환을 하는지에 대한 테스트를 진행하였지만, 생각을 확장해 보니 내가 지금 작업하는 기능을 먼저 확인하는 것이 테스트 코드라는 저만의 생각을 가지게 되었습니다.
+
+  '단위 테스트하기 어려운 코드를 단위 테스트하기'라는 피드백을 계속 상기하며 코드를 작성하였습니다. 단위 테스트를 하기 어려운 코드는 많은 책임을 가지고 있는 코드를 의미하는 것 같습니다. 이는 책임을 분할하는 과정을 말하는 것 같습니다. 앞으로도 선생님들의 피드백을 곱씹어 보며, 저만의 생각을 가지고 싶습니다.
+
+
+
+<문제점>
+
+전체적인 클래스를 살펴볼 때, Order.class가 다른 클래스에 너무 많이 종속되어 있어 클래스 분리가 어렵다는 것을 느꼈습니다. 지금도 분리가 가능한지, 분리가 맞는지에 대한 확신이 서지 않습니다. 다음에 설계와 구상을 할 때에는 이 점을 참고하여 작업을 해야겠다는 생각을 하였습니다.
+
+혜택을 관리하는 Benefit.class를 생성하기 위해서는 Order 클래스를 매개변수로 사용하여 생성해야 합니다. 저는 Order와 Benefit을 분리하여 사용하고 싶었지만, 그것이 불가능하다는 것을 알게 되었습니다.
+
+객체의 독립성을 유지하면서 설계하는 것이 어렵다는 것을 다시 한번 상기하였고, 많은 전공 책과 다른 사람들의 의견을 참조하면서 계속 생각을 정리하는 시간을 가져야겠다는 결심을 하였습니다.
+
+---
 
 감사합니다 선생님들...🥰
 
