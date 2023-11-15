@@ -179,8 +179,10 @@
   }
   ```
 
+  
+
   ```java
-public class OutputView {
+  public class OutputView {
       public void printMenu() {
           System.out.println("<주문 메뉴>");
           // ...
@@ -188,7 +190,7 @@ public class OutputView {
       // ...
   }
   ```
-  
+
   
 
 - [라이브러리]camp.nextstep.edu.missionutils 에서 제공하는 Console API를 사용하여 구현해야 한다.
